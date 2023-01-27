@@ -1,18 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+part of '../pages.dart';
 
-class ForPassSuc extends StatefulWidget {
-  const ForPassSuc({super.key});
+class FpEmailSent extends StatefulWidget {
+  const FpEmailSent({super.key});
 
   @override
-  State<ForPassSuc> createState() => _ForPassSucState();
+  State<FpEmailSent> createState() => _FpEmailSentState();
 }
 
-class _ForPassSucState extends State<ForPassSuc> {
+class _FpEmailSentState extends State<FpEmailSent> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    // ignore: unused_local_variable
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
@@ -65,36 +63,32 @@ class _ForPassSucState extends State<ForPassSuc> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(40, 26, 40, 0),
-                    child: Center(
-                      child: Image.asset(
-                        "assets/images/illus_u_password.png",
-                        fit: BoxFit.fill,
+                  SizedBox(height: height * 0.045),
+                  Center(
+                    child: Image.asset(
+                      "assets/images/illus_email_sent.png",
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  SizedBox(height: height * 0.04),
+                  const Center(
+                    child: Text(
+                      "Email Terkirim",
+                      style: TextStyle(
+                        fontFamily: "inter_semibold",
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff262626),
                       ),
                     ),
                   ),
+                  SizedBox(height: height * 0.01),
                   Align(
                     alignment: Alignment.center,
                     child: Container(
-                      margin: const EdgeInsets.fromLTRB(40, 24, 40, 0),
+                      margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
                       child: const Text(
-                        "Password Berhasil Diperbarui",
-                        style: TextStyle(
-                          fontFamily: "inter_semibold",
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xff262626),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      margin: const EdgeInsets.fromLTRB(40, 4, 40, 0),
-                      child: const Text(
-                        "Password anda berhasil diperbarui. Silahkan kembali ke halaman Masuk dengan tombol di bawah.",
+                        "Silahkan cek email anda, kami sudah mengirim tautan untuk memperbarui password anda.",
                         style: TextStyle(
                           fontFamily: "inter_regular",
                           fontSize: 14,
@@ -105,24 +99,39 @@ class _ForPassSucState extends State<ForPassSuc> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(16, 24, 15, 0),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xffEA232A),
-                        padding: const EdgeInsets.fromLTRB(12, 24, 12, 24),
-                      ),
-                      child: const Text(
-                        "Masuk",
-                        style: TextStyle(
-                          fontFamily: "inter_bold",
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xffFFFFFF),
+                  SizedBox(height: height * 0.04),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.topLeft,
+                        child: const Text(
+                          "Tidak menerima email?",
+                          style: TextStyle(
+                            fontFamily: "inter_regular",
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff333333),
+                          ),
                         ),
                       ),
-                    ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(4, 0, 0, 0),
+                        alignment: Alignment.topLeft,
+                        child: GestureDetector(
+                          onTap: () => context.go('/updatepass'),
+                          child: const Text(
+                            "Kirim Ulang Email",
+                            style: TextStyle(
+                              fontFamily: "inter_semibold",
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xffEA232A),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

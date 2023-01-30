@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
-import 'package:telkom_career/pages/pages.dart';
+import '../../pages/pages.dart';
 import 'Routes.dart';
 
-final GoRouter saRouter = GoRouter(initialLocation: "/conpass", routes: [
+final GoRouter saRouter = GoRouter(initialLocation: "/DafPek2", routes: [
   GoRoute(
       path: "/conpass",
       name: Routes.conpassPage,
@@ -11,4 +11,12 @@ final GoRouter saRouter = GoRouter(initialLocation: "/conpass", routes: [
       path: "/updatepass",
       name: Routes.updatepassPage,
       builder: (context, state) => const UpdatePass()),
+  GoRoute(
+      path: "/dafpek2",
+      name: Routes.dafpek2Page,
+      builder: (context, state) => const DafPek2()),
+  GoRoute(
+      path: "/sudahmelamar",
+      name: Routes.sudahmelamarPage,
+      builder: (context, state) => const SudahMelamar()),
 ]);

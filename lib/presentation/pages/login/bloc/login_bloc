@@ -1,0 +1,27 @@
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:equatable/equatable.dart';
+// import 'package:telkom_career/base/result_entity.dart';
+// import 'package:telkom_career/domain/model/login/login_data.dart';
+// import 'package:telkom_career/domain/model/login/login_status.dart';
+// import 'package:telkom_career/domain/repository/login/login_repository.dart';
+
+// part 'login_event';
+// part 'logi'login_state'ass LoginBloc extends Bloc<LoginEvent, LoginState> {
+//   final LoginRepository repository;
+
+//   LoginBloc(this.repository) : super(LoginInitial());
+
+//   Future<void> fetchLogin(String country) async {
+//     print("FETCH LOGIN");
+//     emit(LoginIsLoading());
+
+//     final response = await repository.fetchLogins(country);
+
+//     if (response is ResultSuccess) {
+//       emit(LoginIsSuccess(
+//           (response as ResultSuccess).data, (response as ResultSuccess).data));
+//     } else {
+//       emit(LoginIsFailed(error: "Error"));
+//     }
+//   }
+// }

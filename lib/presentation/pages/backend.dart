@@ -1,7 +1,4 @@
-import 'dart:async';
-import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+part of 'pages.dart';
 
 class BackendTest extends StatefulWidget {
   const BackendTest({super.key});
@@ -49,19 +46,21 @@ class _Backend extends State<BackendTest> {
               child: Column(
                 children: [
                   Text(
-                    "${dataJSON[i]['id']} | ${dataJSON[i]['title']}",
+                    dataJSON[i]['title'],
                     style: const TextStyle(
-                        fontSize: 24, fontWeight: FontWeight.bold),
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
-                    dataJSON[i]['body'],
+                    dataJSON[i]['title'],
                     style: const TextStyle(
                       fontSize: 24,
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

@@ -5,10 +5,10 @@ abstract class ResultEntity<D> extends Equatable {
   List<Object?> get props => [];
 }
 
-class ResultSucces<D> implements ResultEntity<D> {
+class ResultSuccess<D> implements ResultEntity<D> {
   final D data;
 
-  ResultSucces(this.data);
+  ResultSuccess(this.data);
 
   @override
   List<Object?> get props => [data];

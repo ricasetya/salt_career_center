@@ -1,0 +1,14 @@
+// part of 'login_bloc';
+
+// abstract class LoginEvent extends Equatable {
+//   const LoginEvent();
+// }
+
+// class FetchLoginEvent extends LoginEvent {
+//   final String country;
+
+//   const FetchLoginEvent(this.country);
+
+//   @override
+//   List<Object?> get props => [country];
+// }

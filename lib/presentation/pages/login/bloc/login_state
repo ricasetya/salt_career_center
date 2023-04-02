@@ -1,0 +1,23 @@
+// part of 'login_bloc';
+
+// abstract class LoginState extends Equatable {
+//   const LoginState();
+
+//   @override
+//   List<Object> get props => [];
+// }
+
+// class LoginInitial extends LoginState {}
+
+// class LoginIsLoading extends LoginState {}
+
+// class LoginIsSuccess extends LoginState {
+//   final List<LoginData> logins;
+//   final List<LoginStatus> statuses;
+//   LoginIsSuccess(this.logins, this.statuses);
+// }
+
+// class LoginIsFailed extends LoginState {
+//   final String? error;
+//   LoginIsFailed({this.error});
+// }

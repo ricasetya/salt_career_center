@@ -45,6 +45,12 @@ dependencies:
   flutter_bloc: ^8.0.1
   equatable: ^2.0.5
   flutter_html: ^2.2.1
+  shared_preferences: ^2.0.17
+  top_snackbar_flutter: ^2.1.1
+  alert_dialog: ^1.0.1
+  image_picker: ^0.8.7
+  flash: ^2.0.5+1
+
 
 
 dev_dependencies:
@@ -90,12 +96,26 @@ flutter:
     - assets/images/image892.png
     - assets/images/image890.png
     - assets/images/image895.png
+    - assets/images/avatar.png
+    - assets/images/ellipse.png
+    - assets/images/illus_portfolio.png
+
     - assets/icons/beranda.png
     - assets/icons/notif.png
     - assets/icons/pekerjaan.png
     - assets/icons/pesan.png
     - assets/icons/profil.png
     - assets/icons/kegiatan.png
+    - assets/icons/setting.png
+    - assets/icons/icon_edit.png
+    - assets/icons/more.png
+    - assets/icons/camera.png
+    - assets/icons/galery.png
+    - assets/icons/trash.png
+    - assets/icons/back.png
+    - assets/icons/search.png
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

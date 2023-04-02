@@ -1,6 +1,4 @@
-import 'dart:html';
-
-import 'package:telkom_career/data/model/article/article_collection_remote_response';
+import 'package:telkom_career/data/model/article/article_collection_remote_response.dart';
 import 'dart:convert';
 import 'package:http/http.dart';
 

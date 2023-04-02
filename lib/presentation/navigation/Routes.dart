@@ -1,15 +1,19 @@
 class Routes {
 //login
-  static var loginPage = "login";
+  static var login = "login";
+  static var loginsPage = "logins";
+  static var loginmocPage = "loginmoc";
 
 //register
   static var registerPage = "register";
+  static var registersPage = "registers";
 
 //resetpasword
-  static var conpassPage = "conpass";
-  static var updatepassPage = "updatepass";
-  static var passwordPage = "password";
-  static var forgotpasswordPage = "forpass";
+  static var forgotpasswordsPage = "forgotpassword";
+  static var forgotpassworemailsentdPage = "forgotpassworemailsent";
+  static var forgotpasswordupdatepasswordPage = "forgotpasswordupdatepassword";
+  static var forgotpasswordupdatepasswordsuccesPage =
+      "forgotpasswordupdatepasswordsucces";
 
 //beranda
   static var berandaPage = "beranda";
@@ -21,8 +25,27 @@ class Routes {
   static var detailPage = "detailpage";
 
 //company
-  static var tentangPage = "tentang";
-  static var postscreenPage = "post";
+  static var aboutcompanyPage = "aboutcompany";
+  static var postcompanyPage = "postcompany";
 
+// Notifikasi
+  static var notifikasiPage = "notifikasi";
+
+// Profile
+  static var profileblankPage = "profileblank";
+  static var profilesettingsPage = "profilesettings";
+  static var profileupdatepasswordPage = "profileupdatepassword";
+  static var profileeditprofilePage = "profileeditprofile";
+  static var profileinputabilityPage = "profileinputability";
+  static var profileinputlanguagePage = "profileinputlanguage";
+  // akbar
+  static var profileinputportofolioPage = "profileinputportofolio";
+
+// Search
+  static var searchorangPage = "searchorang";
+
+// Sample
   static var backendPage = "backend";
+  static var articlescreenPage = "articlescreen";
+  static var samplecobaPage = "samplecoba";
 }

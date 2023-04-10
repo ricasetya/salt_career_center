@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:telkom_career/base/result_entity.dart';
 import 'package:telkom_career/data/model/registers/registers_remote_response.dart';
 import 'package:telkom_career/data/service/remote/registers/registers_remote_service.dart';
-import 'package:telkom_career/domain/model/registers/registers_user_data.dart';
+import 'package:telkom_career/domain/model/data/registers/registers_user_data.dart';
 import 'package:telkom_career/domain/repository/registers/registers_repository.dart';
 
 class RegistersRepositoryImpl implements RegistersRepository {

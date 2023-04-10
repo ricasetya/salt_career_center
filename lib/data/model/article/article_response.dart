@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:telkom_career/domain/model/article/article_data.dart';
+import 'package:telkom_career/domain/model/data/article/article_data.dart';
 import 'package:telkom_career/data/model/article/article_source_response.dart';
-import 'package:telkom_career/domain/model/article/article_source_data.dart';
+import 'package:telkom_career/domain/model/data/article/article_source_data.dart';
 
 part 'article_response.g.dart';
 

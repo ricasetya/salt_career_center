@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:telkom_career/base/result_entity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:telkom_career/domain/repository/article/article_repository.dart';
-import 'package:telkom_career/domain/model/article/article_data.dart';
+import 'package:telkom_career/domain/model/data/article/article_data.dart';
 
 part 'article_event.dart';
 part 'article_state.dart';

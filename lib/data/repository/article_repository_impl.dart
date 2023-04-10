@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:telkom_career/domain/model/article/article_data.dart';
+import 'package:telkom_career/domain/model/data/article/article_data.dart';
 import 'package:telkom_career/base/result_entity.dart';
 import 'package:telkom_career/data/model/article/article_collection_remote_response.dart';
 import 'package:telkom_career/data/service/remote/article_remote_service.dart';

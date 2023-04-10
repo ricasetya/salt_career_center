@@ -12,17 +12,24 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flash/flash.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:telkom_career/data/repository/company/company_data_repository_impl.dart';
+import 'package:telkom_career/data/repository/lists_jobs_repository/lists_jobs_repository_impl.dart';
 import 'package:telkom_career/data/repository/login_moc/login_repositorymoc_impl.dart';
 import 'dart:io';
 
 import 'package:telkom_career/data/utilities/commons.dart';
 import 'package:telkom_career/data/repository/logins_repository/logins_repository_impl.dart';
+import 'package:telkom_career/domain/base/authentication_header_request.dart';
+import 'package:telkom_career/domain/model/data/lists_jobs/lists_jobs_data.dart';
 import 'package:telkom_career/presentation/navigation/Routes.dart';
+import 'package:telkom_career/presentation/pages/lists_jobs/cubit/lists_jobs_cubit.dart';
 import 'package:telkom_career/presentation/pages/login_moc/cubit/loginmoc_cubit.dart';
 import 'package:telkom_career/presentation/pages/logins/bloc/logins_bloc.dart';
 
 import 'package:telkom_career/data/repository/registers_repository/registers_repository.impl.dart';
 import 'package:telkom_career/presentation/pages/registers/bloc/registers_bloc.dart';
+
+import 'package:telkom_career/presentation/pages/company/cubit/company_data_cubit.dart';
 
 //PART//
 //login
@@ -45,11 +52,11 @@ part 'beranda/beranda.dart';
 
 //pekerjaan
 part 'pekerjaan/sudah_melamar.dart';
-part 'pekerjaan/pekerjaan_page.dart';
+part 'lists_jobs/lists_jobs_screen.dart';
 part 'pekerjaan/detail.dart';
 
 // COMPANY
-part 'company/about_company.dart';
+part 'company/company_screen.dart';
 part 'company/post_company.dart';
 
 // NOTIFIKASI

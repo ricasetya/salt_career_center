@@ -3,7 +3,7 @@ import 'package:http/http.dart';
 import 'package:equatable/equatable.dart';
 import 'package:telkom_career/base/result_entity.dart';
 import 'package:telkom_career/data/utilities/commons.dart';
-import 'package:telkom_career/domain/model/logins/logins_user_data.dart';
+import 'package:telkom_career/domain/model/data/logins/logins_user_data.dart';
 import 'package:telkom_career/domain/repository/logins/logins_repository.dart';
 import 'package:telkom_career/data/repository/logins_repository/logins_repository_impl.dart';
 

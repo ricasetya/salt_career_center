@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:telkom_career/domain/model/registers/registers_user_data.dart';
+import 'package:telkom_career/domain/model/data/registers/registers_user_data.dart';
 
 part 'registers_remote_response.g.dart';
 

@@ -1,5 +1,8 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:telkom_career/domain/base/authentication_header_request.dart';
 import 'package:telkom_career/presentation/pages/article/article_screen.dart';
+import 'package:telkom_career/presentation/pages/lists_jobs/cubit/lists_jobs_cubit.dart';
 import '../pages/pages.dart';
 import 'Routes.dart';
 
@@ -58,9 +61,9 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
       name: Routes.sudahmelamarPage,
       builder: (context, state) => const SudahMelamar()),
   GoRoute(
-      path: "/dafpekpage",
-      name: Routes.dafpegpagePage,
-      builder: (context, state) => const DaftarPekerjaanPage()),
+      path: "/listsjobs",
+      name: Routes.listsjobsPage,
+      builder: (context, state) => const ListsJobs()),
   GoRoute(
       path: "/detailpage",
       name: Routes.detailPage,
@@ -68,9 +71,15 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
 
   // COMPANY //
   GoRoute(
-      path: "/aboutcompany",
-      name: Routes.aboutcompanyPage,
-      builder: (context, state) => const AboutCompany()),
+    path: "/companyscreen",
+    name: Routes.companyscreenPage,
+//      builder: (context, state) => const AboutCompany()),
+    builder: (context, state) {
+      BlocProvider.of<ListsJobsCubit>(context)
+          .fetchJobs(AuthenticationHeaderRequest(""));
+      return CompanyScreen();
+    },
+  ),
   GoRoute(
       path: "/postcompany",
       name: Routes.postcompanyPage,

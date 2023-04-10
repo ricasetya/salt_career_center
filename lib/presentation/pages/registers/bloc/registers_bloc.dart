@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:telkom_career/base/result_entity.dart';
-import 'package:telkom_career/domain/model/registers/registers_user_data.dart';
+import 'package:telkom_career/domain/model/data/registers/registers_user_data.dart';
 import 'package:telkom_career/domain/repository/registers/registers_repository.dart';
 
 part 'registers_event.dart';

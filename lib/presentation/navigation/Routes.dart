@@ -21,11 +21,11 @@ class Routes {
 //pekerjaan
   static var dafpek2Page = "dafpek2";
   static var sudahmelamarPage = "sudahmelamar";
-  static var dafpegpagePage = "dafpekpage";
+  static var listsjobsPage = "listsjobs";
   static var detailPage = "detailpage";
 
 //company
-  static var aboutcompanyPage = "aboutcompany";
+  static var companyscreenPage = "companyscreen";
   static var postcompanyPage = "postcompany";
 
 // Notifikasi

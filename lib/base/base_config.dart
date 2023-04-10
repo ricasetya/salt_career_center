@@ -17,4 +17,6 @@ abstract class BaseConfig {
   static const String LOGIN_MOC = "/login";
   static const String REGISTER_MOC = "/api/v1/register";
   static const String HOME_MOC = "/api/v1/home";
+  static const String LISTS_JOBS = "/list-jobs";
+  static const String BASE_COMPANY = "/company/{1}";
 }

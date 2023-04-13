@@ -266,33 +266,33 @@ class _CompanyScreenState extends State<CompanyScreen> {
     );
   }
 
-  Widget buildListJobsWidget() {
-    print("build");
-    return BlocBuilder<ListsJobsCubit, ListsJobsState>(
-        builder: (context, state) {
-      if (state is ListsJobsIsSucces) {
-        print("build listview");
-        state.data.forEach((element) {
-          print(element.position);
-        });
-        return ListView.builder(
-            shrinkWrap: true,
-            itemCount: state.data.length,
-            itemBuilder: (context, index) {
-              final job = state.data[index];
-              return Text(job.position ?? "-");
-            });
-      } else if (state is ListsJobsIsLoading) {
-        return const Center(
-          child: CircularProgressIndicator(
-            color: Color(0xff5A5A5A),
-            backgroundColor: Color.fromARGB(1, 90, 90, 90),
-          ),
-        );
-      } else {
-        print("error");
-        return const Text("Gagal");
-      }
-    });
-  }
+  // Widget buildListJobsWidget() {
+  //   print("build");
+  //   return BlocBuilder<ListsJobsCubit, ListsJobsState>(
+  //       builder: (context, state) {
+  //     if (state is ListsJobsIsSucces) {
+  //       print("build listview");
+  //       state.data.forEach((element) {
+  //         print(element.position);
+  //       });
+  //       return ListView.builder(
+  //           shrinkWrap: true,
+  //           itemCount: state.data.length,
+  //           itemBuilder: (context, index) {
+  //             final job = state.data[index];
+  //             return Text(job.position ?? "-");
+  //           });
+  //     } else if (state is ListsJobsIsLoading) {
+  //       return const Center(
+  //         child: CircularProgressIndicator(
+  //           color: Color(0xff5A5A5A),
+  //           backgroundColor: Color.fromARGB(1, 90, 90, 90),
+  //         ),
+  //       );
+  //     } else {
+  //       print("error");
+  //       return const Text("Gagal");
+  //     }
+  //   });
+  // }
 }

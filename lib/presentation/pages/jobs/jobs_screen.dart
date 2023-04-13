@@ -28,14 +28,14 @@ class _JobsScreenState extends State<JobsScreen> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xffFFFFFF),
+          backgroundColor: const Color(0xffFFFFFF),
           title: SizedBox(
             width: 375,
             height: 44,
             child: Padding(
               padding: const EdgeInsets.only(top: 8),
               child: TextField(
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "inter",
                   fontSize: 14,
                 ),
@@ -45,7 +45,7 @@ class _JobsScreenState extends State<JobsScreen> {
                       color: Color(0xffE6E6E6),
                     ),
                   ),
-                  contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  contentPadding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(4),
                   ),

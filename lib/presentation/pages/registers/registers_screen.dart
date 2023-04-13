@@ -284,7 +284,7 @@ class _RegistersState extends State<Registers> {
                             Container(
                               margin: const EdgeInsets.fromLTRB(4, 0, 0, 0),
                               child: GestureDetector(
-                                onTap: () => context.go('/login'),
+                                onTap: () => context.go('/loginmoc'),
                                 child: const Text(
                                   "Masuk Sekarang",
                                   style: TextStyle(

@@ -3,15 +3,16 @@ import 'package:go_router/go_router.dart';
 import 'package:telkom_career/domain/base/authentication_header_request.dart';
 import 'package:telkom_career/presentation/pages/article/article_screen.dart';
 import 'package:telkom_career/presentation/pages/lists_jobs/cubit/lists_jobs_cubit.dart';
+import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 import '../pages/pages.dart';
 import 'Routes.dart';
 
 final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
   // LOGIN //
-  GoRoute(
-      path: "/login",
-      name: Routes.login,
-      builder: (context, state) => const Login()),
+  // GoRoute(
+  //     path: "/login",
+  //     name: Routes.login,
+  //     builder: (context, state) => const Login()),
   GoRoute(
       path: "/logins",
       name: Routes.loginsPage,
@@ -22,10 +23,10 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
       builder: (context, state) => const LoginPageMoc()),
 
   // REGISTER //
-  GoRoute(
-      path: "/register",
-      name: Routes.registerPage,
-      builder: (context, state) => const Register()),
+  // GoRoute(
+  //     path: "/register",
+  //     name: Routes.registerPage,
+  //     builder: (context, state) => const Register()),
   GoRoute(
       path: "/registers",
       name: Routes.registersPage,
@@ -128,18 +129,27 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
       path: "/searchorang",
       name: Routes.searchorangPage,
       builder: (context, state) => const SearchOrang()),
+  GoRoute(
+      path: "/searchscreen",
+      name: Routes.searchscreenPage,
+      builder: (context, state) => const SearchScreen()),
 
   // TES CONTOH //
   GoRoute(
-      path: "/articlescreen",
-      name: Routes.articlescreenPage,
-      builder: (context, state) => const ArticleScreen()),
-  GoRoute(
-      path: "/backend",
-      name: Routes.backendPage,
-      builder: (context, state) => const BackendTest()),
-  GoRoute(
-      path: "/samplecoba",
-      name: Routes.samplecobaPage,
-      builder: (context, state) => const SampleCoba()),
+    path: "/articlescreen",
+    name: Routes.articlescreenPage,
+    builder: (context, state) {
+      BlocProvider.of<ListsCompanyDataCubit>(context)
+          .fetchListsCompanyData(AuthenticationHeaderRequest(""));
+      return const SearchScreen();
+    },
+  ),
+  // GoRoute(
+  //     path: "/backend",
+  //     name: Routes.backendPage,
+  //     builder: (context, state) => const BackendTest()),
+  // GoRoute(
+  //     path: "/samplecoba",
+  //     name: Routes.samplecobaPage,
+  //     builder: (context, state) => const SampleCoba()),
 ]);

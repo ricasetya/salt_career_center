@@ -1,11 +1,11 @@
 class Routes {
 //login
-  static var login = "login";
+  //static var login = "login";
   static var loginsPage = "logins";
   static var loginmocPage = "loginmoc";
 
 //register
-  static var registerPage = "register";
+  //static var registerPage = "register";
   static var registersPage = "registers";
 
 //resetpasword
@@ -43,9 +43,9 @@ class Routes {
 
 // Search
   static var searchorangPage = "searchorang";
+  static var searchscreenPage = "searchscreen";
 
 // Sample
-  static var backendPage = "backend";
+//  static var backendPage = "backend";
   static var articlescreenPage = "articlescreen";
-  static var samplecobaPage = "samplecoba";
 }

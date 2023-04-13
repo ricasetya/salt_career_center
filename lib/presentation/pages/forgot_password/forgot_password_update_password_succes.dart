@@ -45,7 +45,7 @@ class _PasswordPageState extends State<ForgotPasswordUpdatePasswordSucces> {
                   Container(
                     margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                     child: GestureDetector(
-                      onTap: () => context.go('/login'),
+                      onTap: () => context.go('/loginmoc'),
                       child: Row(
                         children: const <Widget>[
                           Icon(
@@ -108,7 +108,7 @@ class _PasswordPageState extends State<ForgotPasswordUpdatePasswordSucces> {
                   Container(
                     margin: const EdgeInsets.fromLTRB(16, 24, 15, 0),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => context.go('/companyscreen'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xffEA232A),
                         padding: const EdgeInsets.fromLTRB(12, 24, 12, 24),

@@ -67,7 +67,7 @@ class _UpdatePassState extends State<ForgotPasswordUpdatePassword> {
                       Container(
                         margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                         child: GestureDetector(
-                          onTap: () => context.go('/login'),
+                          onTap: () => context.go('/loginmoc'),
                           child: Row(
                             children: const <Widget>[
                               Icon(
@@ -223,7 +223,7 @@ class _UpdatePassState extends State<ForgotPasswordUpdatePassword> {
                         child: ElevatedButton(
                           onPressed: () {
                             if (_formkey.currentState!.validate()) {
-                              context.go('/password');
+                              context.go('/forgotpasswordupdatepasswordsucces');
                             } else {
                               return;
                             }

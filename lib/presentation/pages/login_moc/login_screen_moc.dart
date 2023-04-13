@@ -40,11 +40,12 @@ class _LoginPageMocState extends State<LoginPageMoc> {
           listener: (context, loginsState) {
             if (loginsState is LoginmocIsError) {
               Commons().showSnackbarError(context, loginsState.message!);
+              print("Login Failled");
             } else if (loginsState is LoginmocIsSuccess) {
               Commons().setUid("${loginsState.data!.token}");
               print("token: ${loginsState.data!.token}");
               Commons().showSnackbarInfo(context, "Login Berhasil");
-              context.goNamed(Routes.companyscreenPage);
+              context.goNamed(Routes.searchscreenPage);
             }
           },
           child: Container(
@@ -265,7 +266,7 @@ class _LoginPageMocState extends State<LoginPageMoc> {
                             Container(
                               margin: const EdgeInsets.fromLTRB(4, 0, 0, 0),
                               child: GestureDetector(
-                                onTap: () => context.go('/register'),
+                                onTap: () => context.go('/registers'),
                                 child: const Text(
                                   "Daftar Sekarang",
                                   style: TextStyle(
@@ -284,7 +285,7 @@ class _LoginPageMocState extends State<LoginPageMoc> {
                         alignment: Alignment.center,
                         margin: const EdgeInsets.fromLTRB(16, 8, 16, 0),
                         child: GestureDetector(
-                          onTap: () => context.go('/forpass'),
+                          onTap: () => context.go('/forgotpassword'),
                           child: const Text(
                             "Lupa Password",
                             style: TextStyle(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:telkom_career/data/repository/company/company_data_repository_impl.dart';
+import 'package:telkom_career/data/repository/lists_company_repository/lists_company_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/lists_jobs_repository/lists_jobs_repository_impl.dart';
 import 'package:telkom_career/data/repository/login_moc/login_repositorymoc_impl.dart';
 import 'package:telkom_career/data/repository/logins_repository/logins_repository_impl.dart';
@@ -12,6 +13,7 @@ import 'package:telkom_career/presentation/pages/lists_jobs/cubit/lists_jobs_cub
 import 'package:telkom_career/presentation/pages/login_moc/cubit/loginmoc_cubit.dart';
 import 'package:telkom_career/presentation/pages/logins/bloc/logins_bloc.dart';
 import 'package:telkom_career/presentation/pages/registers/bloc/registers_bloc.dart';
+import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,8 +42,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ListsJobsCubit(ListsJobsRepositoryImpl()),
         ),
+        // BlocProvider(
+        //   create: (context) => CompanyDataCubit(CompanyDataRepositoryImpl()),
+        // ),
         BlocProvider(
-          create: (context) => CompanyDataCubit(CompanyDataRepositoryImpl()),
+          create: (context) =>
+              ListsCompanyDataCubit(ListsCompanyDataRepositoryImpl()),
         ),
       ],
       child: MaterialApp.router(

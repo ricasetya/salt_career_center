@@ -37,7 +37,7 @@ class ForgotPassword extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                     child: GestureDetector(
-                      onTap: () => context.go('/login'),
+                      onTap: () => context.go('/loginmoc'),
                       child: Row(
                         children: const <Widget>[
                           Icon(
@@ -121,7 +121,7 @@ class ForgotPassword extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.fromLTRB(16, 24, 15, 0),
                     child: ElevatedButton(
-                      onPressed: () => context.go('/conpass'),
+                      onPressed: () => context.go('/forgotpassworemailsent'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xffEA232A),
                         padding: const EdgeInsets.fromLTRB(12, 24, 12, 24),

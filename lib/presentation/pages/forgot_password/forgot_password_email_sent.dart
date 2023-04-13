@@ -43,7 +43,7 @@ class _FpEmailSentState extends State<ForgotPasswordEmailSent> {
                   Container(
                     margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                     child: GestureDetector(
-                      onTap: () => context.go('/login'),
+                      onTap: () => context.go('/loginmoc'),
                       child: Row(
                         children: const <Widget>[
                           Icon(
@@ -119,7 +119,8 @@ class _FpEmailSentState extends State<ForgotPasswordEmailSent> {
                         margin: const EdgeInsets.fromLTRB(4, 0, 0, 0),
                         alignment: Alignment.topLeft,
                         child: GestureDetector(
-                          onTap: () => context.go('/updatepass'),
+                          onTap: () =>
+                              context.go('/forgotpasswordupdatepassword'),
                           child: const Text(
                             "Kirim Ulang Email",
                             style: TextStyle(

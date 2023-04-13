@@ -13,6 +13,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flash/flash.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:telkom_career/data/repository/company/company_data_repository_impl.dart';
+import 'package:telkom_career/data/repository/lists_company_repository/lists_company_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/lists_jobs_repository/lists_jobs_repository_impl.dart';
 import 'package:telkom_career/data/repository/login_moc/login_repositorymoc_impl.dart';
 import 'dart:io';
@@ -30,16 +31,16 @@ import 'package:telkom_career/data/repository/registers_repository/registers_rep
 import 'package:telkom_career/presentation/pages/registers/bloc/registers_bloc.dart';
 
 import 'package:telkom_career/presentation/pages/company/cubit/company_data_cubit.dart';
+import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 
 //PART//
 //login
-part 'login/login.dart';
 part 'logins/logins_screen.dart';
 part 'login_moc/login_screen_moc.dart';
 
 //register
-part 'register/register.dart';
-part 'registers/registers.dart';
+//part 'register/register.dart';
+part 'registers/registers_screen.dart';
 
 //resetpassword
 part 'forgot_password/forgot_pasword_update_password.dart';
@@ -74,7 +75,4 @@ part 'profile/profile_input_portofolio.dart';
 
 //search
 part 'search/search_orang.dart';
-
-// SAMPLE
-part 'backend.dart';
-part 'sample.dart';
+part 'search/search_screen.dart';

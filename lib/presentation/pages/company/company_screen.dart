@@ -37,8 +37,10 @@ class _CompanyScreenState extends State<CompanyScreen> {
         child: AppBar(
           shadowColor: const Color.fromRGBO(0, 0, 0, 0.05),
           backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
-          leading:
-              Image.asset('assets/icons/back.png', height: 18.67, width: 10),
+          leading: GestureDetector(
+              onTap: () => context.go('/searchscreen'),
+              child: Image.asset('assets/icons/back.png',
+                  height: 18.67, width: 10)),
           flexibleSpace: Container(
             margin: const EdgeInsets.fromLTRB(50, 30, 15, 8),
             child: TextFormField(

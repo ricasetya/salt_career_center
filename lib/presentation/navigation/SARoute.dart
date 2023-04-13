@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:telkom_career/domain/base/authentication_header_request.dart';
 import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
-import 'package:telkom_career/presentation/pages/lists_jobs/cubit/lists_jobs_cubit.dart';
+//import 'package:telkom_career/presentation/pages/lists_jobs/cubit/lists_jobs_cubit.dart';
 import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 import '../pages/pages.dart';
 import 'Routes.dart';
@@ -45,10 +45,10 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
       builder: (context, state) => const HomeScreen()),
 
   // PEKERJAAN //
-  GoRoute(
-      path: "/listsjobs",
-      name: Routes.listsjobsPage,
-      builder: (context, state) => const ListsJobs()),
+  // GoRoute(
+  //     path: "/listsjobs",
+  //     name: Routes.listsjobsPage,
+  //     builder: (context, state) => const ListsJobs()),
   GoRoute(
     path: "/listjob",
     name: Routes.listjobPage,
@@ -64,8 +64,8 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
     path: "/companyscreen",
     name: Routes.companyscreenPage,
     builder: (context, state) {
-      BlocProvider.of<ListsJobsCubit>(context)
-          .fetchJobs(AuthenticationHeaderRequest(""));
+      BlocProvider.of<ListJobCubit>(context)
+          .fetchListJob(AuthenticationHeaderRequest(""));
       return CompanyScreen();
     },
   ),

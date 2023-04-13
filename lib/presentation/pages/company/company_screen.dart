@@ -143,9 +143,9 @@ class _CompanyScreenState extends State<CompanyScreen> {
                       ),
                     ),
                   ),
-                  BlocBuilder<ListsJobsCubit, ListsJobsState>(
+                  BlocBuilder<ListJobCubit, ListJobState>(
                     builder: (context, state) {
-                      if (state is ListsJobsIsSucces) {
+                      if (state is ListJobIsSucces) {
                         print("build listview");
                         state.data.forEach((element) {
                           print(element.position);
@@ -170,10 +170,10 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                             leading: CircleAvatar(
                                               backgroundColor: Colors.grey[200],
                                               backgroundImage:
-                                                  NetworkImage(job.logo ?? ""),
+                                                  NetworkImage(job.logo),
                                             ),
                                             title: Text(
-                                              job.position ?? "",
+                                              job.position,
                                               style: const TextStyle(
                                                 fontWeight: FontWeight.w600,
                                                 fontFamily: "inter_semibold",
@@ -182,7 +182,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                               ),
                                             ),
                                             subtitle: Text(
-                                              job.company ?? "",
+                                              job.company,
                                               style: const TextStyle(
                                                 fontWeight: FontWeight.w400,
                                                 fontFamily: "inter_regular",
@@ -199,7 +199,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                 padding: const EdgeInsets.only(
                                                     left: 16),
                                                 child: Text(
-                                                  job.address ?? "",
+                                                  job.address,
                                                   style: const TextStyle(
                                                     fontWeight: FontWeight.w400,
                                                     fontFamily:
@@ -219,7 +219,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                                 padding: const EdgeInsets.only(
                                                     left: 16, top: 4),
                                                 child: Text(
-                                                  job.createdDate ?? "",
+                                                  job.createdDate,
                                                   style: const TextStyle(
                                                     fontWeight: FontWeight.w400,
                                                     fontFamily: "inter_regular",
@@ -237,7 +237,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                                 ],
                               );
                             });
-                      } else if (state is ListsJobsIsLoading) {
+                      } else if (state is ListJobIsLoading) {
                         print("ARTICLE : LOADING");
                         return const Center(
                           child: CircularProgressIndicator(

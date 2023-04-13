@@ -3,14 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:telkom_career/data/repository/company/company_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/listjob/list_job_repository_impl.dart';
 import 'package:telkom_career/data/repository/lists_company_repository/lists_company_data_repository_impl.dart';
-import 'package:telkom_career/data/repository/lists_jobs_repository/lists_jobs_repository_impl.dart';
 import 'package:telkom_career/data/repository/login_moc/login_repositorymoc_impl.dart';
 import 'package:telkom_career/data/repository/registers_repository/registers_repository.impl.dart';
 import 'package:telkom_career/presentation/navigation/SARoute.dart';
 import 'package:flutter/services.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
-import 'package:telkom_career/presentation/pages/lists_jobs/cubit/lists_jobs_cubit.dart';
 import 'package:telkom_career/presentation/pages/login_moc/cubit/loginmoc_cubit.dart';
 import 'package:telkom_career/presentation/pages/registers/bloc/registers_bloc.dart';
 import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
@@ -35,9 +33,6 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => RegistersBloc(RegistersRepositoryImpl()),
-        ),
-        BlocProvider(
-          create: (context) => ListsJobsCubit(ListsJobsRepositoryImpl()),
         ),
         BlocProvider(
           create: (context) => CompanyDataCubit(CompanyDataRepositoryImpl()),

@@ -45,7 +45,7 @@ class _LoginPageMocState extends State<LoginPageMoc> {
               Commons().setUid("${loginsState.data!.token}");
               print("token: ${loginsState.data!.token}");
               Commons().showSnackbarInfo(context, "Login Berhasil");
-              context.goNamed(Routes.searchscreenPage);
+              context.goNamed(Routes.listjobPage);
             }
           },
           child: Container(

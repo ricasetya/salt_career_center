@@ -49,7 +49,7 @@ class _RegistersState extends State<Registers> {
               Commons().showSnackbarError(context, registersState.message!);
             } else if (registersState is RegistersIsSuccess) {
               print('Oke');
-              context.goNamed(Routes.berandaPage);
+              context.goNamed(Routes.homescreenPage);
             }
           },
           child: Container(

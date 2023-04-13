@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:telkom_career/domain/base/authentication_header_request.dart';
-import 'package:telkom_career/presentation/pages/article/article_screen.dart';
+import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
 import 'package:telkom_career/presentation/pages/lists_jobs/cubit/lists_jobs_cubit.dart';
 import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 import '../pages/pages.dart';
@@ -9,24 +9,12 @@ import 'Routes.dart';
 
 final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
   // LOGIN //
-  // GoRoute(
-  //     path: "/login",
-  //     name: Routes.login,
-  //     builder: (context, state) => const Login()),
-  GoRoute(
-      path: "/logins",
-      name: Routes.loginsPage,
-      builder: (context, state) => const LoginsPage()),
   GoRoute(
       path: "/loginmoc",
       name: Routes.loginmocPage,
       builder: (context, state) => const LoginPageMoc()),
 
   // REGISTER //
-  // GoRoute(
-  //     path: "/register",
-  //     name: Routes.registerPage,
-  //     builder: (context, state) => const Register()),
   GoRoute(
       path: "/registers",
       name: Routes.registersPage,
@@ -53,28 +41,28 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
   // BERANDA //
   GoRoute(
       path: "/beranda",
-      name: Routes.berandaPage,
-      builder: (context, state) => const BerandaPage()),
+      name: Routes.homescreenPage,
+      builder: (context, state) => const HomeScreen()),
 
   // PEKERJAAN //
-  GoRoute(
-      path: "/sudahmelamar",
-      name: Routes.sudahmelamarPage,
-      builder: (context, state) => const SudahMelamar()),
   GoRoute(
       path: "/listsjobs",
       name: Routes.listsjobsPage,
       builder: (context, state) => const ListsJobs()),
   GoRoute(
-      path: "/detailpage",
-      name: Routes.detailPage,
-      builder: (context, state) => const Detail()),
+    path: "/listjob",
+    name: Routes.listjobPage,
+    builder: (context, state) {
+      BlocProvider.of<ListJobCubit>(context)
+          .fetchListJob(AuthenticationHeaderRequest(""));
+      return JobsScreen();
+    },
+  ),
 
   // COMPANY //
   GoRoute(
     path: "/companyscreen",
     name: Routes.companyscreenPage,
-//      builder: (context, state) => const AboutCompany()),
     builder: (context, state) {
       BlocProvider.of<ListsJobsCubit>(context)
           .fetchJobs(AuthenticationHeaderRequest(""));
@@ -126,30 +114,7 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
 
   // SEARCH //
   GoRoute(
-      path: "/searchorang",
-      name: Routes.searchorangPage,
-      builder: (context, state) => const SearchOrang()),
-  GoRoute(
       path: "/searchscreen",
       name: Routes.searchscreenPage,
       builder: (context, state) => const SearchScreen()),
-
-  // TES CONTOH //
-  GoRoute(
-    path: "/articlescreen",
-    name: Routes.articlescreenPage,
-    builder: (context, state) {
-      BlocProvider.of<ListsCompanyDataCubit>(context)
-          .fetchListsCompanyData(AuthenticationHeaderRequest(""));
-      return const SearchScreen();
-    },
-  ),
-  // GoRoute(
-  //     path: "/backend",
-  //     name: Routes.backendPage,
-  //     builder: (context, state) => const BackendTest()),
-  // GoRoute(
-  //     path: "/samplecoba",
-  //     name: Routes.samplecobaPage,
-  //     builder: (context, state) => const SampleCoba()),
 ]);

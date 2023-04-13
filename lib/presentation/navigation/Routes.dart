@@ -1,11 +1,9 @@
 class Routes {
 //login
   //static var login = "login";
-  static var loginsPage = "logins";
   static var loginmocPage = "loginmoc";
 
 //register
-  //static var registerPage = "register";
   static var registersPage = "registers";
 
 //resetpasword
@@ -15,14 +13,12 @@ class Routes {
   static var forgotpasswordupdatepasswordsuccesPage =
       "forgotpasswordupdatepasswordsucces";
 
-//beranda
-  static var berandaPage = "beranda";
+//home
+  static var homescreenPage = "homescreen";
 
 //pekerjaan
-  static var dafpek2Page = "dafpek2";
-  static var sudahmelamarPage = "sudahmelamar";
   static var listsjobsPage = "listsjobs";
-  static var detailPage = "detailpage";
+  static var listjobPage = "listjob";
 
 //company
   static var companyscreenPage = "companyscreen";
@@ -42,10 +38,5 @@ class Routes {
   static var profileinputportofolioPage = "profileinputportofolio";
 
 // Search
-  static var searchorangPage = "searchorang";
   static var searchscreenPage = "searchscreen";
-
-// Sample
-//  static var backendPage = "backend";
-  static var articlescreenPage = "articlescreen";
 }

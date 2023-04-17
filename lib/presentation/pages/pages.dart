@@ -9,6 +9,8 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:alert_dialog/alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:telkom_career/presentation/pages/company/cubit/about_company_data_cubit.dart';
+import 'package:telkom_career/presentation/pages/company/cubit/jobs_company_data_cubit.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:flash/flash.dart';
@@ -16,16 +18,13 @@ import 'package:image_picker/image_picker.dart';
 import 'package:telkom_career/data/repository/company/company_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/listjob/list_job_repository_impl.dart';
 import 'package:telkom_career/data/repository/lists_company_repository/lists_company_data_repository_impl.dart';
-//import 'package:telkom_career/data/repository/lists_jobs_repository/lists_jobs_repository_impl.dart';
 import 'package:telkom_career/data/repository/login_moc/login_repositorymoc_impl.dart';
 import 'dart:io';
 
 import 'package:telkom_career/data/utilities/commons.dart';
 import 'package:telkom_career/domain/base/authentication_header_request.dart';
-//import 'package:telkom_career/domain/model/data/lists_jobs/lists_jobs_data.dart';
 import 'package:telkom_career/presentation/navigation/Routes.dart';
 import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
-//import 'package:telkom_career/presentation/pages/lists_jobs/cubit/lists_jobs_cubit.dart';
 import 'package:telkom_career/presentation/pages/login_moc/cubit/loginmoc_cubit.dart';
 
 import 'package:telkom_career/data/repository/registers_repository/registers_repository.impl.dart';
@@ -39,7 +38,6 @@ import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data
 part 'login_moc/login_screen_moc.dart';
 
 //register
-//part 'register/register.dart';
 part 'registers/registers_screen.dart';
 
 //resetpassword
@@ -52,12 +50,10 @@ part 'forgot_password/forgot_password.dart';
 part 'home/home_screen.dart';
 
 //pekerjaan
-//part 'lists_jobs/lists_jobs_screen.dart';
 part 'jobs/jobs_screen.dart';
 
 // COMPANY
 part 'company/company_screen.dart';
-part 'company/post_company.dart';
 
 // NOTIFIKASI
 part 'notifikasi/notifikasi_screen.dart';

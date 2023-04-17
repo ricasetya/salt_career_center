@@ -7,20 +7,32 @@ class CompanyScreen extends StatefulWidget {
   State<CompanyScreen> createState() => _CompanyScreenState();
 }
 
-class _CompanyScreenState extends State<CompanyScreen> {
+class _CompanyScreenState extends State<CompanyScreen>
+    with SingleTickerProviderStateMixin {
   PickedFile? _imageFile;
   // late ListsJobsCubit _listsJobsCubit;
   late CompanyDataCubit _companyDataCubit;
+  bool isOpen = true;
+  late TabController tabController;
+  late AboutCompanyDataCubit _aboutCompanyDataCubit;
+  late JobsCompanyDataCubit _jobsCompanyDataCubit;
 
   @override
   void initState() {
-    super.initState();
     _companyDataCubit = CompanyDataCubit(CompanyDataRepositoryImpl());
+    _aboutCompanyDataCubit = AboutCompanyDataCubit(CompanyDataRepositoryImpl());
+    _jobsCompanyDataCubit = JobsCompanyDataCubit(CompanyDataRepositoryImpl());
+    tabController = TabController(length: 2, vsync: this);
+
+    super.initState();
   }
 
   @override
   void dispose() {
     _companyDataCubit.close();
+    _aboutCompanyDataCubit.close();
+    _jobsCompanyDataCubit.close();
+    tabController.dispose();
     super.dispose();
   }
 
@@ -28,8 +40,6 @@ class _CompanyScreenState extends State<CompanyScreen> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    _companyDataCubit
-        .fetchCompanyData(AuthenticationHeaderRequest("accesToken"));
 
     return Scaffold(
       appBar: PreferredSize(
@@ -63,236 +73,337 @@ class _CompanyScreenState extends State<CompanyScreen> {
         ),
       ),
       backgroundColor: Colors.grey[200],
-      body: SingleChildScrollView(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  SizedBox(
-                    height: height * 0.274,
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 8),
-                      color: const Color.fromRGBO(255, 255, 255, 1),
-                      alignment: Alignment.center,
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(top: 16),
-                            child:
-                                Image.asset('assets/images/imagesuperindo.png'),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(top: 8),
-                            child: const Text(
-                              "PT Lion Super Indo",
-                              style: TextStyle(
-                                fontFamily: 'inter_semibold',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff333333),
-                              ),
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Column(
+          children: [
+            BlocBuilder<CompanyDataCubit, CompanyDataState>(
+              builder: (context, state) {
+                if (state is CompanyDataIsSucces) {
+                  print(state.data);
+                  // print("build Data Company");
+                  // state.data.forEach((element) {
+                  //   print(element.logo);
+                  // });
+                }
+                //             final companydata = state.data;
+
+                return BlocBuilder<CompanyDataCubit, CompanyDataState>(
+                  builder: (context, state) {
+                    if (state is CompanyDataIsSucces) {
+                      return Container(
+                        margin: const EdgeInsets.only(bottom: 4),
+                        color: const Color.fromRGBO(255, 255, 255, 1),
+                        alignment: Alignment.center,
+                        child: Column(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(top: 16),
+                              child: CircleAvatar(
+                                  child: Image.network("${state.data.logo}")),
                             ),
-                          ),
-                          Container(
-                            child: const Text(
-                              "Retail • Kebon Jeruk, Jakarta Barat",
-                              style: TextStyle(
-                                fontFamily: 'inter_regular',
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff333333),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 50,
-                          ),
-                          const DefaultTabController(
-                              length: 2,
-                              child: TabBar(
-                                indicator: BoxDecoration(
-                                  border: Border(
-                                    right: BorderSide(
-                                      width: 1,
-                                      color: Color.fromRGBO(204, 204, 204, 1),
-                                    ),
-                                    left: BorderSide(
-                                      width: 1,
-                                      style: BorderStyle.solid,
-                                      color: Color.fromRGBO(204, 204, 204, 1),
-                                    ),
-                                  ),
-                                ),
-                                indicatorColor: Color(0xffFFFFFF),
-                                labelColor: Color(0xffEA232A),
-                                unselectedLabelColor: Color(0xff666666),
-                                indicatorPadding: EdgeInsets.all(0),
-                                labelStyle: TextStyle(
-                                  fontFamily: "inter_semibold",
+                            Container(
+                              margin: const EdgeInsets.only(top: 8),
+                              child: Text(
+                                "${state.data.name}",
+                                style: const TextStyle(
+                                  fontFamily: 'inter_semibold',
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
+                                  color: Color(0xff333333),
                                 ),
-                                tabs: <Widget>[
-                                  Tab(text: 'Tentang'),
-                                  Tab(text: 'Pekerjaan'),
-                                ],
-                              )),
-                        ],
-                      ),
-                    ),
-                  ),
-                  BlocBuilder<ListJobCubit, ListJobState>(
-                    builder: (context, state) {
-                      if (state is ListJobIsSucces) {
-                        print("build listview");
-                        state.data.forEach((element) {
-                          print(element.position);
-                        });
-                        return ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: state.data.length,
-                            itemBuilder: (context, index) {
-                              final job = state.data[index];
-                              return Column(
-                                children: [
-                                  Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.15,
-                                    width: MediaQuery.of(context).size.width,
-                                    margin: const EdgeInsets.only(
-                                        left: 16, right: 15),
-                                    child: Card(
-                                      child: Column(
-                                        children: [
-                                          ListTile(
-                                            leading: CircleAvatar(
-                                              backgroundColor: Colors.grey[200],
-                                              backgroundImage:
-                                                  NetworkImage(job.logo),
-                                            ),
-                                            title: Text(
-                                              job.position,
-                                              style: const TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontFamily: "inter_semibold",
-                                                fontSize: 14,
-                                                color: Color(0xff333333),
-                                              ),
-                                            ),
-                                            subtitle: Text(
-                                              job.company,
-                                              style: const TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: "inter_regular",
-                                                fontSize: 12,
-                                                color: Color(0xff333333),
-                                              ),
-                                            ),
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 16),
-                                                child: Text(
-                                                  job.address,
-                                                  style: const TextStyle(
-                                                    fontWeight: FontWeight.w400,
-                                                    fontFamily:
-                                                        "inter_semibold",
-                                                    fontSize: 12,
-                                                    color: Color(0xff333333),
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 16, top: 4),
-                                                child: Text(
-                                                  job.createdDate,
-                                                  style: const TextStyle(
-                                                    fontWeight: FontWeight.w400,
-                                                    fontFamily: "inter_regular",
-                                                    fontSize: 10,
-                                                    color: Color(0xff333333),
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                "${state.data.typeCompany}",
+                                style: const TextStyle(
+                                  fontFamily: 'inter_regular',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff333333),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            TabBar(
+                              controller: tabController,
+                              indicator: const BoxDecoration(
+                                border: Border(
+                                  right: BorderSide(
+                                    width: 1,
+                                    color: Color.fromRGBO(204, 204, 204, 1),
                                   ),
-                                ],
-                              );
-                            });
-                      } else if (state is ListJobIsLoading) {
-                        print("ARTICLE : LOADING");
-                        return const Center(
-                          child: CircularProgressIndicator(
-                            color: Color(0xff5A5A5A),
-                            backgroundColor: Color.fromARGB(1, 90, 90, 90),
-                          ),
-                        );
-                      } else {
-                        print("ARTICLE : ELSE");
-                        return Container(
-                          margin: const EdgeInsets.fromLTRB(10, 50, 10, 50),
-                          child: const Text(
-                            "Gagal menerima data pekerjaan.",
-                            style: TextStyle(fontSize: 24),
-                          ),
-                        );
-                      }
-                    },
-                  ),
-                ],
-              ),
-            ],
-          ),
+                                  left: BorderSide(
+                                    width: 1,
+                                    style: BorderStyle.solid,
+                                    color: Color.fromRGBO(204, 204, 204, 1),
+                                  ),
+                                ),
+                              ),
+                              indicatorColor: const Color(0xffFFFFFF),
+                              labelColor: const Color(0xffEA232A),
+                              unselectedLabelColor: const Color(0xff666666),
+                              indicatorPadding: const EdgeInsets.all(0),
+                              labelStyle: const TextStyle(
+                                fontFamily: "inter_semibold",
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              tabs: const <Widget>[
+                                Tab(text: 'Tentang'),
+                                Tab(text: 'Pekerjaan'),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    } else if (state is CompanyDataIsError) {
+                      print(state.message);
+                    }
+                    return "".text.make();
+                  },
+                );
+              },
+            ),
+            Expanded(
+              child: TabBarView(controller: tabController, children: [
+                buildAboutCompanyDataWidget(),
+                buildCompanyDataWidget()
+              ]),
+            )
+          ],
         ),
       ),
     );
   }
 
-  // Widget buildListJobsWidget() {
-  //   print("build");
-  //   return BlocBuilder<ListsJobsCubit, ListsJobsState>(
-  //       builder: (context, state) {
-  //     if (state is ListsJobsIsSucces) {
-  //       print("build listview");
-  //       state.data.forEach((element) {
-  //         print(element.position);
-  //       });
-  //       return ListView.builder(
-  //           shrinkWrap: true,
-  //           itemCount: state.data.length,
-  //           itemBuilder: (context, index) {
-  //             final job = state.data[index];
-  //             return Text(job.position ?? "-");
-  //           });
-  //     } else if (state is ListsJobsIsLoading) {
-  //       return const Center(
-  //         child: CircularProgressIndicator(
-  //           color: Color(0xff5A5A5A),
-  //           backgroundColor: Color.fromARGB(1, 90, 90, 90),
-  //         ),
-  //       );
-  //     } else {
-  //       print("error");
-  //       return const Text("Gagal");
-  //     }
-  //   });
-  // }
+  Widget buildCompanyDataWidget() {
+    print("build");
+    return BlocBuilder<CompanyDataCubit, CompanyDataState>(
+      builder: (context, state) {
+        if (state is CompanyDataIsSucces) {
+          print("build listview");
+          // state.data.forEach((element) {
+          //   print(element.position);
+          // });
+          final listCompany = state.data.jobs;
+
+          return ListView.builder(
+              shrinkWrap: true,
+              itemCount: listCompany!.length,
+              itemBuilder: (context, index) {
+                final job = listCompany[index];
+                return Column(
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.15,
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(left: 16, right: 15),
+                      child: Card(
+                        child: Column(
+                          children: [
+                            ListTile(
+                              leading: CircleAvatar(
+                                backgroundColor: Colors.grey[200],
+                                backgroundImage:
+                                    NetworkImage("${state.data.logo}"),
+                              ),
+                              title: Text(
+                                "${job.skill}",
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: "inter_semibold",
+                                  fontSize: 14,
+                                  color: Color(0xff333333),
+                                ),
+                              ),
+                              subtitle: Text(
+                                "${job.nameCompany}",
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: "inter_regular",
+                                  fontSize: 12,
+                                  color: Color(0xff333333),
+                                ),
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 16),
+                                  child: Text(
+                                    "${job.addres}",
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: "inter_semibold",
+                                      fontSize: 12,
+                                      color: Color(0xff333333),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 16, top: 4),
+                                  child: Text(
+                                    "${job.createdAt}",
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: "inter_regular",
+                                      fontSize: 10,
+                                      color: Color(0xff333333),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              });
+        } else if (state is ListJobIsLoading) {
+          print("ARTICLE : LOADING list job");
+          return const Center(
+            child: CircularProgressIndicator(
+              color: Color(0xff5A5A5A),
+              backgroundColor: Color.fromARGB(1, 90, 90, 90),
+            ),
+          );
+        } else {
+          print("ARTICLE : ELSE");
+          return Container(
+            margin: const EdgeInsets.fromLTRB(10, 50, 10, 50),
+            child: const Text(
+              "Gagal menerima data pekerjaan.",
+              style: TextStyle(fontSize: 24),
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  Widget buildAboutCompanyDataWidget() {
+    print("build");
+    return BlocBuilder<CompanyDataCubit, CompanyDataState>(
+      builder: (context, state) {
+        if (state is CompanyDataIsSucces) {
+          print("build listview");
+          final aboutCompany = state.data.about;
+          return Container(
+            color: const Color.fromRGBO(255, 255, 255, 1),
+            height: MediaQuery.of(context).size.height * 0.1,
+            width: MediaQuery.of(context).size.width,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Profil",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontFamily: "inter_semibold",
+                      fontSize: 14,
+                      color: Color(0xff333333),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  // "${aboutCompany!.profile}".text.make(),
+                  Text(
+                    "${aboutCompany!.profile}",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontFamily: "inter_regular",
+                      fontSize: 12,
+                      color: Color(0xff333333),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Text(
+                    "Website",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontFamily: "inter_semibold",
+                      fontSize: 14,
+                      color: Color(0xff333333),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    "${aboutCompany.website}",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontFamily: "inter_semibold",
+                      fontSize: 14,
+                      color: Color(0xffEA232A),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Text(
+                    "Lokasi",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontFamily: "inter_semibold",
+                      fontSize: 14,
+                      color: Color(0xff333333),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    "${aboutCompany.location}",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontFamily: "inter_regular",
+                      fontSize: 12,
+                      color: Color(0xff333333),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        } else if (state is CompanyDataIsLoading) {
+          print("ARTICLE : LOADING abiut");
+          return const Center(
+            child: CircularProgressIndicator(
+              color: Color(0xff5A5A5A),
+              backgroundColor: Color.fromARGB(1, 90, 90, 90),
+            ),
+          );
+        } else if (state is CompanyDataIsError) {
+          // print(state.message);
+          return Container(
+            margin: const EdgeInsets.fromLTRB(10, 50, 10, 50),
+            child: Text(
+              "${state.message}",
+              style: const TextStyle(fontSize: 24),
+            ),
+          );
+        }
+        return 0.heightBox;
+      },
+    );
+  }
 }

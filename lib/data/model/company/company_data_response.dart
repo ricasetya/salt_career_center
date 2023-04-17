@@ -47,6 +47,8 @@ class CompanyDataResponse implements CompanyDataResponseMapper {
       id: id,
     );
   }
+
+  toJobsCompanyData() {}
 }
 
 abstract class CompanyDataResponseMapper {

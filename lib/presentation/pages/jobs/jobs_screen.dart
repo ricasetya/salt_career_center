@@ -9,6 +9,7 @@ class JobsScreen extends StatefulWidget {
 
 class _JobsScreenState extends State<JobsScreen> {
   late ListJobCubit _listJobCubit;
+  late int _bottomNavCurrentIndext = 0;
 
   @override
   void initState() {
@@ -77,15 +78,116 @@ class _JobsScreenState extends State<JobsScreen> {
             ],
           ),
         ),
-        body: BlocConsumer<ListJobCubit, ListJobState>(
-          listener: (context, pekerjaanState) {
-            if (pekerjaanState is ListJobIsError) {
-              Commons().showSnackbarError(context, pekerjaanState.message);
-            }
+        backgroundColor: Colors.grey[200],
+        body: TabBarView(
+          children: [buildJobWidget(), buildJobApplyedWidget()],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          selectedFontSize: 10,
+          unselectedFontSize: 10,
+          selectedItemColor: const Color(0xffEA232A),
+          unselectedItemColor: const Color(0xff999999),
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedLabelStyle: const TextStyle(
+            fontFamily: "inter_semibold",
+            fontSize: 10,
+            color: Color(0xffEA232A),
+          ),
+          unselectedLabelStyle: const TextStyle(
+            fontFamily: "inter_semibold",
+            fontSize: 10,
+            color: Color(0xff999999),
+          ),
+          onTap: (index) {
+            setState(() {
+              _bottomNavCurrentIndext = index;
+            });
           },
+          currentIndex: _bottomNavCurrentIndext,
+          elevation: 0.05,
+          items: [
+            BottomNavigationBarItem(
+              icon: GestureDetector(
+                onTap: () => context.go('/beranda'),
+                child: Image.asset(
+                  'assets/icons/beranda.png',
+                  color: const Color(0xff999999),
+                ),
+              ),
+              // activeIcon: Image.asset(
+              //   'assets/icons/beranda.png',
+              //   color: const Color(0xffEA232A),
+              // ),
+              label: 'Beranda',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                'assets/icons/pekerjaan.png',
+                color: const Color(0xffEA232A),
+              ),
+              activeIcon: Image.asset(
+                'assets/icons/pekerjaan.png',
+                color: const Color(0xffEA232A),
+              ),
+              label: 'Pekerjaan',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                'assets/icons/kegiatan.png',
+                color: const Color(0xff999999),
+              ),
+              // activeIcon: Image.asset(
+              //   'assets/icons/kegiatan.png',
+              //   color: const Color(0xffEA232A),
+              // ),
+              label: 'Kegiatan',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                'assets/icons/notif.png',
+                color: const Color(0xff999999),
+              ),
+              // activeIcon: Image.asset(
+              //   'assets/icons/notif.png',
+              //   color: const Color(0xffEA232A),
+              // ),
+              label: 'Notifikasi',
+            ),
+            BottomNavigationBarItem(
+              icon: GestureDetector(
+                onTap: () => context.go('/profileblank'),
+                child: Image.asset(
+                  'assets/icons/profil.png',
+                  color: const Color(0xff999999),
+                ),
+              ),
+              // activeIcon: Image.asset(
+              //   'assets/icons/profil.png',
+              //   color: const Color(0xffEA232A),
+              // ),
+              label: 'Profil',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildJobWidget() {
+    print("build");
+    return SingleChildScrollView(
+      child: Column(children: [
+        BlocBuilder<ListJobCubit, ListJobState>(
           builder: (context, pekerjaanState) {
             if (pekerjaanState is ListJobIsSucces) {
+              print("build ListJob");
+              pekerjaanState.data.forEach((element) {
+                print(element.company);
+              });
               return ListView.builder(
+                shrinkWrap: true,
                 itemCount: pekerjaanState.data.length,
                 itemBuilder: (context, index) {
                   final listData = pekerjaanState.data[index];
@@ -109,7 +211,7 @@ class _JobsScreenState extends State<JobsScreen> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    context.go("/peru");
+                                    context.go("/searchscreen");
                                   },
                                   child: Card(
                                     elevation: 0,
@@ -137,7 +239,7 @@ class _JobsScreenState extends State<JobsScreen> {
                                           const EdgeInsets.only(left: 27.0),
                                       child: Text(
                                         "${listData.address}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -151,7 +253,7 @@ class _JobsScreenState extends State<JobsScreen> {
                                           top: 8, left: 27.0),
                                       child: Text(
                                         "${listData.createdDate}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 10,
                                         ),
                                       ),
@@ -168,14 +270,120 @@ class _JobsScreenState extends State<JobsScreen> {
                 },
               );
             } else if (ListJobState is ListJobIsLoading) {
-              return CircularProgressIndicator().centered();
+              return const CircularProgressIndicator().centered();
             }
             return Container(
-              child: "Bloc tidak kepanggil".text.makeCentered(),
+              child: "".text.makeCentered(),
             );
           },
         ),
-      ),
+      ]),
+    );
+  }
+
+  Widget buildJobApplyedWidget() {
+    print("build");
+    return SingleChildScrollView(
+      child: Column(children: [
+        BlocBuilder<ListJobCubit, ListJobState>(
+          builder: (context, pekerjaanState) {
+            if (pekerjaanState is ListJobIsSucces) {
+              print("build ListJob");
+              pekerjaanState.data.forEach((element) {
+                print(element.company);
+              });
+              return ListView.builder(
+                shrinkWrap: true,
+                itemCount: pekerjaanState.data.length,
+                itemBuilder: (context, index) {
+                  final listData = pekerjaanState.data[index];
+
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 8, right: 16, left: 15),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              color: Colors.white,
+                              border:
+                                  Border.all(color: Colors.black, width: 0.2),
+                            ),
+                            height: 125,
+                            width: 360,
+                            child: Column(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    context.go("/searchscreen");
+                                  },
+                                  child: Card(
+                                    elevation: 0,
+                                    child: ListTile(
+                                      leading: CircleAvatar(
+                                        backgroundColor: Colors.grey[200],
+                                        backgroundImage: NetworkImage(
+                                          "${listData.logo}",
+                                        ),
+                                      ),
+                                      title: Text(
+                                        "${listData.position}",
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      subtitle: Text("${listData.company}"),
+                                    ),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 27.0),
+                                      child: Text(
+                                        "${listData.address}",
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 8, left: 27.0),
+                                      child: Text(
+                                        "${listData.createdDate}",
+                                        style: const TextStyle(
+                                          fontSize: 10,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              );
+            } else if (ListJobState is ListJobIsLoading) {
+              return const CircularProgressIndicator().centered();
+            }
+            return Container(
+              child: "".text.makeCentered(),
+            );
+          },
+        ),
+      ]),
     );
   }
 }

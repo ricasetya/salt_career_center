@@ -15,9 +15,10 @@ class CompanyDataCubit extends Cubit<CompanyDataState> {
     this.repository,
   ) : super(CompanyDataInitial());
 
-  Future<void> fetchCompanyData(AuthenticationHeaderRequest header) async {
+  Future<void> fetchCompanyData(
+      AuthenticationHeaderRequest header, String id) async {
     emit(CompanyDataIsLoading());
-    final response = await repository.fetchCompanyData(header);
+    final response = await repository.fetchCompanyData(header, id);
     if (response is ResultSuccess) {
       emit(CompanyDataIsSucces((response as ResultSuccess).data));
     } else {

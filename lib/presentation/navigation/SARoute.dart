@@ -1,8 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:telkom_career/domain/base/authentication_header_request.dart';
+import 'package:telkom_career/presentation/pages/company/cubit/about_company_data_cubit.dart';
+import 'package:telkom_career/presentation/pages/company/cubit/company_data_cubit.dart';
+import 'package:telkom_career/presentation/pages/company/cubit/jobs_company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
-//import 'package:telkom_career/presentation/pages/lists_jobs/cubit/lists_jobs_cubit.dart';
 import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 import '../pages/pages.dart';
 import 'Routes.dart';
@@ -45,34 +47,17 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
       builder: (context, state) => const HomeScreen()),
 
   // PEKERJAAN //
-  // GoRoute(
-  //     path: "/listsjobs",
-  //     name: Routes.listsjobsPage,
-  //     builder: (context, state) => const ListsJobs()),
   GoRoute(
-    path: "/listjob",
-    name: Routes.listjobPage,
+    path: "/jobscreen",
+    name: Routes.jobscreenPage,
     builder: (context, state) {
       BlocProvider.of<ListJobCubit>(context)
           .fetchListJob(AuthenticationHeaderRequest(""));
-      return JobsScreen();
+      return const JobsScreen();
     },
   ),
 
   // COMPANY //
-  GoRoute(
-    path: "/companyscreen",
-    name: Routes.companyscreenPage,
-    builder: (context, state) {
-      BlocProvider.of<ListJobCubit>(context)
-          .fetchListJob(AuthenticationHeaderRequest(""));
-      return CompanyScreen();
-    },
-  ),
-  GoRoute(
-      path: "/postcompany",
-      name: Routes.postcompanyPage,
-      builder: (context, state) => const PostCompany()),
 
   // NOTIFIKASI //
   GoRoute(
@@ -116,5 +101,23 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
   GoRoute(
       path: "/searchscreen",
       name: Routes.searchscreenPage,
-      builder: (context, state) => const SearchScreen()),
+      routes: [
+        GoRoute(
+          path: "companyscreen",
+          name: Routes.companyscreenPage,
+          builder: (context, state) {
+            String id = state.extra as String;
+            BlocProvider.of<CompanyDataCubit>(context)
+                .fetchCompanyData(AuthenticationHeaderRequest(""), id);
+            return const CompanyScreen();
+          },
+        ),
+      ],
+      builder: (context, state) {
+        BlocProvider.of<ListJobCubit>(context)
+            .fetchListJob(AuthenticationHeaderRequest("accesToken"));
+        BlocProvider.of<ListsCompanyDataCubit>(context)
+            .fetchListsCompanyData(AuthenticationHeaderRequest("accesToken"));
+        return const SearchScreen();
+      }),
 ]);

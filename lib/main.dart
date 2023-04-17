@@ -13,6 +13,9 @@ import 'package:telkom_career/presentation/pages/login_moc/cubit/loginmoc_cubit.
 import 'package:telkom_career/presentation/pages/registers/bloc/registers_bloc.dart';
 import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 
+import 'presentation/pages/company/cubit/about_company_data_cubit.dart';
+import 'presentation/pages/company/cubit/jobs_company_data_cubit.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
@@ -43,6 +46,14 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ListJobCubit(ListJobRepositoryImpl()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              AboutCompanyDataCubit(CompanyDataRepositoryImpl()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              JobsCompanyDataCubit(CompanyDataRepositoryImpl()),
         ),
       ],
       child: MaterialApp.router(

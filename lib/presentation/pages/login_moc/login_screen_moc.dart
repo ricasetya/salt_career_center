@@ -40,12 +40,13 @@ class _LoginPageMocState extends State<LoginPageMoc> {
           listener: (context, loginsState) {
             if (loginsState is LoginmocIsError) {
               Commons().showSnackbarError(context, loginsState.message!);
+
               print("Login Failled");
             } else if (loginsState is LoginmocIsSuccess) {
               Commons().setUid("${loginsState.data!.token}");
               print("token: ${loginsState.data!.token}");
               Commons().showSnackbarInfo(context, "Login Berhasil");
-              context.goNamed(Routes.searchscreenPage);
+              context.goNamed(Routes.homescreenPage);
             }
           },
           child: Container(

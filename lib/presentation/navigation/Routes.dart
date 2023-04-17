@@ -17,8 +17,7 @@ class Routes {
   static var homescreenPage = "homescreen";
 
 //pekerjaan
-//  static var listsjobsPage = "listsjobs";
-  static var listjobPage = "listjob";
+  static var jobscreenPage = "jobscreen";
 
 //company
   static var companyscreenPage = "companyscreen";

@@ -15,7 +15,7 @@ class CompanyDataIsLoading extends CompanyDataState {}
 class CompanyDataIsEmpty extends CompanyDataState {}
 
 class CompanyDataIsSucces extends CompanyDataState {
-  List<CompanyData> data;
+  CompanyData data;
   CompanyDataIsSucces(
     this.data,
   );

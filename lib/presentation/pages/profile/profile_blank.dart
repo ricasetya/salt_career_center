@@ -627,25 +627,31 @@ class _ProfileBlankState extends State<ProfileBlank> {
         elevation: 0.05,
         items: [
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icons/beranda.png',
-              color: const Color(0xff999999),
+            icon: GestureDetector(
+              onTap: () => context.go('/beranda'),
+              child: Image.asset(
+                'assets/icons/beranda.png',
+                color: const Color(0xff999999),
+              ),
             ),
             activeIcon: Image.asset(
               'assets/icons/beranda.png',
-              color: const Color(0xffEA232A),
+              color: const Color(0xff999999),
             ),
             label: 'Beranda',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icons/pekerjaan.png',
-              color: const Color(0xff999999),
+            icon: GestureDetector(
+              onTap: () => context.go('/jobscreen'),
+              child: Image.asset(
+                'assets/icons/pekerjaan.png',
+                color: const Color(0xff999999),
+              ),
             ),
-            activeIcon: Image.asset(
-              'assets/icons/pekerjaan.png',
-              color: const Color(0xffEA232A),
-            ),
+            // activeIcon: Image.asset(
+            //   'assets/icons/pekerjaan.png',
+            //   color: const Color(0xffEA232A),
+            // ),
             label: 'Pekerjaan',
           ),
           BottomNavigationBarItem(
@@ -653,10 +659,10 @@ class _ProfileBlankState extends State<ProfileBlank> {
               'assets/icons/kegiatan.png',
               color: const Color(0xff999999),
             ),
-            activeIcon: Image.asset(
-              'assets/icons/kegiatan.png',
-              color: const Color(0xffEA232A),
-            ),
+            // activeIcon: Image.asset(
+            //   'assets/icons/kegiatan.png',
+            //   color: const Color(0xffEA232A),
+            // ),
             label: 'Kegiatan',
           ),
           BottomNavigationBarItem(
@@ -664,16 +670,16 @@ class _ProfileBlankState extends State<ProfileBlank> {
               'assets/icons/notif.png',
               color: const Color(0xff999999),
             ),
-            activeIcon: Image.asset(
-              'assets/icons/notif.png',
-              color: const Color(0xffEA232A),
-            ),
+            // activeIcon: Image.asset(
+            //   'assets/icons/notif.png',
+            //   color: const Color(0xffEA232A),
+            // ),
             label: 'Notifikasi',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
               'assets/icons/profil.png',
-              color: const Color(0xff999999),
+              color: const Color(0xffEA232A),
             ),
             activeIcon: Image.asset(
               'assets/icons/profil.png',

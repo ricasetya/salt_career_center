@@ -25,7 +25,8 @@ abstract class BaseConfig {
   // BERANDA
   static const String HOME_MOC = "/beranda";
   static const String LISTS_JOBS = "/list-jobs";
-  static const String BASE_COMPANY = "/company/{1}";
+  static const String BASE_COMPANY = "/company/";
   static const String LISTS_COMPANY = "/list-company";
   static const String CHANGE_PASSWORD = "/change/1/password/1";
+  static const String UPDATE_PHOTO = "/profile/1/update-photo";
 }

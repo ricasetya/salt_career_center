@@ -675,12 +675,12 @@ class _ProfileBlankState extends State<ProfileBlank> {
           fontSize: 10,
           color: Color(0xff999999),
         ),
-        onTap: (index) {
-          setState(() {
-            _bottomNavCurrentIndext = index;
-          });
-        },
-        currentIndex: _bottomNavCurrentIndext,
+        // onTap: (index) {
+        //   setState(() {
+        //     _bottomNavCurrentIndext = index;
+        //   });
+        // },
+        // currentIndex: _bottomNavCurrentIndext,
         elevation: 0.05,
         items: [
           BottomNavigationBarItem(

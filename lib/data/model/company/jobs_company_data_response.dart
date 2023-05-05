@@ -8,12 +8,12 @@ part 'jobs_company_data_response.g.dart';
 class JobsCompanyDataResponse implements JobsCompanyDataResponseMapper {
   String? skill;
   String? nameCompany;
-  String? addres;
+  String? address;
   String? createdAt;
   JobsCompanyDataResponse({
     this.skill,
     this.nameCompany,
-    this.addres,
+    this.address,
     this.createdAt,
   });
 
@@ -27,7 +27,7 @@ class JobsCompanyDataResponse implements JobsCompanyDataResponseMapper {
     return JobsCompanyData(
       skill: skill,
       nameCompany: nameCompany,
-      addres: addres,
+      address: address,
       createdAt: createdAt,
     );
   }

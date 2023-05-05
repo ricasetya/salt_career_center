@@ -106,11 +106,20 @@ class _ProfileBlankState extends State<ProfileBlank> {
     );
   }
 
+  late ProfileDataCubit _profileDataCubit;
   bool isClose = false;
 
   @override
   void initState() {
+    _profileDataCubit = ProfileDataCubit(ProfileDataRepositoryImpl());
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _profileDataCubit.close();
+
+    super.dispose();
   }
 
   @override
@@ -146,455 +155,503 @@ class _ProfileBlankState extends State<ProfileBlank> {
         child: Form(
           child: Stack(
             children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: height * 0.25,
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      color: const Color.fromRGBO(255, 255, 255, 1),
-                      alignment: Alignment.center,
-                      child: Column(
-                        children: [
-                          Container(
+              BlocBuilder<ProfileDataCubit, ProfileDataState>(
+                builder: (context, state) {
+                  if (state is ProfileDataIsSuccess) {
+                    print(state.data);
+                    //final profileData = state.data;
+
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: height * 0.25,
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 10),
+                            color: const Color.fromRGBO(255, 255, 255, 1),
+                            alignment: Alignment.center,
+                            child: Column(
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(top: 16),
+                                  child: InkWell(
+                                      onTap: () {
+                                        _showSelectPhotoOptions(context);
+                                        setState(() {});
+                                      },
+                                      child: _imageFile == null
+                                          ? CircleAvatar(
+                                              backgroundImage: NetworkImage(
+                                                  "${state.data.photo}"),
+                                            )
+                                          : CircleAvatar(
+                                              backgroundImage: FileImage(
+                                                  File(_imageFile!.path)),
+                                            )),
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(top: 8),
+                                  child: Text(
+                                    "${state.data.name}",
+                                    style: const TextStyle(
+                                      fontFamily: 'inter_semibold',
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff333333),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(top: 0),
+                                  child: Text(
+                                    "${state.data.skill}",
+                                    style: const TextStyle(
+                                      fontFamily: 'inter_semibold',
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff333333),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(top: 8),
+                                  child: const Text(
+                                    "Loremipsum@mail.com",
+                                    style: TextStyle(
+                                      fontFamily: 'inter_regular',
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff333333),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(top: 0),
+                                  child: const Text(
+                                    "---",
+                                    style: TextStyle(
+                                      fontFamily: 'inter_semibold',
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff333333),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(top: 8),
+                                  child: const Text(
+                                    "Sunting Profil",
+                                    style: TextStyle(
+                                      fontFamily: 'inter_semibold',
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xffEA232A),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: height * 0.1,
+                          child: Container(
                             margin: const EdgeInsets.only(top: 16),
-                            child: InkWell(
-                                onTap: () {
-                                  _showSelectPhotoOptions(context);
-                                  setState(() {});
-                                },
-                                child: _imageFile == null
-                                    ? const CircleAvatar(
-                                        backgroundImage: AssetImage(
-                                            "assets/images/avatar.png"),
-                                      )
-                                    : CircleAvatar(
-                                        backgroundImage:
-                                            FileImage(File(_imageFile!.path)),
-                                      )),
+                            color: const Color.fromRGBO(255, 255, 255, 1),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      margin: const EdgeInsets.only(
+                                          left: 16, top: 8),
+                                      alignment: Alignment.topLeft,
+                                      child: const Text(
+                                        "Pengalaman Kerja",
+                                        style: TextStyle(
+                                          fontFamily: "inter_semibold",
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xff333333),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.topRight,
+                                      margin: const EdgeInsets.only(
+                                          top: 8, right: 15),
+                                      child: const Text(
+                                        "Tambah",
+                                        textAlign: TextAlign.end,
+                                        style: TextStyle(
+                                          fontFamily: "inter_semibold",
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xffEA232A),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const Divider(
+                                  thickness: 2,
+                                  indent: 16,
+                                  endIndent: 16,
+                                ),
+                                Container(
+                                  alignment: Alignment.topLeft,
+                                  margin: const EdgeInsets.only(left: 16),
+                                  child: const Text(
+                                    "Belum ada data dimasukkan",
+                                    style: TextStyle(
+                                      fontFamily: "inter_semibold",
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff666666),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          Container(
+                        ),
+                        SizedBox(
+                          height: height * 0.1,
+                          child: Container(
                             margin: const EdgeInsets.only(top: 8),
-                            child: const Text(
-                              "Bima Agustian Wanaputra",
-                              style: TextStyle(
-                                fontFamily: 'inter_semibold',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff333333),
-                              ),
+                            color: const Color.fromRGBO(255, 255, 255, 1),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      margin: const EdgeInsets.only(
+                                          left: 16, top: 8),
+                                      alignment: Alignment.topLeft,
+                                      child: const Text(
+                                        "Pendidikan",
+                                        style: TextStyle(
+                                          fontFamily: "inter_semibold",
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xff333333),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.topRight,
+                                      margin: const EdgeInsets.only(
+                                          top: 8, right: 15),
+                                      child: const Text(
+                                        "Tambah",
+                                        textAlign: TextAlign.end,
+                                        style: TextStyle(
+                                          fontFamily: "inter_semibold",
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xffEA232A),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const Divider(
+                                  thickness: 2,
+                                  indent: 16,
+                                  endIndent: 16,
+                                ),
+                                Container(
+                                  alignment: Alignment.topLeft,
+                                  margin: const EdgeInsets.only(left: 16),
+                                  child: const Text(
+                                    "Belum ada data dimasukkan",
+                                    style: TextStyle(
+                                      fontFamily: "inter_semibold",
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff666666),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          Container(
-                            margin: const EdgeInsets.only(top: 0),
-                            child: const Text(
-                              "---",
-                              style: TextStyle(
-                                fontFamily: 'inter_semibold',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff333333),
-                              ),
-                            ),
-                          ),
-                          Container(
+                        ),
+                        SizedBox(
+                          height: height * 0.1,
+                          child: Container(
                             margin: const EdgeInsets.only(top: 8),
-                            child: const Text(
-                              "Loremipsum@mail.com",
-                              style: TextStyle(
-                                fontFamily: 'inter_regular',
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff333333),
-                              ),
+                            color: const Color.fromRGBO(255, 255, 255, 1),
+                            child: Column(
+                              children: [
+                                Container(
+                                  alignment: Alignment.topLeft,
+                                  margin:
+                                      const EdgeInsets.only(left: 16, top: 8),
+                                  child: const Text(
+                                    "Kemampuan",
+                                    style: TextStyle(
+                                      fontFamily: "inter_semibold",
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff333333),
+                                    ),
+                                  ),
+                                ),
+                                const Divider(
+                                  thickness: 2,
+                                  indent: 16,
+                                  endIndent: 16,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      margin: const EdgeInsets.only(left: 16),
+                                      alignment: Alignment.topLeft,
+                                      child: const Text(
+                                        "Belum ada data dimasukkan",
+                                        style: TextStyle(
+                                          fontFamily: "inter_semibold",
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xff666666),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.topRight,
+                                      margin: const EdgeInsets.only(right: 15),
+                                      child: InkWell(
+                                        onTap: () =>
+                                            context.go('/profileinputability'),
+                                        child: Image.asset(
+                                          'assets/icons/icon_edit.png',
+                                          color: const Color(0xff999999),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                          Container(
-                            margin: const EdgeInsets.only(top: 0),
-                            child: const Text(
-                              "---",
-                              style: TextStyle(
-                                fontFamily: 'inter_semibold',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff333333),
-                              ),
-                            ),
-                          ),
-                          Container(
+                        ),
+                        SizedBox(
+                          height: height * 0.1,
+                          child: Container(
                             margin: const EdgeInsets.only(top: 8),
-                            child: const Text(
-                              "Sunting Profil",
-                              style: TextStyle(
-                                fontFamily: 'inter_semibold',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xffEA232A),
-                              ),
+                            color: const Color.fromRGBO(255, 255, 255, 1),
+                            child: Column(
+                              children: [
+                                Container(
+                                  alignment: Alignment.topLeft,
+                                  margin:
+                                      const EdgeInsets.only(left: 16, top: 8),
+                                  child: const Text(
+                                    "Bahasa",
+                                    style: TextStyle(
+                                      fontFamily: "inter_semibold",
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff333333),
+                                    ),
+                                  ),
+                                ),
+                                const Divider(
+                                  thickness: 2,
+                                  indent: 16,
+                                  endIndent: 16,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      margin: const EdgeInsets.only(left: 16),
+                                      alignment: Alignment.topLeft,
+                                      child: const Text(
+                                        "Belum ada data dimasukkan",
+                                        style: TextStyle(
+                                          fontFamily: "inter_semibold",
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xff666666),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.topRight,
+                                      margin: const EdgeInsets.only(right: 15),
+                                      child: InkWell(
+                                        onTap: () =>
+                                            context.go('/profileinputlanguage'),
+                                        child: Image.asset(
+                                          'assets/icons/icon_edit.png',
+                                          color: const Color(0xff999999),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * 0.1,
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 16),
-                      color: const Color.fromRGBO(255, 255, 255, 1),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(left: 16, top: 8),
-                                alignment: Alignment.topLeft,
-                                child: const Text(
-                                  "Pengalaman Kerja",
-                                  style: TextStyle(
-                                    fontFamily: "inter_semibold",
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff333333),
+                        ),
+                        SizedBox(
+                          height: height * 0.1,
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 8),
+                            color: const Color.fromRGBO(255, 255, 255, 1),
+                            child: Column(
+                              children: [
+                                Container(
+                                  alignment: Alignment.topLeft,
+                                  margin:
+                                      const EdgeInsets.only(left: 16, top: 8),
+                                  child: const Text(
+                                    "CV/Resume",
+                                    style: TextStyle(
+                                      fontFamily: "inter_semibold",
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff333333),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Container(
-                                alignment: Alignment.topRight,
-                                margin:
-                                    const EdgeInsets.only(top: 8, right: 15),
-                                child: const Text(
-                                  "Tambah",
-                                  textAlign: TextAlign.end,
-                                  style: TextStyle(
-                                    fontFamily: "inter_semibold",
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xffEA232A),
-                                  ),
+                                const Divider(
+                                  thickness: 2,
+                                  indent: 16,
+                                  endIndent: 16,
                                 ),
-                              ),
-                            ],
-                          ),
-                          const Divider(
-                            thickness: 2,
-                            indent: 16,
-                            endIndent: 16,
-                          ),
-                          Container(
-                            alignment: Alignment.topLeft,
-                            margin: const EdgeInsets.only(left: 16),
-                            child: const Text(
-                              "Belum ada data dimasukkan",
-                              style: TextStyle(
-                                fontFamily: "inter_semibold",
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff666666),
-                              ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      margin: const EdgeInsets.only(left: 16),
+                                      alignment: Alignment.topLeft,
+                                      child: const Text(
+                                        "Belum ada data dimasukkan",
+                                        style: TextStyle(
+                                          fontFamily: "inter_semibold",
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xff666666),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.topRight,
+                                      margin: const EdgeInsets.only(right: 15),
+                                      child: InkWell(
+                                        child: Image.asset(
+                                          'assets/icons/icon_edit.png',
+                                          color: const Color(0xff999999),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * 0.1,
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 8),
-                      color: const Color.fromRGBO(255, 255, 255, 1),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(left: 16, top: 8),
-                                alignment: Alignment.topLeft,
-                                child: const Text(
-                                  "Pendidikan",
-                                  style: TextStyle(
-                                    fontFamily: "inter_semibold",
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff333333),
+                        ),
+                        SizedBox(
+                          height: height * 0.1,
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 8),
+                            color: const Color.fromRGBO(255, 255, 255, 1),
+                            child: Column(
+                              children: [
+                                Container(
+                                  alignment: Alignment.topLeft,
+                                  margin:
+                                      const EdgeInsets.only(left: 16, top: 8),
+                                  child: const Text(
+                                    "Portofolio",
+                                    style: TextStyle(
+                                      fontFamily: "inter_semibold",
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff333333),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Container(
-                                alignment: Alignment.topRight,
-                                margin:
-                                    const EdgeInsets.only(top: 8, right: 15),
-                                child: const Text(
-                                  "Tambah",
-                                  textAlign: TextAlign.end,
-                                  style: TextStyle(
-                                    fontFamily: "inter_semibold",
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xffEA232A),
-                                  ),
+                                const Divider(
+                                  thickness: 2,
+                                  indent: 16,
+                                  endIndent: 16,
                                 ),
-                              ),
-                            ],
-                          ),
-                          const Divider(
-                            thickness: 2,
-                            indent: 16,
-                            endIndent: 16,
-                          ),
-                          Container(
-                            alignment: Alignment.topLeft,
-                            margin: const EdgeInsets.only(left: 16),
-                            child: const Text(
-                              "Belum ada data dimasukkan",
-                              style: TextStyle(
-                                fontFamily: "inter_semibold",
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff666666),
-                              ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      margin: const EdgeInsets.only(left: 16),
+                                      alignment: Alignment.topLeft,
+                                      child: const Text(
+                                        "Belum ada data dimasukkan",
+                                        style: TextStyle(
+                                          fontFamily: "inter_semibold",
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xff666666),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.topRight,
+                                      margin: const EdgeInsets.only(right: 15),
+                                      child: InkWell(
+                                        child: Image.asset(
+                                          'assets/icons/icon_edit.png',
+                                          color: const Color(0xff999999),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                        ],
+                        ),
+                      ],
+                    );
+                  } else if (state is ProfileDataIsLoading) {
+                    print("Profile : LOADING ");
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        color: Color(0xff5A5A5A),
+                        backgroundColor: Color.fromARGB(1, 90, 90, 90),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * 0.1,
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 8),
-                      color: const Color.fromRGBO(255, 255, 255, 1),
-                      child: Column(
-                        children: [
-                          Container(
-                            alignment: Alignment.topLeft,
-                            margin: const EdgeInsets.only(left: 16, top: 8),
-                            child: const Text(
-                              "Kemampuan",
-                              style: TextStyle(
-                                fontFamily: "inter_semibold",
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff333333),
-                              ),
-                            ),
-                          ),
-                          const Divider(
-                            thickness: 2,
-                            indent: 16,
-                            endIndent: 16,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(left: 16),
-                                alignment: Alignment.topLeft,
-                                child: const Text(
-                                  "Belum ada data dimasukkan",
-                                  style: TextStyle(
-                                    fontFamily: "inter_semibold",
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff666666),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                alignment: Alignment.topRight,
-                                margin: const EdgeInsets.only(right: 15),
-                                child: InkWell(
-                                  onTap: () =>
-                                      context.go('/profileinputability'),
-                                  child: Image.asset(
-                                    'assets/icons/icon_edit.png',
-                                    color: const Color(0xff999999),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                    );
+                  } else {
+                    print(" ELSE");
+                    return Container(
+                      margin: const EdgeInsets.fromLTRB(10, 50, 10, 50),
+                      child: const Text(
+                        "Gagal menerima data pekerjaan.",
+                        style: TextStyle(fontSize: 24),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * 0.1,
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 8),
-                      color: const Color.fromRGBO(255, 255, 255, 1),
-                      child: Column(
-                        children: [
-                          Container(
-                            alignment: Alignment.topLeft,
-                            margin: const EdgeInsets.only(left: 16, top: 8),
-                            child: const Text(
-                              "Bahasa",
-                              style: TextStyle(
-                                fontFamily: "inter_semibold",
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff333333),
-                              ),
-                            ),
-                          ),
-                          const Divider(
-                            thickness: 2,
-                            indent: 16,
-                            endIndent: 16,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(left: 16),
-                                alignment: Alignment.topLeft,
-                                child: const Text(
-                                  "Belum ada data dimasukkan",
-                                  style: TextStyle(
-                                    fontFamily: "inter_semibold",
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff666666),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                alignment: Alignment.topRight,
-                                margin: const EdgeInsets.only(right: 15),
-                                child: InkWell(
-                                  onTap: () =>
-                                      context.go('/profileinputlanguage'),
-                                  child: Image.asset(
-                                    'assets/icons/icon_edit.png',
-                                    color: const Color(0xff999999),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * 0.1,
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 8),
-                      color: const Color.fromRGBO(255, 255, 255, 1),
-                      child: Column(
-                        children: [
-                          Container(
-                            alignment: Alignment.topLeft,
-                            margin: const EdgeInsets.only(left: 16, top: 8),
-                            child: const Text(
-                              "CV/Resume",
-                              style: TextStyle(
-                                fontFamily: "inter_semibold",
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff333333),
-                              ),
-                            ),
-                          ),
-                          const Divider(
-                            thickness: 2,
-                            indent: 16,
-                            endIndent: 16,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(left: 16),
-                                alignment: Alignment.topLeft,
-                                child: const Text(
-                                  "Belum ada data dimasukkan",
-                                  style: TextStyle(
-                                    fontFamily: "inter_semibold",
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff666666),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                alignment: Alignment.topRight,
-                                margin: const EdgeInsets.only(right: 15),
-                                child: InkWell(
-                                  child: Image.asset(
-                                    'assets/icons/icon_edit.png',
-                                    color: const Color(0xff999999),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * 0.1,
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 8),
-                      color: const Color.fromRGBO(255, 255, 255, 1),
-                      child: Column(
-                        children: [
-                          Container(
-                            alignment: Alignment.topLeft,
-                            margin: const EdgeInsets.only(left: 16, top: 8),
-                            child: const Text(
-                              "Portofolio",
-                              style: TextStyle(
-                                fontFamily: "inter_semibold",
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff333333),
-                              ),
-                            ),
-                          ),
-                          const Divider(
-                            thickness: 2,
-                            indent: 16,
-                            endIndent: 16,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(left: 16),
-                                alignment: Alignment.topLeft,
-                                child: const Text(
-                                  "Belum ada data dimasukkan",
-                                  style: TextStyle(
-                                    fontFamily: "inter_semibold",
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff666666),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                alignment: Alignment.topRight,
-                                margin: const EdgeInsets.only(right: 15),
-                                child: InkWell(
-                                  child: Image.asset(
-                                    'assets/icons/icon_edit.png',
-                                    color: const Color(0xff999999),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                    );
+                  }
+                  // else if (state is ProfileDataIsError) {
+                  //   return Container(
+                  //     margin: const EdgeInsets.fromLTRB(10, 50, 10, 50),
+                  //     child: Text(
+                  //       "${state.message}",
+                  //       style: const TextStyle(fontSize: 24),
+                  //     ),
+                  //   );
+                  // }
+                  //return "".text.make();
+                },
               )
             ],
           ),
@@ -634,10 +691,10 @@ class _ProfileBlankState extends State<ProfileBlank> {
                 color: const Color(0xff999999),
               ),
             ),
-            activeIcon: Image.asset(
-              'assets/icons/beranda.png',
-              color: const Color(0xff999999),
-            ),
+            // activeIcon: Image.asset(
+            //   'assets/icons/beranda.png',
+            //   color: const Color(0xff999999),
+            // ),
             label: 'Beranda',
           ),
           BottomNavigationBarItem(

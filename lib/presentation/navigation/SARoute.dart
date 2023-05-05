@@ -5,6 +5,7 @@ import 'package:telkom_career/presentation/pages/company/cubit/about_company_dat
 import 'package:telkom_career/presentation/pages/company/cubit/company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/jobs_company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
+import 'package:telkom_career/presentation/pages/profile/cubit/profile_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 import '../pages/pages.dart';
 import 'Routes.dart';
@@ -21,6 +22,10 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
       path: "/registers",
       name: Routes.registersPage,
       builder: (context, state) => const Registers()),
+  GoRoute(
+      path: "/register",
+      name: Routes.registerPage,
+      builder: (context, state) => const Register()),
 
   // FORGET PASSWORD //
   GoRoute(
@@ -67,9 +72,14 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
 
   // PROFILE//
   GoRoute(
-      path: "/profileblank",
-      name: Routes.profileblankPage,
-      builder: (context, state) => const ProfileBlank()),
+    path: "/profileblank",
+    name: Routes.profileblankPage,
+    builder: (context, state) {
+      BlocProvider.of<ProfileDataCubit>(context)
+          .fetchProfileData(AuthenticationHeaderRequest(""));
+      return const ProfileBlank();
+    },
+  ),
   GoRoute(
       path: "/profilesettings",
       name: Routes.profilesettingsPage,

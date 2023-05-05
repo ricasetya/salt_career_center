@@ -2,12 +2,12 @@
 class JobsCompanyData {
   String? skill;
   String? nameCompany;
-  String? addres;
+  String? address;
   String? createdAt;
   JobsCompanyData({
     this.skill,
     this.nameCompany,
-    this.addres,
+    this.address,
     this.createdAt,
   });
 }

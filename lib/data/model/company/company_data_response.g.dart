@@ -10,7 +10,7 @@ CompanyDataResponse _$CompanyDataResponseFromJson(Map<String, dynamic> json) =>
     CompanyDataResponse(
       name: json['name'] as String?,
       typeCompany: json['typeCompany'] as String?,
-      addres: json['addres'] as String?,
+      address: json['address'] as String?,
       logo: json['logo'] as String?,
       about: json['about'] == null
           ? null
@@ -29,7 +29,7 @@ Map<String, dynamic> _$CompanyDataResponseToJson(
     <String, dynamic>{
       'name': instance.name,
       'typeCompany': instance.typeCompany,
-      'addres': instance.addres,
+      'address': instance.address,
       'logo': instance.logo,
       'about': instance.about,
       'posting': instance.posting,

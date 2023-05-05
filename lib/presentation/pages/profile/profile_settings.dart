@@ -64,7 +64,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () => context.go('/logins'),
+                    onPressed: () => context.go('/loginmoc'),
                     child: const Text(
                       "Keluar",
                       textAlign: TextAlign.center,

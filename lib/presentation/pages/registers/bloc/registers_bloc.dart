@@ -17,7 +17,7 @@ class RegistersBloc extends Bloc<RegistersEvent, RegistersState> {
       if (response is ResultSuccess) {
         emit(RegistersIsSuccess(data: (response as ResultSuccess).data));
       } else if (response is ResultError) {
-        emit(RegistersIsFailed(message: "Register Gagal"));
+        emit(RegistersIsFailed(message: "Register Succes"));
       }
     });
   }

@@ -11,7 +11,7 @@ part 'company_data_response.g.dart';
 class CompanyDataResponse implements CompanyDataResponseMapper {
   String? name;
   String? typeCompany;
-  String? addres;
+  String? address;
   String? logo;
   AboutCompanyDataResponse? about;
   String? posting;
@@ -20,7 +20,7 @@ class CompanyDataResponse implements CompanyDataResponseMapper {
   CompanyDataResponse({
     this.name,
     this.typeCompany,
-    this.addres,
+    this.address,
     this.logo,
     this.about,
     this.posting,
@@ -38,7 +38,7 @@ class CompanyDataResponse implements CompanyDataResponseMapper {
     return CompanyData(
       name: name,
       typeCompany: typeCompany,
-      addres: addres,
+      address: address,
       logo: logo,
       about: about?.toAboutCompanyData() ??
           AboutCompanyData(location: "", profile: "", website: ""),

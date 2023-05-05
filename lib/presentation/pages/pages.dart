@@ -9,8 +9,12 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:alert_dialog/alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:telkom_career/data/repository/profile/profile_data_repository_impl.dart';
+import 'package:telkom_career/data/repository/register/register_repository_impl.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/about_company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/jobs_company_data_cubit.dart';
+import 'package:telkom_career/presentation/pages/profile/cubit/profile_data_cubit.dart';
+import 'package:telkom_career/presentation/pages/register/cubit/register_cubit.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:flash/flash.dart';
@@ -39,6 +43,7 @@ part 'login_moc/login_screen_moc.dart';
 
 //register
 part 'registers/registers_screen.dart';
+part 'register/register.dart';
 
 //resetpassword
 part 'forgot_password/forgot_pasword_update_password.dart';

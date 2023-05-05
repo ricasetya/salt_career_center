@@ -100,7 +100,10 @@ class _CompanyScreenState extends State<CompanyScreen>
                             Container(
                               margin: const EdgeInsets.only(top: 16),
                               child: CircleAvatar(
-                                  child: Image.network("${state.data.logo}")),
+                                  radius: 50,
+                                  backgroundColor: Colors.grey[200],
+                                  backgroundImage:
+                                      NetworkImage("${state.data.logo}")),
                             ),
                             Container(
                               margin: const EdgeInsets.only(top: 8),
@@ -236,7 +239,7 @@ class _CompanyScreenState extends State<CompanyScreen>
                                 Padding(
                                   padding: const EdgeInsets.only(left: 16),
                                   child: Text(
-                                    "${job.addres}",
+                                    "${job.address}",
                                     style: const TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontFamily: "inter_semibold",

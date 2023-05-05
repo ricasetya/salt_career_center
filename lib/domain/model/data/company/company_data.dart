@@ -5,7 +5,7 @@ import 'package:telkom_career/domain/model/data/company/jobs_company_data.dart';
 class CompanyData {
   String? name;
   String? typeCompany;
-  String? addres;
+  String? address;
   String? logo;
   AboutCompanyData? about;
   String? posting;
@@ -14,7 +14,7 @@ class CompanyData {
   CompanyData({
     this.name,
     this.typeCompany,
-    this.addres,
+    this.address,
     this.logo,
     this.about,
     this.posting,

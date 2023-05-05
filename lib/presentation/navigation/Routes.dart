@@ -5,6 +5,7 @@ class Routes {
 
 //register
   static var registersPage = "registers";
+  static var registerPage = "register";
 
 //resetpasword
   static var forgotpasswordsPage = "forgotpassword";

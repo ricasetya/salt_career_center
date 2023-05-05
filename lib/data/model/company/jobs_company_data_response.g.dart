@@ -11,7 +11,7 @@ JobsCompanyDataResponse _$JobsCompanyDataResponseFromJson(
     JobsCompanyDataResponse(
       skill: json['skill'] as String?,
       nameCompany: json['nameCompany'] as String?,
-      addres: json['addres'] as String?,
+      address: json['address'] as String?,
       createdAt: json['createdAt'] as String?,
     );
 
@@ -20,6 +20,6 @@ Map<String, dynamic> _$JobsCompanyDataResponseToJson(
     <String, dynamic>{
       'skill': instance.skill,
       'nameCompany': instance.nameCompany,
-      'addres': instance.addres,
+      'address': instance.address,
       'createdAt': instance.createdAt,
     };

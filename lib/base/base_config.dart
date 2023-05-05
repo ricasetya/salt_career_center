@@ -20,7 +20,7 @@ abstract class BaseConfig {
 
   // LOGIN
   static const String LOGIN_MOC = "/login";
-  static const String REGISTER_MOC = "/api/v1/register";
+  static const String REGISTER_MOC = "/register";
 
   // BERANDA
   static const String HOME_MOC = "/beranda";
@@ -29,4 +29,7 @@ abstract class BaseConfig {
   static const String LISTS_COMPANY = "/list-company";
   static const String CHANGE_PASSWORD = "/change/1/password/1";
   static const String UPDATE_PHOTO = "/profile/1/update-photo";
+
+  // PROFILE
+  static const String PROFILE_DATA = "/profile";
 }

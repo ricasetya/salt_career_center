@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:alert_dialog/alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 import 'package:telkom_career/data/repository/profile/profile_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/register/register_repository_impl.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/about_company_data_cubit.dart';
@@ -70,6 +71,8 @@ part 'profile/profile_update_password.dart';
 part 'profile/profile_edit_profile.dart';
 part 'profile/profile_input_ability.dart';
 part 'profile/profile_input_language.dart';
+part 'profile/input_work_experience.dart';
+
 // akbar
 part 'profile/profile_input_portofolio.dart';
 

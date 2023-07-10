@@ -256,7 +256,7 @@ class _WorkExperienceState extends State<WorkExperience> {
                           alignment: Alignment.topLeft,
                           padding: const EdgeInsets.only(left: 16),
                           child: const Text(
-                            "Selesai BekerjaH",
+                            "Selesai Bekerja",
                             style: TextStyle(
                               fontFamily: "inter_semibold",
                               fontSize: 12,

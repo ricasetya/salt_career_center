@@ -6,9 +6,10 @@ class ListJobRemoteService {
   Client client = Client();
 
   Future<Response> fetchListJob(AuthenticationHeaderRequest header) async {
-    final url = Uri.https(BaseConfig.BASE_DOMAIN_MOC,
+    final url = Uri.http(BaseConfig.BASE_DOMAIN_MOC,
         BaseConfig.BASE_PATH_MOC + BaseConfig.LISTS_JOBS);
-    print(url);
+    // ignore: unnecessary_brace_in_string_interps, avoid_print
+    print("url: ${url}");
 
     return client.get(url, headers: header.toHeader());
   }

@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:math';
+//import 'dart:math';
 
 import 'package:json_annotation/json_annotation.dart';
 import 'package:telkom_career/data/model/profile/ability_data_response.dart';
@@ -7,11 +7,11 @@ import 'package:telkom_career/data/model/profile/education_data_response.dart';
 import 'package:telkom_career/data/model/profile/language_data_reponse.dart';
 import 'package:telkom_career/data/model/profile/work_experience_data_response.dart';
 
-import 'package:telkom_career/domain/model/data/profile/ability_data.dart';
-import 'package:telkom_career/domain/model/data/profile/education_data.dart';
-import 'package:telkom_career/domain/model/data/profile/language_data.dart';
+//import 'package:telkom_career/domain/model/data/profile/ability_data.dart';
+// import 'package:telkom_career/domain/model/data/profile/education_data.dart';
+// import 'package:telkom_career/domain/model/data/profile/language_data.dart';
 import 'package:telkom_career/domain/model/data/profile/profile_data.dart';
-import 'package:telkom_career/domain/model/data/profile/work_experience_data.dart';
+//import 'package:telkom_career/domain/model/data/profile/work_experience_data.dart';
 
 part 'profile_data_remote_response.g.dart';
 

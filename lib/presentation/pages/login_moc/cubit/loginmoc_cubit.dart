@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:telkom_career/base/result_entity.dart';
@@ -16,15 +16,16 @@ class LoginmocCubit extends Cubit<LoginmocState> {
     this.repository,
   ) : super(LoginmocInitial());
 
-  Future<void> onSubmitLogin(String? email, String? password) async {
+  Future<void> onSubmitLogin(LoginRequest request) async {
     emit(LoginmocIsLoading());
-    final request = LoginRequest(email!, password!);
+    // final request = LoginRequest(email!, password!);
     final response = await repository.submitLogin(request);
     if (response is ResultSuccess) {
       emit(LoginmocIsSuccess(data: (response as ResultSuccess).data));
-      // final token = (response as ResultSuccess).data;
+      final data = (state as LoginmocIsSuccess).data;
       // print("token: ${token}");
-      // Commons().setUid(token.toString());
+      Commons().setUid(data!.Token.toString());
+      print("TOKEN LOGIN ${data.Token.toString()}");
     } else {
       emit(LoginmocIsError(message: (response as ResultError).message));
     }

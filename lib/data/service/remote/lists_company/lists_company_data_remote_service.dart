@@ -9,6 +9,7 @@ class ListsCompanyDataRemoteService {
       BaseConfig.BASE_DOMAIN_MOC,
       BaseConfig.BASE_PATH_MOC + BaseConfig.LISTS_COMPANY,
     );
+    // ignore: avoid_print
     print(url);
 
     return client.get(url, headers: header.toHeader());

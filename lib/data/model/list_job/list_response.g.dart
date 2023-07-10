@@ -11,7 +11,8 @@ ListResponse _$ListResponseFromJson(Map<String, dynamic> json) => ListResponse(
       position: json['position'] as String?,
       company: json['company'] as String?,
       address: json['address'] as String?,
-      createdDate: json['createdDate'] as String?,
+      createdAt: json['createdAt'] as String?,
+      status: json['status'] as bool?,
       id: json['id'] as String?,
     );
 
@@ -21,6 +22,7 @@ Map<String, dynamic> _$ListResponseToJson(ListResponse instance) =>
       'position': instance.position,
       'company': instance.company,
       'address': instance.address,
-      'createdDate': instance.createdDate,
+      'createdAt': instance.createdAt,
+      'status': instance.status,
       'id': instance.id,
     };

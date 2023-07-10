@@ -6,10 +6,13 @@ class CompanyDataRemoteService {
   Client client = Client();
   Future<Response> fetchCompanyData(
       AuthenticationHeaderRequest header, String id) async {
-    final url = Uri.https(BaseConfig.BASE_DOMAIN_MOC,
+    final url = Uri.https(
+        BaseConfig.BASE_DOMAIN_MOC,
+        // ignore: prefer_interpolation_to_compose_strings, unnecessary_string_interpolations
         BaseConfig.BASE_PATH_MOC + BaseConfig.BASE_COMPANY + "$id");
     //
 
+    // ignore: avoid_print
     print(url);
 
     return client.get(url, headers: header.toHeader());

@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 part of '../pages.dart';
 
 class HomeScreen extends StatefulWidget {

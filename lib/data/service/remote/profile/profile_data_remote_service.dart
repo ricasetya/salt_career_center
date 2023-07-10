@@ -9,6 +9,7 @@ class ProfileDataRemoteService {
         BaseConfig.BASE_PATH_MOC + BaseConfig.PROFILE_DATA);
     //
 
+    // ignore: avoid_print
     print(url);
 
     return client.get(url, headers: header.toHeader());

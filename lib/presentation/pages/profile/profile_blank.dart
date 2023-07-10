@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, deprecated_member_use, unused_local_variable
+
 part of '../pages.dart';
 
 class ProfileBlank extends StatefulWidget {

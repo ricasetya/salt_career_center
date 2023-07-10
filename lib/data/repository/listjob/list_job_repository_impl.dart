@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:telkom_career/base/login_moc/base_remote_response.dart';
@@ -16,6 +18,8 @@ class ListJobRepositoryImpl implements ListJobRepository {
       AuthenticationHeaderRequest header) async {
     try {
       final response = await listJobRemoteSevice.fetchListJob(header);
+      print("status listjobs: ${response.statusCode}");
+
       if (response.statusCode == 200 || response.statusCode == 201) {
         BaseRemoteResponseMoc<List<ListResponse>> baseRemotResponseArray =
             BaseRemoteResponseMoc<List<ListResponse>>.fromJson(

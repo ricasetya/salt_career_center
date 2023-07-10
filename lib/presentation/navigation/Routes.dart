@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 class Routes {
 //login
   //static var login = "login";

@@ -1,24 +1,28 @@
 //IMPORT
+// ignore_for_file: unnecessary_import
+
 import 'dart:ui';
-import 'dart:async';
-import 'dart:convert';
+//import 'dart:async';
+//import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
-import 'package:http/http.dart' as http;
+//import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:alert_dialog/alert_dialog.dart';
+//import 'package:alert_dialog/alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import 'package:telkom_career/data/repository/profile/profile_data_repository_impl.dart';
+import 'package:telkom_career/base/base_config.dart';
+//import 'package:telkom_career/data/repository/profile/profile_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/register/register_repository_impl.dart';
+import 'package:telkom_career/domain/model/request/login_request_moc/login_requestmoc.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/about_company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/jobs_company_data_cubit.dart';
-import 'package:telkom_career/presentation/pages/profile/cubit/profile_data_cubit.dart';
+//import 'package:telkom_career/presentation/pages/profile/cubit/profile_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/register/cubit/register_cubit.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import 'package:flash/flash.dart';
+//import 'package:flash/flash.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:telkom_career/data/repository/company/company_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/listjob/list_job_repository_impl.dart';
@@ -27,7 +31,7 @@ import 'package:telkom_career/data/repository/login_moc/login_repositorymoc_impl
 import 'dart:io';
 
 import 'package:telkom_career/data/utilities/commons.dart';
-import 'package:telkom_career/domain/base/authentication_header_request.dart';
+//import 'package:telkom_career/domain/base/authentication_header_request.dart';
 import 'package:telkom_career/presentation/navigation/Routes.dart';
 import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
 import 'package:telkom_career/presentation/pages/login_moc/cubit/loginmoc_cubit.dart';

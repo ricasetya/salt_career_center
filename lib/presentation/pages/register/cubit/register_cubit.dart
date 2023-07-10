@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:telkom_career/base/result_entity.dart';
@@ -16,7 +18,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(RegisterIsLoading());
     final response = await repository.userRegister(request);
     if (response is ResultSuccess) {
-      if (response.data == null) ;
+      if (response.data == null) {}
 
       emit(RegisterIsSuccess(data: (response).data));
     } else if (response is ResultError) {

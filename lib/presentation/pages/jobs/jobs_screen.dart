@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, avoid_function_literals_in_foreach_calls, unnecessary_string_interpolations
+
 part of '../pages.dart';
 
 class JobsScreen extends StatefulWidget {
@@ -252,7 +254,7 @@ class _JobsScreenState extends State<JobsScreen> {
                                       padding: const EdgeInsets.only(
                                           top: 8, left: 27.0),
                                       child: Text(
-                                        "${listData.createdDate}",
+                                        "${listData.createdAt}",
                                         style: const TextStyle(
                                           fontSize: 10,
                                         ),
@@ -325,7 +327,7 @@ class _JobsScreenState extends State<JobsScreen> {
                                       leading: CircleAvatar(
                                         backgroundColor: Colors.grey[200],
                                         backgroundImage: NetworkImage(
-                                          "${listData.logo}",
+                                          "${"${BaseConfig.BASE_IMAGE}/${listData.logo}"}",
                                         ),
                                       ),
                                       title: Text(
@@ -358,7 +360,7 @@ class _JobsScreenState extends State<JobsScreen> {
                                       padding: const EdgeInsets.only(
                                           top: 8, left: 27.0),
                                       child: Text(
-                                        "${listData.createdDate}",
+                                        "${listData.createdAt}",
                                         style: const TextStyle(
                                           fontSize: 10,
                                         ),

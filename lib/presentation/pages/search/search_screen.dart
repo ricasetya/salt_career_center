@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, avoid_print, avoid_function_literals_in_foreach_calls
+
 part of '../pages.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -263,7 +265,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                       padding: const EdgeInsets.only(
                                           left: 16, top: 8, bottom: 16),
                                       child: Text(
-                                        listjob.createdDate,
+                                        listjob.createdAt,
                                         style: const TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: "inter_regular",

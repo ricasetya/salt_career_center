@@ -1,5 +1,8 @@
+// ignore_for_file: constant_identifier_names
+
 abstract class BaseConfig {
-  static const String BASE_DOMAIN = "carercenter.com";
+  static const String BASE_DOMAIN = "103.175.216.13:9091";
+  static const String BASE_IMAGE = "http://103.175.216.13:9091";
   static const String LOGIN_URL = "/v1/login";
   static const String REGISTER_URL = "/v1/register";
 
@@ -13,10 +16,11 @@ abstract class BaseConfig {
 
 // MOCKUPAPI
   // DOMAIN
-  static const String BASE_DOMAIN_MOC = "6411ca849f0a55b32d93d2a5.mockapi.io";
+  //static const String BASE_DOMAIN_MOC = "6411ca849f0a55b32d93d2a5.mockapi.io";
+  static const String BASE_DOMAIN_MOC = "103.175.216.13:9091";
 
   // PATH
-  static const String BASE_PATH_MOC = "/api/v1";
+  static const String BASE_PATH_MOC = "/v1";
 
   // LOGIN
   static const String LOGIN_MOC = "/login";

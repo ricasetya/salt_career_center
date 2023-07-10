@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field, unused_local_variable, avoid_print, avoid_unnecessary_containers
+
 part of '../pages.dart';
 
 class CompanyScreen extends StatefulWidget {

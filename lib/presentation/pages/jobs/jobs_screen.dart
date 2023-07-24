@@ -22,6 +22,7 @@ class _JobsScreenState extends State<JobsScreen> {
   @override
   void dispose() {
     _listJobCubit.close();
+    _bottomNavCurrentIndext;
     super.dispose();
   }
 
@@ -300,80 +301,77 @@ class _JobsScreenState extends State<JobsScreen> {
                 itemBuilder: (context, index) {
                   final listData = pekerjaanState.data[index];
 
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8, right: 16, left: 15),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              color: Colors.white,
-                              border:
-                                  Border.all(color: Colors.black, width: 0.2),
-                            ),
-                            height: 125,
-                            width: 360,
-                            child: Column(
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    context.go("/searchscreen");
-                                  },
-                                  child: Card(
-                                    elevation: 0,
-                                    child: ListTile(
-                                      leading: CircleAvatar(
-                                        backgroundColor: Colors.grey[200],
-                                        backgroundImage: NetworkImage(
-                                          "${"${BaseConfig.BASE_IMAGE}/${listData.logo}"}",
-                                        ),
+                  return Column(
+                    children: [
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(top: 8, right: 16, left: 15),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: Colors.white,
+                            border: Border.all(color: Colors.black, width: 0.2),
+                          ),
+                          height: 125,
+                          width: 360,
+                          child: Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  context.go("/searchscreen");
+                                },
+                                child: Card(
+                                  elevation: 0,
+                                  child: ListTile(
+                                    leading: CircleAvatar(
+                                      backgroundColor: Colors.grey[200],
+                                      backgroundImage: NetworkImage(
+                                        "${listData.logo}",
+                                        //"${"${BaseConfig.BASE_IMAGE}/${listData.logo}"}",
                                       ),
-                                      title: Text(
-                                        "${listData.position}",
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      subtitle: Text("${listData.company}"),
                                     ),
+                                    title: Text(
+                                      "${listData.position}",
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    subtitle: Text("${listData.company}"),
                                   ),
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 27.0),
-                                      child: Text(
-                                        "${listData.address}",
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 27.0),
+                                    child: Text(
+                                      "${listData.address}",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 8, left: 27.0),
-                                      child: Text(
-                                        "${listData.createdAt}",
-                                        style: const TextStyle(
-                                          fontSize: 10,
-                                        ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 8, left: 27.0),
+                                    child: Text(
+                                      "${listData.createdAt}",
+                                      style: const TextStyle(
+                                        fontSize: 10,
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   );
                 },
               );

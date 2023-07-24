@@ -33,6 +33,14 @@ class _LoginPageMocState extends State<LoginPageMoc> {
     super.dispose();
   }
 
+  // bool validation() {
+  //   if (_userNameController.text.isEmpty && _passwordController.text.isEmpty) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -47,9 +55,9 @@ class _LoginPageMocState extends State<LoginPageMoc> {
               Commons().showSnackbarError(context, state.message!);
               print("Login Failled");
             } else if (state is LoginmocIsSuccess) {
+              context.goNamed(Routes.jobscreenPage);
               //print("token: ${LoginmocState.data!.token}");
               Commons().showSnackbarInfo(context, "Login Berhasil");
-              context.goNamed(Routes.jobscreenPage);
             }
           },
           builder: (context, state) {
@@ -186,7 +194,7 @@ class _LoginPageMocState extends State<LoginPageMoc> {
                             ),
                             obscureText: hidePassword,
                             decoration: InputDecoration(
-                              labelText: "Hallo",
+                              //labelText: "Hallo",
                               //floatingLabelBehavior: FloatingLabelBehavior.auto,
                               focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -231,13 +239,21 @@ class _LoginPageMocState extends State<LoginPageMoc> {
                         Container(
                           margin: const EdgeInsets.fromLTRB(16, 24, 16, 0),
                           child: ElevatedButton(
-                            onPressed: () {
+                            onPressed:
+
+                                //validation() ?
+
+                                () {
                               BlocProvider.of<LoginmocCubit>(context)
                                   .onSubmitLogin(LoginRequest(
                                 _userNameController.text,
                                 _passwordController.text,
                               ));
                             },
+                            // : () {
+                            //   Commons().showSnackbarError(
+                            //       context, "nomor salah");
+                            // },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xffEA232A),
                               padding:

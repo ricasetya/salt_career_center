@@ -33,7 +33,7 @@ class LoginRepositoryImplMoc implements LoginRepositoryMoc {
         } else if (baseResponseObject.status?.code != 0) {
           return ResultError(message: baseResponseObject.status!.message);
         } else {
-          print("Token IMPL= ${baseResponseObject.data!.Token.toString()}");
+          print("Token IMPL= ${baseResponseObject.data!.token.toString()}");
           return ResultSuccess(baseResponseObject.data!.toUserLoginDataMoc());
         }
       } else {

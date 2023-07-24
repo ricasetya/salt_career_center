@@ -8,12 +8,12 @@ part of 'status_response.dart';
 
 StatusResponse _$StatusResponseFromJson(Map<String, dynamic> json) =>
     StatusResponse(
-      code: json['Code'] as int?,
-      message: json['Message'] as String?,
+      code: json['code'] as int?,
+      message: json['message'] as String?,
     );
 
 Map<String, dynamic> _$StatusResponseToJson(StatusResponse instance) =>
     <String, dynamic>{
-      'Code': instance.code,
-      'Message': instance.message,
+      'code': instance.code,
+      'message': instance.message,
     };

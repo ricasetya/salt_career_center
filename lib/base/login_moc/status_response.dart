@@ -5,9 +5,9 @@ part 'status_response.g.dart';
 
 @JsonSerializable()
 class StatusResponse {
-  @JsonKey(name: 'Code')
+  //@JsonKey(name: 'Code')
   int? code;
-  @JsonKey(name: 'Message')
+  //@JsonKey(name: 'Message')
   String? message;
   StatusResponse({
     this.code,

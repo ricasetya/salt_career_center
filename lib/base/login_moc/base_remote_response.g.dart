@@ -11,10 +11,10 @@ BaseRemoteResponseMoc<Data> _$BaseRemoteResponseMocFromJson<Data>(
   Data Function(Object? json) fromJsonData,
 ) =>
     BaseRemoteResponseMoc<Data>(
-      status: json['Status'] == null
+      status: json['status'] == null
           ? null
-          : StatusResponse.fromJson(json['Status'] as Map<String, dynamic>),
-      data: _$nullableGenericFromJson(json['Data'], fromJsonData),
+          : StatusResponse.fromJson(json['status'] as Map<String, dynamic>),
+      data: _$nullableGenericFromJson(json['data'], fromJsonData),
     );
 
 Map<String, dynamic> _$BaseRemoteResponseMocToJson<Data>(
@@ -22,8 +22,8 @@ Map<String, dynamic> _$BaseRemoteResponseMocToJson<Data>(
   Object? Function(Data value) toJsonData,
 ) =>
     <String, dynamic>{
-      'Status': instance.status,
-      'Data': _$nullableGenericToJson(instance.data, toJsonData),
+      'status': instance.status,
+      'data': _$nullableGenericToJson(instance.data, toJsonData),
     };
 
 T? _$nullableGenericFromJson<T>(

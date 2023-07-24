@@ -7,9 +7,9 @@ part 'base_remote_response.g.dart';
 
 @JsonSerializable(genericArgumentFactories: true, includeIfNull: true)
 class BaseRemoteResponseMoc<Data> {
-  @JsonKey(name: 'Status')
+  // @JsonKey(name: 'Status')
   StatusResponse? status;
-  @JsonKey(name: 'Data')
+  //@JsonKey(name: 'Data')
   Data? data;
 
   BaseRemoteResponseMoc({

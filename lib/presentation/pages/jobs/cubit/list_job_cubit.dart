@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, avoid_print, depend_on_referenced_packages
+// ignore_for_file: public_member_api_docs, sort_constructors_first, avoid_print, depend_on_referenced_packages, unnecessary_brace_in_string_interps
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:telkom_career/base/result_entity.dart';

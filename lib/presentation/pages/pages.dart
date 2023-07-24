@@ -12,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 //import 'package:alert_dialog/alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import 'package:telkom_career/base/base_config.dart';
+//import 'package:telkom_career/base/base_config.dart';
 //import 'package:telkom_career/data/repository/profile/profile_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/register/register_repository_impl.dart';
 import 'package:telkom_career/domain/model/request/login_request_moc/login_requestmoc.dart';

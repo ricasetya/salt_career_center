@@ -8,13 +8,13 @@ part of 'login_remote_response.dart';
 
 LoginRemoteResponse _$LoginRemoteResponseFromJson(Map<String, dynamic> json) =>
     LoginRemoteResponse(
-      json['Token'] as String?,
-      json['Role'] as String?,
+      token: json['token'] as String?,
+      role: json['role'] as String?,
     );
 
 Map<String, dynamic> _$LoginRemoteResponseToJson(
         LoginRemoteResponse instance) =>
     <String, dynamic>{
-      'token': instance.Token,
-      'role': instance.Role,
+      'token': instance.token,
+      'role': instance.role,
     };

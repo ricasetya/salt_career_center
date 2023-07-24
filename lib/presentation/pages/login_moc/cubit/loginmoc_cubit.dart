@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, depend_on_referenced_packages
+// ignore_for_file: public_member_api_docs, sort_constructors_first, depend_on_referenced_packages, avoid_print
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:telkom_career/base/result_entity.dart';
@@ -24,8 +24,8 @@ class LoginmocCubit extends Cubit<LoginmocState> {
       emit(LoginmocIsSuccess(data: (response as ResultSuccess).data));
       final data = (state as LoginmocIsSuccess).data;
       // print("token: ${token}");
-      Commons().setUid(data!.Token.toString());
-      print("TOKEN LOGIN ${data.Token.toString()}");
+      Commons().setUid(data!.token.toString());
+      print("TOKEN LOGIN ${data.token.toString()}");
     } else {
       emit(LoginmocIsError(message: (response as ResultError).message));
     }

@@ -1,13 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:json_annotation/json_annotation.dart';
+//import 'package:json_annotation/json_annotation.dart';
 
 class UserLoginDataMoc {
   //@JsonKey(name: 'Token')
-  String Token;
+  String token;
   //@JsonKey(name: 'Role')
-  String Role;
+  String role;
   UserLoginDataMoc(
-    this.Token,
-    this.Role,
+    this.token,
+    this.role,
   );
 }

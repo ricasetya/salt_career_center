@@ -123,10 +123,10 @@ class _SearchScreenState extends State<SearchScreen> {
                                 leading: CircleAvatar(
                                   backgroundColor: Colors.grey[200],
                                   backgroundImage:
-                                      NetworkImage(listcompany.logo ?? ""),
+                                      NetworkImage(listcompany.urlLogo),
                                 ),
                                 title: Text(
-                                  listcompany.name ?? "",
+                                  listcompany.name,
                                   style: const TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontFamily: "inter_semibold",
@@ -137,7 +137,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 subtitle: Row(
                                   children: [
                                     Text(
-                                      listcompany.typeCompany ?? "",
+                                      listcompany.typeCompany,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontFamily: "inter_regular",
@@ -149,7 +149,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                       " • ",
                                     ),
                                     Text(
-                                      listcompany.address ?? "",
+                                      listcompany.address,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontFamily: "inter_regular",
@@ -181,7 +181,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 return Container(
                   margin: const EdgeInsets.fromLTRB(10, 50, 10, 50),
                   child: const Text(
-                    "Gagal menerima data pekerjaan.",
+                    "Gagal menerima data Perusahaan.",
                     style: TextStyle(fontSize: 24),
                   ),
                 );

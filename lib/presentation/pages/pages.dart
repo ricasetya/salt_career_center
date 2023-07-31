@@ -16,6 +16,7 @@ import 'package:intl/intl.dart';
 //import 'package:telkom_career/data/repository/profile/profile_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/register/register_repository_impl.dart';
 import 'package:telkom_career/domain/model/request/login_request_moc/login_requestmoc.dart';
+import 'package:telkom_career/domain/model/request/register/register_request.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/about_company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/jobs_company_data_cubit.dart';
 //import 'package:telkom_career/presentation/pages/profile/cubit/profile_data_cubit.dart';
@@ -36,9 +37,6 @@ import 'package:telkom_career/presentation/navigation/Routes.dart';
 import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
 import 'package:telkom_career/presentation/pages/login_moc/cubit/loginmoc_cubit.dart';
 
-import 'package:telkom_career/data/repository/registers_repository/registers_repository.impl.dart';
-import 'package:telkom_career/presentation/pages/registers/bloc/registers_bloc.dart';
-
 import 'package:telkom_career/presentation/pages/company/cubit/company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 
@@ -47,7 +45,6 @@ import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data
 part 'login_moc/login_screen_moc.dart';
 
 //register
-part 'registers/registers_screen.dart';
 part 'register/register.dart';
 
 //resetpassword

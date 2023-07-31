@@ -33,7 +33,14 @@ class ListResponse implements ListResponseMapper {
 
   @override
   ListJobData toListJobData() {
-    return ListJobData(logo ?? "", position ?? "", company ?? "", address ?? "",
-        createdAt ?? "", id ?? "", status!);
+    return ListJobData(
+      logo ?? "",
+      position ?? "",
+      company ?? "",
+      address ?? "",
+      createdAt ?? "",
+      id ?? "",
+      status!,
+    );
   }
 }

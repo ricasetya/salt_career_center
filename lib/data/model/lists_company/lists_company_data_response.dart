@@ -6,17 +6,20 @@ part 'lists_company_data_response.g.dart';
 
 @JsonSerializable()
 class ListsCompanyDataResponse implements ListsCompanyDataResponseMapper {
+  String? id;
   String? name;
   String? typeCompany;
   String? address;
   String? logo;
-  String? id;
+  String? urlLogo;
+
   ListsCompanyDataResponse({
+    this.id,
     this.name,
     this.typeCompany,
     this.address,
     this.logo,
-    this.id,
+    this.urlLogo,
   });
 
   factory ListsCompanyDataResponse.fromJson(Map<String, dynamic> json) =>
@@ -27,11 +30,12 @@ class ListsCompanyDataResponse implements ListsCompanyDataResponseMapper {
   @override
   ListsCompanyData toListsCompanyData() {
     return ListsCompanyData(
-      name: name,
-      typeCompany: typeCompany,
-      address: address,
-      logo: logo,
-      id: id,
+      id ?? "",
+      name ?? "",
+      typeCompany ?? "",
+      address ?? "",
+      logo ?? "",
+      urlLogo ?? "",
     );
   }
 }

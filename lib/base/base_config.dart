@@ -1,18 +1,18 @@
 // ignore_for_file: constant_identifier_names
 
 abstract class BaseConfig {
-  static const String BASE_DOMAIN = "103.175.216.13:9091";
-  static const String BASE_IMAGE = "http://103.175.216.13:9091";
-  static const String LOGIN_URL = "/v1/login";
-  static const String REGISTER_URL = "/v1/register";
+  // static const String BASE_DOMAIN = "103.175.216.13:9091";
+  // static const String BASE_IMAGE = "http://103.175.216.13:9091";
+  // static const String LOGIN_URL = "/v1/login";
+  // static const String REGISTER_URL = "/v1/register";
 
   // static const String BASE_DOMAIN = "localhost3000.com";
-  static const String FETCH_PRODUCT = "/products";
-  static const String FETCH_DETAIL_PRODUCT = "/products";
-  static const String BASE_URL = "/auth/login";
-  static const String SUBMIT_TRASH = "/pickup/trash";
-  static const String FETCH_POINT = "/point";
-  static const String FETCH_SEARCH = "/search";
+  // static const String FETCH_PRODUCT = "/products";
+  // static const String FETCH_DETAIL_PRODUCT = "/products";
+  // static const String BASE_URL = "/auth/login";
+  // static const String SUBMIT_TRASH = "/pickup/trash";
+  // static const String FETCH_POINT = "/point";
+  // static const String FETCH_SEARCH = "/search";
 
 // MOCKUPAPI
   // DOMAIN

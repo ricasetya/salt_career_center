@@ -290,7 +290,7 @@ class _LoginPageMocState extends State<LoginPageMoc> {
                               Container(
                                 margin: const EdgeInsets.fromLTRB(4, 0, 0, 0),
                                 child: GestureDetector(
-                                  onTap: () => context.go('/registers'),
+                                  onTap: () => context.go('/register'),
                                   child: const Text(
                                     "Daftar Sekarang",
                                     style: TextStyle(

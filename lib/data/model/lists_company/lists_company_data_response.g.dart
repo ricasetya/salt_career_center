@@ -9,19 +9,21 @@ part of 'lists_company_data_response.dart';
 ListsCompanyDataResponse _$ListsCompanyDataResponseFromJson(
         Map<String, dynamic> json) =>
     ListsCompanyDataResponse(
+      id: json['id'] as String?,
       name: json['name'] as String?,
       typeCompany: json['typeCompany'] as String?,
       address: json['address'] as String?,
       logo: json['logo'] as String?,
-      id: json['id'] as String?,
+      urlLogo: json['urlLogo'] as String?,
     );
 
 Map<String, dynamic> _$ListsCompanyDataResponseToJson(
         ListsCompanyDataResponse instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'typeCompany': instance.typeCompany,
       'address': instance.address,
       'logo': instance.logo,
-      'id': instance.id,
+      'urlLogo': instance.urlLogo,
     };

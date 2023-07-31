@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 part of 'lists_company_data_cubit.dart';
 
-abstract class ListsCompanyDataState extends Equatable {
+class ListsCompanyDataState extends Equatable {
   const ListsCompanyDataState();
 
   @override
@@ -16,14 +16,14 @@ class ListsCompanyDataIsEmpty extends ListsCompanyDataState {}
 
 class ListsCompanyDataIsSucces extends ListsCompanyDataState {
   List<ListsCompanyData> data;
-  ListsCompanyDataIsSucces({
-    required this.data,
-  });
+  ListsCompanyDataIsSucces(
+    this.data,
+  );
 }
 
 class ListsCompanyDataIsError extends ListsCompanyDataState {
-  String? message;
-  ListsCompanyDataIsError({
+  String message;
+  ListsCompanyDataIsError(
     this.message,
-  });
+  );
 }

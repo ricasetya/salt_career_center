@@ -7,7 +7,11 @@ class RegisterRequest {
   String? email;
   String? name;
   String? password;
-  RegisterRequest({this.email, this.name, this.password});
+  RegisterRequest(
+    this.email,
+    this.name,
+    this.password,
+  );
 
   factory RegisterRequest.fromJson(Map<String, dynamic> json) =>
       _$RegisterRequestFromJson(json);

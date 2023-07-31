@@ -32,10 +32,6 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc",
 
       // REGISTER //
       GoRoute(
-          path: "/registers",
-          name: Routes.registersPage,
-          builder: (context, state) => const Registers()),
-      GoRoute(
           path: "/register",
           name: Routes.registerPage,
           builder: (context, state) => const Register()),
@@ -142,9 +138,7 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc",
           ],
           builder: (context, state) {
             BlocProvider.of<ListJobCubit>(context).fetchListJob();
-            BlocProvider.of<ListsCompanyDataCubit>(context)
-                .fetchListsCompanyData(
-                    AuthenticationHeaderRequest("accesToken"));
+            BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
             return const SearchScreen();
           }),
     ]);

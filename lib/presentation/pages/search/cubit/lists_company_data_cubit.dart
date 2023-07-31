@@ -7,22 +7,29 @@ import 'package:telkom_career/domain/base/authentication_header_request.dart';
 import 'package:telkom_career/domain/model/data/lists_company/lists_company_data.dart';
 import 'package:telkom_career/domain/repository/lists_company/lists_company_data_repository.dart';
 
+import '../../../../data/utilities/commons.dart';
+
 part 'lists_company_data_state.dart';
 
 class ListsCompanyDataCubit extends Cubit<ListsCompanyDataState> {
   final ListsCompanyDataRepository repository;
   ListsCompanyDataCubit(
     this.repository,
-  ) : super(ListsCompanyDataInitial());
+  ) : super(const ListsCompanyDataState());
 
-  Future<void> fetchListsCompanyData(AuthenticationHeaderRequest header) async {
-    emit(ListsCompanyDataIsLoading());
-    final response = await repository.fetchListsCompany(header);
+  Future<void> fetchListsCompany() async {
+    //emit(ListsCompanyDataIsLoading());
+    // get token
+    final token = await Commons().getUid();
+    print("TOKEN jobLIST = ${token}");
+
+    final response =
+        await repository.fetchListsCompany(AuthenticationHeaderRequest(token));
     if (response is ResultSuccess) {
-      emit(ListsCompanyDataIsSucces(data: (response as ResultSuccess).data));
+      emit(ListsCompanyDataIsSucces((response as ResultSuccess).data));
       print("sukses");
     } else {
-      emit(ListsCompanyDataIsError(message: (response as ResultError).message));
+      emit(ListsCompanyDataIsError((response as ResultError).message!));
       print("error");
     }
   }

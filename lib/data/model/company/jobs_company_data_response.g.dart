@@ -9,17 +9,37 @@ part of 'jobs_company_data_response.dart';
 JobsCompanyDataResponse _$JobsCompanyDataResponseFromJson(
         Map<String, dynamic> json) =>
     JobsCompanyDataResponse(
-      skill: json['skill'] as String?,
-      nameCompany: json['nameCompany'] as String?,
+      id: json['id'] as String?,
+      companyId: json['companyId'] as String?,
+      position: json['position'] as String?,
+      company: json['company'] as String?,
+      logo: json['logo'] as String?,
+      urlLogo: json['urlLogo'] as String?,
       address: json['address'] as String?,
+      status: json['status'] as bool?,
+      applyDate: json['applyDate'] as String?,
+      qualification: json['qualification'] as String?,
+      jobDescription: json['jobDescription'] as String?,
       createdAt: json['createdAt'] as String?,
+      updatedAt: json['updatedAt'] as String?,
+      applicant: json['applicant'] as int?,
     );
 
 Map<String, dynamic> _$JobsCompanyDataResponseToJson(
         JobsCompanyDataResponse instance) =>
     <String, dynamic>{
-      'skill': instance.skill,
-      'nameCompany': instance.nameCompany,
+      'id': instance.id,
+      'companyId': instance.companyId,
+      'position': instance.position,
+      'company': instance.company,
+      'logo': instance.logo,
+      'urlLogo': instance.urlLogo,
       'address': instance.address,
+      'status': instance.status,
+      'applyDate': instance.applyDate,
+      'qualification': instance.qualification,
+      'jobDescription': instance.jobDescription,
       'createdAt': instance.createdAt,
+      'updatedAt': instance.updatedAt,
+      'applicant': instance.applicant,
     };

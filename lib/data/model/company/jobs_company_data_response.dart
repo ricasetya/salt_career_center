@@ -6,15 +6,35 @@ part 'jobs_company_data_response.g.dart';
 
 @JsonSerializable()
 class JobsCompanyDataResponse implements JobsCompanyDataResponseMapper {
-  String? skill;
-  String? nameCompany;
+  String? id;
+  String? companyId;
+  String? position;
+  String? company;
+  String? logo;
+  String? urlLogo;
   String? address;
+  bool? status;
+  String? applyDate;
+  String? qualification;
+  String? jobDescription;
   String? createdAt;
+  String? updatedAt;
+  int? applicant;
   JobsCompanyDataResponse({
-    this.skill,
-    this.nameCompany,
+    this.id,
+    this.companyId,
+    this.position,
+    this.company,
+    this.logo,
+    this.urlLogo,
     this.address,
+    this.status,
+    this.applyDate,
+    this.qualification,
+    this.jobDescription,
     this.createdAt,
+    this.updatedAt,
+    this.applicant,
   });
 
   factory JobsCompanyDataResponse.fromJson(Map<String, dynamic> json) =>
@@ -25,10 +45,20 @@ class JobsCompanyDataResponse implements JobsCompanyDataResponseMapper {
   @override
   JobsCompanyData toJobsCompanyData() {
     return JobsCompanyData(
-      skill: skill,
-      nameCompany: nameCompany,
-      address: address,
-      createdAt: createdAt,
+      id ?? "",
+      companyId ?? "",
+      position ?? "",
+      company ?? "",
+      logo ?? "",
+      urlLogo ?? "",
+      address ?? "",
+      status!,
+      applyDate ?? "",
+      qualification ?? "",
+      jobDescription ?? "",
+      createdAt ?? "",
+      updatedAt ?? "",
+      applicant!,
     );
   }
 }

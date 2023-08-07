@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, avoid_types_as_parameter_names
+// ignore_for_file: non_constant_identifier_names, avoid_types_as_parameter_names, avoid_print
 
 part of '../pages.dart';
 
@@ -56,9 +56,6 @@ class _RegisterState extends State<Register> {
             } else if (RegisterState is RegisterIsFailed) {
               Commons().showSnackbarError(context, RegisterState.message!);
               print("Register Failled");
-
-              //Commons().setUid("${RegisterState.data}");
-              //Commons().setUid("${RegisterState.data!.id}");
             }
           },
           builder: (context, RegisterState) {

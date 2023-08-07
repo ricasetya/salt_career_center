@@ -1,5 +1,7 @@
 //import 'dart:html';
 
+// ignore_for_file: avoid_print, unnecessary_brace_in_string_interps
+
 import 'dart:convert';
 
 import 'package:http/http.dart';

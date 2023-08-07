@@ -14,16 +14,4 @@ class AboutCompanyDataCubit extends Cubit<AboutCompanyDataState> {
   AboutCompanyDataCubit(
     this.repository,
   ) : super(AboutCompanyDataInitial());
-
-  // Future<void> fetchAboutCompanyData(
-  //     AuthenticationHeaderRequest header, String id) async {
-  //   emit(AboutCompanyDataIsLoading());
-  //   final response = await repository.fetchAboutCompanyData(header, id);
-  //   if (response is ResultSuccess) {
-  //     emit(AboutCompanyDataIsSucces((response as ResultSuccess).data));
-  //   } else if (response is ResultError) {
-  //     print("error");
-  //     emit(AboutCompanyDataIsError(message: (response as ResultError).message));
-  //   }
-  // }
 }

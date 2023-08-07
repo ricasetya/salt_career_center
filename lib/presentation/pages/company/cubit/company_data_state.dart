@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 part of 'company_data_cubit.dart';
 
-abstract class CompanyDataState extends Equatable {
+class CompanyDataState extends Equatable {
   const CompanyDataState();
 
   @override

@@ -3,22 +3,29 @@ import 'package:telkom_career/domain/model/data/company/about_company_data.dart'
 import 'package:telkom_career/domain/model/data/company/jobs_company_data.dart';
 
 class CompanyData {
+  String? id;
   String? name;
   String? typeCompany;
   String? address;
   String? logo;
+  String? urlLogo;
   AboutCompanyData? about;
-  String? posting;
   List<JobsCompanyData>? jobs;
-  String? id;
+  String? createdAt;
+  String? updatedAt;
+  String? deletedAt;
+
   CompanyData({
+    this.id,
     this.name,
     this.typeCompany,
     this.address,
     this.logo,
+    this.urlLogo,
     this.about,
-    this.posting,
     this.jobs,
-    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
   });
 }

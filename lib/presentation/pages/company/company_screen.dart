@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field, unused_local_variable, avoid_print, avoid_unnecessary_containers
+// ignore_for_file: unused_field, unused_local_variable, avoid_print, avoid_unnecessary_containers, unnecessary_string_interpolations
 
 part of '../pages.dart';
 
@@ -105,7 +105,7 @@ class _CompanyScreenState extends State<CompanyScreen>
                                   radius: 50,
                                   backgroundColor: Colors.grey[200],
                                   backgroundImage:
-                                      NetworkImage("${state.data.logo}")),
+                                      NetworkImage("${state.data.urlLogo}")),
                             ),
                             Container(
                               margin: const EdgeInsets.only(top: 8),
@@ -200,7 +200,7 @@ class _CompanyScreenState extends State<CompanyScreen>
               shrinkWrap: true,
               itemCount: listCompany!.length,
               itemBuilder: (context, index) {
-                final job = listCompany[index];
+                final jobs = listCompany[index];
                 return Column(
                   children: [
                     Container(
@@ -214,10 +214,10 @@ class _CompanyScreenState extends State<CompanyScreen>
                               leading: CircleAvatar(
                                 backgroundColor: Colors.grey[200],
                                 backgroundImage:
-                                    NetworkImage("${state.data.logo}"),
+                                    NetworkImage("${state.data.urlLogo}"),
                               ),
                               title: Text(
-                                "${job.skill}",
+                                "${jobs.position}",
                                 style: const TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontFamily: "inter_semibold",
@@ -226,7 +226,7 @@ class _CompanyScreenState extends State<CompanyScreen>
                                 ),
                               ),
                               subtitle: Text(
-                                "${job.nameCompany}",
+                                "${jobs.company}",
                                 style: const TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: "inter_regular",
@@ -241,7 +241,7 @@ class _CompanyScreenState extends State<CompanyScreen>
                                 Padding(
                                   padding: const EdgeInsets.only(left: 16),
                                   child: Text(
-                                    "${job.address}",
+                                    "${jobs.address}",
                                     style: const TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontFamily: "inter_semibold",
@@ -259,7 +259,7 @@ class _CompanyScreenState extends State<CompanyScreen>
                                   padding:
                                       const EdgeInsets.only(left: 16, top: 4),
                                   child: Text(
-                                    "${job.createdAt}",
+                                    "${jobs.createdAt}",
                                     style: const TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontFamily: "inter_regular",

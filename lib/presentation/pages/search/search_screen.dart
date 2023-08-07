@@ -96,7 +96,6 @@ class _SearchScreenState extends State<SearchScreen> {
       child: Column(
         children: [
           BlocBuilder<ListsCompanyDataCubit, ListsCompanyDataState>(
-            // bloc: _listCompanyDataCubit,
             builder: (context, state) {
               if (state is ListsCompanyDataIsSucces) {
                 print("build listview data company");
@@ -117,8 +116,11 @@ class _SearchScreenState extends State<SearchScreen> {
                             children: [
                               ListTile(
                                 onTap: () {
-                                  context.goNamed(Routes.companyscreenPage,
-                                      extra: listcompany.id);
+                                  print(" id Company ${listcompany.id}");
+                                  context.goNamed(
+                                    Routes.companyscreenPage,
+                                    extra: listcompany.name,
+                                  );
                                 },
                                 leading: CircleAvatar(
                                   backgroundColor: Colors.grey[200],

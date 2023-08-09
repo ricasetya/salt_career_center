@@ -6,7 +6,6 @@ class Routes {
   static var loginmocPage = "loginmoc";
 
 //register
-  static var registersPage = "registers";
   static var registerPage = "register";
 
 //resetpasword

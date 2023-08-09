@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:telkom_career/data/repository/company/company_data_repository_impl.dart';
+import 'package:telkom_career/data/repository/forget_password/forget_password_repository_impl.dart';
 import 'package:telkom_career/data/repository/listjob/list_job_repository_impl.dart';
 import 'package:telkom_career/data/repository/lists_company_repository/lists_company_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/login_moc/login_repositorymoc_impl.dart';
@@ -9,6 +10,7 @@ import 'package:telkom_career/data/repository/register/register_repository_impl.
 import 'package:telkom_career/presentation/navigation/SARoute.dart';
 import 'package:flutter/services.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/company_data_cubit.dart';
+import 'package:telkom_career/presentation/pages/forget_password/cubit/forget_password_cubit.dart';
 import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
 import 'package:telkom_career/presentation/pages/login_moc/cubit/loginmoc_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_data_cubit.dart';
@@ -38,6 +40,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => RegisterCubit(RegisterRepositoryImpl()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              ForgetPasswordCubit(ForgetPasswordRepositoryImpl()),
         ),
         BlocProvider(
           create: (context) => CompanyDataCubit(CompanyDataRepositoryImpl()),

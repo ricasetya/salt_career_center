@@ -27,7 +27,7 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
   GoRoute(
       path: "/forgotpassword",
       name: Routes.forgotpasswordsPage,
-      builder: (context, state) => const ForgotPassword()),
+      builder: (context, state) => const ForgetPassword()),
   GoRoute(
       path: "/forgotpassworemailsent",
       name: Routes.forgotpassworemailsentdPage,

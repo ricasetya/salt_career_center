@@ -1,8 +1,10 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:telkom_career/base/result_entity.dart';
 import 'package:telkom_career/domain/model/request/forget_password/forget_password_request.dart';
-import 'package:telkom_career/domain/repository/forget_password/forget_passwordRepository.dart';
+import 'package:telkom_career/domain/repository/forget_password/forget_password_repository.dart';
 
 part 'forget_password_state.dart';
 

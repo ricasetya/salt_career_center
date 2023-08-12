@@ -7,14 +7,17 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
+import 'package:telkom_career/data/repository/forget_password/forget_password_otp_repository_impl.dart';
 import 'package:telkom_career/data/repository/forget_password/forget_password_repository_impl.dart';
 import 'package:telkom_career/data/repository/register/register_repository_impl.dart';
+import 'package:telkom_career/domain/model/request/forget_password/forget_password_otp_request.dart';
 import 'package:telkom_career/domain/model/request/forget_password/forget_password_request.dart';
 import 'package:telkom_career/domain/model/request/login_request_moc/login_requestmoc.dart';
 import 'package:telkom_career/domain/model/request/register/register_request.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/about_company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/jobs_company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/forget_password/cubit/forget_password_cubit.dart';
+import 'package:telkom_career/presentation/pages/forget_password/cubit/forget_password_otp_cubit.dart';
 import 'package:telkom_career/presentation/pages/register/cubit/register_cubit.dart';
 import 'package:velocity_x/velocity_x.dart';
 

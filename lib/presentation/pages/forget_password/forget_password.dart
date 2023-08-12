@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, avoid_print
 
 part of '../pages.dart';
 
@@ -159,10 +159,16 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             BlocProvider.of<ForgetPasswordCubit>(context)
                                 .buttonForgetPassword(ForgetPasswordRequest(
                                     _emailController.text));
+
+                            context.goNamed(
+                              Routes.forgotpassworemailsentdPage,
+                              extra: _emailController.text,
+                            );
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xffEA232A),
                             padding: const EdgeInsets.fromLTRB(12, 24, 12, 24),
+                            elevation: 0,
                           ),
                           child: BlocBuilder<ForgetPasswordCubit,
                                   ForgetPasswordState>(
@@ -170,7 +176,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             if (forgetPasswordState
                                 is ForgetPasswordIsLoading) {
                               return const CircularProgressIndicator(
-                                strokeWidth: 4,
+                                strokeWidth: 2,
                                 color: Colors.white,
                               );
                             }

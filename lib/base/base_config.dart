@@ -10,6 +10,7 @@ abstract class BaseConfig {
   static const String LOGIN_MOC = "/login";
   static const String REGISTER_MOC = "/register";
   static const String FORGET_PASSWORD = "/forget-password";
+  static const String FORGET_PASSWORD_OTP = "/otp/submit";
 
   // BERANDA
   static const String HOME_MOC = "/beranda";

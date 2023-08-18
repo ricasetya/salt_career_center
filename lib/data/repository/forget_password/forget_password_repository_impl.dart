@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:telkom_career/base/login_moc/base_remote_response.dart';
 import 'package:telkom_career/base/result_entity.dart';
 import 'package:telkom_career/data/service/remote/forget_password/forget_password_remote_service.dart';
-import 'package:telkom_career/domain/model/data/forget_password/forget_password_data.dart';
 import 'package:telkom_career/domain/model/request/forget_password/forget_password_request.dart';
 import 'package:telkom_career/domain/repository/forget_password/forget_password_repository.dart';
 

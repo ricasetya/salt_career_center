@@ -5,7 +5,7 @@ part of '../pages.dart';
 
 class ForgotPasswordEmailSent extends StatefulWidget {
   final String idEmail;
-  ForgotPasswordEmailSent({
+  const ForgotPasswordEmailSent({
     Key? key,
     required this.idEmail,
   }) : super(key: key);
@@ -39,7 +39,8 @@ class _FpEmailSentState extends State<ForgotPasswordEmailSent> {
       body: BlocConsumer<ForgetPasswordOtpCubit, ForgetPasswordOtpState>(
         listener: (context, forgetPasswordOtpState) {
           if (forgetPasswordOtpState is ForgetPasswordOtpIsSuccess) {
-            context.goNamed(Routes.forgotpasswordupdatepasswordPage);
+            context.goNamed(Routes.forgotpasswordupdatepasswordPage,
+                extra: widget.idEmail);
           } else if (forgetPasswordOtpState is ForgetPasswordOtpIsError) {
             print("OTP Failled");
           }

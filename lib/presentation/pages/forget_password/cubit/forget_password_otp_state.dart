@@ -13,9 +13,9 @@ class ForgetPasswordOtpInitial extends ForgetPasswordOtpState {}
 class ForgetPasswordOtpIsLoading extends ForgetPasswordOtpState {}
 
 class ForgetPasswordOtpIsSuccess extends ForgetPasswordOtpState {
-  String? data;
+  String data;
   ForgetPasswordOtpIsSuccess({
-    this.data,
+    required this.data,
   });
 }
 

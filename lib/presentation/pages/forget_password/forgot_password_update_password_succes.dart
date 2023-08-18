@@ -108,7 +108,7 @@ class _PasswordPageState extends State<ForgotPasswordUpdatePasswordSucces> {
                   Container(
                     margin: const EdgeInsets.fromLTRB(16, 24, 15, 0),
                     child: ElevatedButton(
-                      onPressed: () => context.go('/companyscreen'),
+                      onPressed: () => context.go('/loginmoc'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xffEA232A),
                         padding: const EdgeInsets.fromLTRB(12, 24, 12, 24),

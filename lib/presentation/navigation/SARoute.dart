@@ -28,24 +28,30 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
     path: "/forgotpassword",
     name: Routes.forgotpasswordsPage,
     builder: (context, state) => const ForgetPassword(),
-    //   routes: [
-
-    //   ],
   ),
   GoRoute(
-      path: "/forgotpassworemailsent",
-      name: Routes.forgotpassworemailsentdPage,
-      builder: (context, state) {
-        String idEmail = state.extra as String;
-        return ForgotPasswordEmailSent(
-          idEmail: idEmail,
-        );
-      }),
+    path: "/forgotpassworemailsent",
+    name: Routes.forgotpassworemailsentdPage,
+    builder: (context, state) {
+      String idEmail = state.extra as String;
+      return ForgotPasswordEmailSent(
+        idEmail: idEmail,
+      );
+    },
+  ),
 
   GoRoute(
-      path: "/forgotpasswordupdatepassword",
-      name: Routes.forgotpasswordupdatepasswordPage,
-      builder: (context, state) => const ForgotPasswordUpdatePassword()),
+    path: "/forgotpasswordupdatepassword",
+    name: Routes.forgotpasswordupdatepasswordPage,
+    builder: (context, state) //=> const ForgotPasswordUpdatePassword()
+        {
+      String idEmail = state.extra as dynamic;
+
+      return ForgotPasswordUpdatePassword(
+        idEmail: idEmail,
+      );
+    },
+  ),
   GoRoute(
       path: "/forgotpasswordupdatepasswordsucces",
       name: Routes.forgotpasswordupdatepasswordsuccesPage,
@@ -90,9 +96,9 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
       name: Routes.profilesettingsPage,
       builder: (context, state) => const ProfileSettings()),
   GoRoute(
-      path: "/profileupdatepassword",
-      name: Routes.profileupdatepasswordPage,
-      builder: (context, state) => const ProfileUpdatePassword()),
+      path: "/profileChangePassword",
+      name: Routes.profileChangePasswordPage,
+      builder: (context, state) => const ProfileChangePassword()),
   GoRoute(
       path: "/profileeditprofile",
       name: Routes.profileeditprofilePage,

@@ -31,7 +31,7 @@ class Routes {
 // Profile
   static var profileblankPage = "profileblank";
   static var profilesettingsPage = "profilesettings";
-  static var profileupdatepasswordPage = "profileupdatepassword";
+  static var profileChangePasswordPage = "profileChangePassword";
   static var profileeditprofilePage = "profileeditprofile";
   static var profileinputabilityPage = "profileinputability";
   static var profileinputlanguagePage = "profileinputlanguage";

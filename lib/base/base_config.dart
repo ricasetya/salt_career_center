@@ -11,6 +11,7 @@ abstract class BaseConfig {
   static const String REGISTER_MOC = "/register";
   static const String FORGET_PASSWORD = "/forget-password";
   static const String FORGET_PASSWORD_OTP = "/otp/submit";
+  static const String FORGET_PASSWORD_UPDATE = "/update/forget-password";
 
   // BERANDA
   static const String HOME_MOC = "/beranda";
@@ -20,6 +21,6 @@ abstract class BaseConfig {
   // PROFILE
   static const String PROFILE_DATA = "/profile";
   static const String LISTS_COMPANY = "/list-company";
-  static const String CHANGE_PASSWORD = "/change/1/password/1";
+  static const String CHANGE_PASSWORD = "/change/password";
   static const String UPDATE_PHOTO = "/profile/1/update-photo";
 }

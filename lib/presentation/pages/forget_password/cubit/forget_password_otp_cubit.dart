@@ -2,7 +2,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:telkom_career/base/result_entity.dart';
-import 'package:telkom_career/data/utilities/commons.dart';
 import 'package:telkom_career/domain/model/request/forget_password/forget_password_otp_request.dart';
 
 import 'package:telkom_career/domain/repository/forget_password/forget_password_otp_repository.dart';

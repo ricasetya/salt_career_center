@@ -190,7 +190,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                     alignment: Alignment.centerLeft,
                     padding: const EdgeInsets.fromLTRB(16, 12, 15, 12),
                     child: GestureDetector(
-                      onTap: () => context.go('/profileupdatepassword'),
+                      onTap: () => context.go('/profileChangePassword'),
                       child: const Text(
                         'Ganti Password',
                         style: TextStyle(

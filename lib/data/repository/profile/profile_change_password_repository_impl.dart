@@ -16,11 +16,11 @@ class ProfileChangePasswordRepositoryImpl
 
   @override
   Future<ResultEntity<ProfileChangePasswordData>> submitProfileChangePassword(
-      AuthenticationHeaderRequest header,
+      //AuthenticationHeaderRequest header,
       ProfileChangePasswordRequest request) async {
     try {
       final response = await profileChangePasswordRepositoryImpl
-          .fetchProfileChangePassword(header, request);
+          .fetchProfileChangePassword(request);
 
       print("STATUS CHANGE PASSWORD : ${response.statusCode}");
 

@@ -5,5 +5,5 @@ import 'package:telkom_career/domain/model/request/profile_change_password/profi
 
 abstract class ProfileChangePasswordRepository {
   Future<ResultEntity<ProfileChangePasswordData>> submitProfileChangePassword(
-      AuthenticationHeaderRequest header, ProfileChangePasswordRequest request);
+      ProfileChangePasswordRequest request);
 }

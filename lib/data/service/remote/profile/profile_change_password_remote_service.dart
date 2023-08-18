@@ -8,7 +8,7 @@ import 'package:telkom_career/domain/model/request/profile_change_password/profi
 class ProfileChangePasswordRemoteService {
   Client client = Client();
   Future<Response> fetchProfileChangePassword(
-      AuthenticationHeaderRequest header,
+      //AuthenticationHeaderRequest header,
       ProfileChangePasswordRequest request) async {
     final url = Uri.http(
       BaseConfig.BASE_DOMAIN_MOC,
@@ -22,7 +22,7 @@ class ProfileChangePasswordRemoteService {
       url,
       body: jsonEncode(request.toJson()),
       //headers: {'Conten-Type': 'application/json'},
-      headers: header.toHeader(),
+      //headers: header.toHeader(),
     );
   }
 }

@@ -17,13 +17,13 @@ class ProfileChangePasswordCubit extends Cubit<ProfileChangePasswordState> {
     this.repository,
   ) : super(ProfileChangePasswordInitial());
 
-  Future<void> fetchProfileChangePassword(request) async {
+  Future<void> fetchProfileChangePassword(
+      ProfileChangePasswordRequest request) async {
     final token = await Commons().getUid();
     print("TOKEN idChangePassword = ${token}");
     emit(ProfileChangePasswordIsLoading());
 
-    final response = await repository.submitProfileChangePassword(
-        AuthenticationHeaderRequest(token), request);
+    final response = await repository.submitProfileChangePassword(request);
 
     if (response is ResultSuccess) {
       emit(

@@ -59,9 +59,14 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
 
   // BERANDA //
   GoRoute(
-      path: "/beranda",
-      name: Routes.homescreenPage,
-      builder: (context, state) => const HomeScreen()),
+    path: "/homescreen",
+    name: Routes.homescreenPage,
+    builder: (context, state) {
+      BlocProvider.of<ListJobCubit>(context).fetchListJob();
+      BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
+      return const HomeScreen();
+    },
+  ),
 
   // PEKERJAAN //
   GoRoute(

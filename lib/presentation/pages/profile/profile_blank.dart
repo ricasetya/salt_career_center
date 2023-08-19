@@ -633,7 +633,7 @@ class _ProfileBlankState extends State<ProfileBlank> {
         items: [
           BottomNavigationBarItem(
             icon: GestureDetector(
-              onTap: () => context.go('/beranda'),
+              onTap: () => context.go('/homescreen'),
               child: Image.asset(
                 'assets/icons/beranda.png',
                 color: const Color(0xff999999),

@@ -13,10 +13,10 @@ class ProfileChangePasswordInitial extends ProfileChangePasswordState {}
 class ProfileChangePasswordIsLoading extends ProfileChangePasswordState {}
 
 class ProfileChangePasswordIsSucces extends ProfileChangePasswordState {
-  final ProfileChangePasswordData data;
-  ProfileChangePasswordIsSucces({
-    required this.data,
-  });
+  String? message;
+  ProfileChangePasswordIsSucces(
+    this.message,
+  );
 }
 
 class ProfileChangePasswordIsFailed extends ProfileChangePasswordState {

@@ -636,7 +636,7 @@ class _ProfileBlankState extends State<ProfileBlank> {
         items: [
           BottomNavigationBarItem(
             icon: GestureDetector(
-              onTap: () => context.go('/homescreen'),
+              onTap: () => context.go('/homescreen', extra: 0),
               child: Image.asset(
                 'assets/icons/beranda.png',
                 color: const Color(0xff999999),
@@ -650,7 +650,7 @@ class _ProfileBlankState extends State<ProfileBlank> {
           ),
           BottomNavigationBarItem(
             icon: GestureDetector(
-              onTap: () => context.go('/jobscreen'),
+              onTap: () => context.go('/jobscreen', extra: 1),
               child: Image.asset(
                 'assets/icons/pekerjaan.png',
                 color: const Color(0xff999999),

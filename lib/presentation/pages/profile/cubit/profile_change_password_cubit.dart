@@ -27,7 +27,8 @@ class ProfileChangePasswordCubit extends Cubit<ProfileChangePasswordState> {
 
     if (response is ResultSuccess) {
       emit(
-        ProfileChangePasswordIsSucces(data: (response as ResultSuccess).data),
+        ProfileChangePasswordIsSucces("Succes change password"),
+        //final data = (state as ProfileChangePasswordIsSucces.data);
       );
       //Commons().removeUid(token!.toString());
     } else {

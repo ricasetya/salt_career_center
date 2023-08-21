@@ -4,6 +4,6 @@ import 'package:telkom_career/domain/model/data/profile/profile_change_password_
 import 'package:telkom_career/domain/model/request/profile/profile_change_password/profile_change_password_request.dart';
 
 abstract class ProfileChangePasswordRepository {
-  Future<ResultEntity<ProfileChangePasswordData>> submitProfileChangePassword(
+  Future<ResultEntity> submitProfileChangePassword(
       AuthenticationHeaderRequest header, ProfileChangePasswordRequest request);
 }

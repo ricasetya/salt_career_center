@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, avoid_print
 // ignore_for_file: unused_local_variable
 part of '../pages.dart';
 

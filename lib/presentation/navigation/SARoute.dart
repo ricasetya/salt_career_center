@@ -105,8 +105,8 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
       name: Routes.profileChangePasswordPage,
       builder: (context, state) => const ProfileChangePassword()),
   GoRoute(
-      path: "/profileeditprofile",
-      name: Routes.profileeditprofilePage,
+      path: "/profileEditProfile",
+      name: Routes.profileEditProfilePage,
       builder: (context, state) => const ProfileEditProfile()),
   GoRoute(
       path: "/profileinputability",

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_final_fields
+// ignore_for_file: prefer_final_fields, unused_field, avoid_print
 
 part of '../pages.dart';
 
@@ -91,7 +91,7 @@ class _ProfileChangePasswordState extends State<ProfileChangePassword> {
               print("Change Password Failed");
             }
           },
-          builder: (context, state) {
+          builder: (context, profileChangePasswordState) {
             return Container(
               color: Colors.grey[100],
               child: Column(

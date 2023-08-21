@@ -9,6 +9,7 @@ import 'package:telkom_career/data/repository/lists_company_repository/lists_com
 import 'package:telkom_career/data/repository/login_moc/login_repositorymoc_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_change_password_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_data_repository_impl.dart';
+import 'package:telkom_career/data/repository/profile/profile_edit_profile_repository_impl.dart';
 import 'package:telkom_career/data/repository/register/register_repository_impl.dart';
 import 'package:telkom_career/presentation/navigation/SARoute.dart';
 import 'package:flutter/services.dart';
@@ -20,6 +21,7 @@ import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart'
 import 'package:telkom_career/presentation/pages/login_moc/cubit/loginmoc_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_change_password_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_data_cubit.dart';
+import 'package:telkom_career/presentation/pages/profile/cubit/profile_edit_profile_cubit.dart';
 import 'package:telkom_career/presentation/pages/register/cubit/register_cubit.dart';
 import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 
@@ -41,6 +43,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        /*                        LOGIN                                 */
+        /*                                                              */
         BlocProvider(
           create: (context) => LoginmocCubit(LoginRepositoryImplMoc()),
         ),
@@ -59,15 +63,15 @@ class MyApp extends StatelessWidget {
           create: (context) =>
               ForgetPasswordUpdateCubit(ForgetPasswordUpdateRepositoryImpl()),
         ),
+
+        /*                        COMPANY                                 */
+        /*                                                                */
         BlocProvider(
           create: (context) => CompanyDataCubit(CompanyDataRepositoryImpl()),
         ),
         BlocProvider(
           create: (context) =>
               ListsCompanyDataCubit(ListsCompanyDataRepositoryImpl()),
-        ),
-        BlocProvider(
-          create: (context) => ListJobCubit(ListJobRepositoryImpl()),
         ),
         BlocProvider(
           create: (context) =>
@@ -77,8 +81,22 @@ class MyApp extends StatelessWidget {
           create: (context) =>
               JobsCompanyDataCubit(CompanyDataRepositoryImpl()),
         ),
+
+        /*                        JOBS                                  */
+        /*                                                              */
+
+        BlocProvider(
+          create: (context) => ListJobCubit(ListJobRepositoryImpl()),
+        ),
+
+        /*                       PROFILE                                    */
+        /*                                                                  */
         BlocProvider(
           create: (context) => ProfileDataCubit(ProfileDataRepositoryImpl()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              ProfileEditProfileCubit(ProfileEditProfileRepositoryImpl()),
         ),
         BlocProvider(
           create: (context) =>

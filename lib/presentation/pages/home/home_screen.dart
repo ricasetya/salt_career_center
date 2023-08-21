@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace
+// ignore_for_file: sized_box_for_whitespace, avoid_print, avoid_function_literals_in_foreach_calls
 
 part of '../pages.dart';
 
@@ -318,7 +318,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 return Container(
                   margin: const EdgeInsets.fromLTRB(10, 50, 10, 50),
                   child: const Text(
-                    "Gagal menerima data pekerjaan.",
+                    "",
+                    // "Gagal menerima data pekerjaan.",
                     style: TextStyle(fontSize: 24),
                   ),
                 );

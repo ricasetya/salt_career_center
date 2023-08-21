@@ -226,13 +226,16 @@ class _ProfileBlankState extends State<ProfileBlank> {
                           ),
                           Container(
                             margin: const EdgeInsets.only(top: 8),
-                            child: const Text(
-                              "Sunting Profil",
-                              style: TextStyle(
-                                fontFamily: 'inter_semibold',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xffEA232A),
+                            child: InkWell(
+                              onTap: () => context.go('/profileEditProfile'),
+                              child: const Text(
+                                "Sunting Profil",
+                                style: TextStyle(
+                                  fontFamily: 'inter_semibold',
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xffEA232A),
+                                ),
                               ),
                             ),
                           ),

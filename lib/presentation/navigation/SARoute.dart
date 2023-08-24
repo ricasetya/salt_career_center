@@ -91,8 +91,7 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
     path: "/profileblank",
     name: Routes.profileblankPage,
     builder: (context, state) {
-      BlocProvider.of<ProfileDataCubit>(context)
-          .fetchProfileData(AuthenticationHeaderRequest(""));
+      BlocProvider.of<ProfileDataCubit>(context).fetchProfileData();
       return const ProfileBlank();
     },
   ),

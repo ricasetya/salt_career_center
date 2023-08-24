@@ -4,7 +4,6 @@ import 'package:equatable/equatable.dart';
 import 'package:telkom_career/base/result_entity.dart';
 import 'package:telkom_career/data/utilities/commons.dart';
 import 'package:telkom_career/domain/base/authentication_header_request.dart';
-import 'package:telkom_career/domain/model/data/profile/profile_change_password_data.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_change_password/profile_change_password_request.dart';
 import 'package:telkom_career/domain/repository/profile/profile_change_password_repository.dart';
 
@@ -28,7 +27,6 @@ class ProfileChangePasswordCubit extends Cubit<ProfileChangePasswordState> {
     if (response is ResultSuccess) {
       emit(
         ProfileChangePasswordIsSucces("Succes change password"),
-        //final data = (state as ProfileChangePasswordIsSucces.data);
       );
       //Commons().removeUid(token!.toString());
     } else {

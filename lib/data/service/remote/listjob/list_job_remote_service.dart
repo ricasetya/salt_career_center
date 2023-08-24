@@ -12,6 +12,9 @@ class ListJobRemoteService {
         BaseConfig.BASE_PATH_MOC + BaseConfig.LISTS_JOBS);
     print("url: ${url}");
 
-    return client.get(url, headers: header.toHeader());
+    return client.get(
+      url,
+      headers: header.toHeader(),
+    );
   }
 }

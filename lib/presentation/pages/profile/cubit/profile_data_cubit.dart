@@ -1,7 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first, depend_on_referenced_packages
+// ignore_for_file: public_member_api_docs, sort_constructors_first, depend_on_referenced_packages, avoid_print, unnecessary_brace_in_string_interps, await_only_futures
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:telkom_career/base/result_entity.dart';
+import 'package:telkom_career/data/utilities/commons.dart';
 import 'package:telkom_career/domain/base/authentication_header_request.dart';
 
 import 'package:telkom_career/domain/model/data/profile/profile_data.dart';
@@ -15,13 +16,20 @@ class ProfileDataCubit extends Cubit<ProfileDataState> {
     this.repository,
   ) : super(ProfileDataInitial());
 
-  Future<void> fetchProfileData(AuthenticationHeaderRequest header) async {
+  Future<void> fetchProfileData() async {
     emit(ProfileDataIsLoading());
-    final response = await repository.fetchProfileData(header);
+    final token = await Commons().getUid;
+    print("TOKEN idProfileData = ${token}");
+
+    final response = await repository.fetchProfileData(
+      AuthenticationHeaderRequest(""),
+    );
     if (response is ResultSuccess) {
-      emit(ProfileDataIsSuccess((response as ResultSuccess).data));
+      emit(ProfileDataIsSuccess(data: (response as ResultSuccess).data));
+      print("Data Profile Succes");
     } else {
-      emit(ProfileDataIsError(message: (response as ResultError).message));
+      emit(ProfileDataIsError(message: response.toString()));
+      print((response as ResultError).message);
     }
   }
 }

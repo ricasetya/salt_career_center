@@ -28,7 +28,7 @@ class ProfileEditProfileCubit extends Cubit<ProfileEditProfileState> {
 
     if (response is ResultSuccess) {
       emit(
-        ProfileEditProfileIsSuccess(data: (response as ResultSuccess).data),
+        ProfileEditProfileIsSuccess(message: response.data),
       );
     } else {
       emit(ProfileEditProfileIsFailed(

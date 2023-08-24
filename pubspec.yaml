@@ -83,45 +83,47 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/ImageLogin.png
-    - assets/images/illus_email_sent.png
-    - assets/images/illus_login.png
-    - assets/images/illus_u_password.png
-    - assets/images/imagesuperindo.png
-    - assets/images/image1.png
-    - assets/images/image887.png
-    - assets/images/image4.png
-    - assets/images/image5.png
-    - assets/images/image6.png
-    - assets/images/image7.png
-    - assets/images/image8.png
-    - assets/images/image888.png
-    - assets/images/image889.png
-    - assets/images/image891.png
-    - assets/images/image892.png
-    - assets/images/image890.png
-    - assets/images/image895.png
-    - assets/images/avatar.png
-    - assets/images/ellipse.png
-    - assets/images/illus_portfolio.png
+    - assets/images/
+    # - assets/images/ImageLogin.png
+    # - assets/images/illus_email_sent.png
+    # - assets/images/illus_login.png
+    # - assets/images/illus_u_password.png
+    # - assets/images/imagesuperindo.png
+    # - assets/images/image1.png
+    # - assets/images/image887.png
+    # - assets/images/image4.png
+    # - assets/images/image5.png
+    # - assets/images/image6.png
+    # - assets/images/image7.png
+    # - assets/images/image8.png
+    # - assets/images/image888.png
+    # - assets/images/image889.png
+    # - assets/images/image891.png
+    # - assets/images/image892.png
+    # - assets/images/image890.png
+    # - assets/images/image895.png
+    # - assets/images/avatar.png
+    # - assets/images/ellipse.png
+    # - assets/images/illus_portfolio.png
 
-    - assets/icons/beranda.png
-    - assets/icons/notif.png
-    - assets/icons/pekerjaan.png
-    - assets/icons/pesan.png
-    - assets/icons/profil.png
-    - assets/icons/kegiatan.png
-    - assets/icons/setting.png
-    - assets/icons/icon_edit.png
-    - assets/icons/more.png
-    - assets/icons/camera.png
-    - assets/icons/galery.png
-    - assets/icons/trash.png
-    - assets/icons/back.png
-    - assets/icons/search.png
-    - assets/icons/toggle-on.png
-    - assets/icons/toggle-off.png
-    - assets/icons/calendar.png
+    - assets/icons/
+    # - assets/icons/beranda.png
+    # - assets/icons/notif.png
+    # - assets/icons/pekerjaan.png
+    # - assets/icons/pesan.png
+    # - assets/icons/profil.png
+    # - assets/icons/kegiatan.png
+    # - assets/icons/setting.png
+    # - assets/icons/icon_edit.png
+    # - assets/icons/more.png
+    # - assets/icons/camera.png
+    # - assets/icons/galery.png
+    # - assets/icons/trash.png
+    # - assets/icons/back.png
+    # - assets/icons/search.png
+    # - assets/icons/toggle-on.png
+    # - assets/icons/toggle-off.png
+    # - assets/icons/calendar.png
 
 
 

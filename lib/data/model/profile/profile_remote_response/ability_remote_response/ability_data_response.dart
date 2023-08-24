@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:telkom_career/domain/model/data/profile/ability_data.dart';
+import 'package:telkom_career/domain/model/data/profile/get_profile/ability_data.dart';
 
 part 'ability_data_response.g.dart';
 
@@ -19,9 +19,7 @@ class AbilityDataResponse implements AbilityDataResponseMApper {
 
   @override
   AbilityData toAbilityData() {
-    return AbilityData(
-      ability: ability,
-    );
+    return AbilityData(ability: ability);
   }
 }
 

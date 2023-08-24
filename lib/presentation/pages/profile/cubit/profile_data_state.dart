@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 part of 'profile_data_cubit.dart';
 
-abstract class ProfileDataState extends Equatable {
+class ProfileDataState extends Equatable {
   const ProfileDataState();
 
   @override
@@ -16,9 +16,9 @@ class ProfileDataIsEmpty extends ProfileDataState {}
 
 class ProfileDataIsSuccess extends ProfileDataState {
   ProfileData data;
-  ProfileDataIsSuccess(
-    this.data,
-  );
+  ProfileDataIsSuccess({
+    required this.data,
+  });
 }
 
 class ProfileDataIsError extends ProfileDataState {

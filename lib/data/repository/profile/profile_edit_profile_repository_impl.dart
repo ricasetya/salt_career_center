@@ -15,8 +15,7 @@ class ProfileEditProfileRepositoryImpl implements ProfileEditProfileRepository {
   final profileEditProfileRepositoryImpl = ProfileEditProfileRemoteService();
 
   @override
-  Future<ResultEntity<ProfileEditProfileData>>
-      updateProfileEditProfileRepository(
+  Future<ResultEntity> updateProfileEditProfileRepository(
     AuthenticationHeaderRequest header,
     ProfileEditProfileRequest request,
   ) async {
@@ -27,34 +26,29 @@ class ProfileEditProfileRepositoryImpl implements ProfileEditProfileRepository {
       print("STATUS PROFILE EDIT PROFILE : ${response.statusCode}");
 
       if (response.statusCode == 200) {
-        BaseRemoteResponseMoc<ProfileEditProfileRemoteResponse>
-            baseResponseEditProfile =
-            BaseRemoteResponseMoc<ProfileEditProfileRemoteResponse>.fromJson(
-          jsonDecode(response.body),
-          (json) => ProfileEditProfileRemoteResponse.fromJson(
-              json as Map<String, dynamic>),
-        );
+        BaseRemoteResponseMoc baseResponseEditProfile =
+            BaseRemoteResponseMoc.fromJson(
+                jsonDecode(response.body), (json) => null);
 
-        ProfileEditProfileRemoteResponse.fromJson(
-          jsonDecode(response.body),
-        );
+        // ProfileEditProfileRemoteResponse.fromJson(
+        //   jsonDecode(response.body),
+        // );
 
         if (baseResponseEditProfile.status == null) {
           return ResultError(message: baseResponseEditProfile.status?.message);
         } else if (baseResponseEditProfile.status?.code != 0) {
           return ResultError(message: baseResponseEditProfile.status?.message);
         } else {
-          return ResultSuccess(
-              baseResponseEditProfile.data!.toProfileEditProfileData());
+          return ResultSuccess(baseResponseEditProfile.data);
         }
       } else {
         print("INI ERROR PROFILE EDIT PROFILE : ${response.body}");
         //return ResultError(message: response.body);
-        return ResultError<ProfileEditProfileData>();
+        return ResultError(message: response.body);
       }
     } catch (e) {
       print("INI EROR PROFILE EDIT PROFILE e : ${e.toString()}");
-      return ResultError(message: e.toString());
+      return ResultError(message: "");
     }
   }
 }

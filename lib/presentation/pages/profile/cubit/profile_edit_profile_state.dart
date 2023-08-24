@@ -15,9 +15,9 @@ class ProfileEditProfileIsLoading extends ProfileEditProfileState {}
 class ProfileEditProfileIsLoaded extends ProfileEditProfileState {}
 
 class ProfileEditProfileIsSuccess extends ProfileEditProfileState {
-  final ProfileEditProfileData data;
+  String? message;
   ProfileEditProfileIsSuccess({
-    required this.data,
+    required this.message,
   });
 }
 

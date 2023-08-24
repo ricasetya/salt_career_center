@@ -4,7 +4,6 @@ import 'package:telkom_career/domain/model/data/profile/profile_edit_profile_dat
 import 'package:telkom_career/domain/model/request/profile/profile_edit_profile/profile_edit_profile_request.dart';
 
 abstract class ProfileEditProfileRepository {
-  Future<ResultEntity<ProfileEditProfileData>>
-      updateProfileEditProfileRepository(AuthenticationHeaderRequest header,
-          ProfileEditProfileRequest request);
+  Future<ResultEntity> updateProfileEditProfileRepository(
+      AuthenticationHeaderRequest header, ProfileEditProfileRequest request);
 }

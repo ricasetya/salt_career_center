@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:json_annotation/json_annotation.dart';
-import 'package:telkom_career/domain/model/data/profile/language_data.dart';
+import 'package:telkom_career/domain/model/data/profile/get_profile/language_data.dart';
 
 part 'language_data_reponse.g.dart';
 
@@ -18,7 +18,7 @@ class LanguageDataResponse implements LanguageDataResponseMapper {
 
   @override
   LanguageData toLanguageData() {
-    return LanguageData(language: language);
+    return LanguageData(language: "");
   }
 }
 

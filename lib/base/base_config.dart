@@ -24,4 +24,5 @@ abstract class BaseConfig {
   static const String CHANGE_PASSWORD = "/change/password";
   static const String UPDATE_PHOTO = "/profile/1/update-photo";
   static const String UPDATE_PROFILE = "/profile/update-profile";
+  static const String UPDATE_ABILITY = "/profile/update-ability";
 }

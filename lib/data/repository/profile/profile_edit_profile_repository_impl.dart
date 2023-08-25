@@ -4,11 +4,9 @@ import 'dart:convert';
 
 import 'package:telkom_career/base/login_moc/base_remote_response.dart';
 import 'package:telkom_career/base/result_entity.dart';
-import 'package:telkom_career/data/model/profile/profile_edit_profile_remote_response/profile_edit_profile_remote_response.dart';
 import 'package:telkom_career/data/service/remote/profile/profile_edit_profile_remote_service.dart';
 import 'package:telkom_career/domain/base/authentication_header_request.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_edit_profile/profile_edit_profile_request.dart';
-import 'package:telkom_career/domain/model/data/profile/profile_edit_profile_data.dart';
 import 'package:telkom_career/domain/repository/profile/profile_edit_profile_repository.dart';
 
 class ProfileEditProfileRepositoryImpl implements ProfileEditProfileRepository {
@@ -29,10 +27,6 @@ class ProfileEditProfileRepositoryImpl implements ProfileEditProfileRepository {
         BaseRemoteResponseMoc baseResponseEditProfile =
             BaseRemoteResponseMoc.fromJson(
                 jsonDecode(response.body), (json) => null);
-
-        // ProfileEditProfileRemoteResponse.fromJson(
-        //   jsonDecode(response.body),
-        // );
 
         if (baseResponseEditProfile.status == null) {
           return ResultError(message: baseResponseEditProfile.status?.message);

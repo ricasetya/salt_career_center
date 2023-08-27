@@ -11,6 +11,7 @@ import 'package:telkom_career/data/repository/profile/profile_change_password_re
 import 'package:telkom_career/data/repository/profile/profile_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_edit_profile_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_update_ability_repository_impl.dart';
+import 'package:telkom_career/data/repository/profile/profile_update_language_repository_impl.dart';
 import 'package:telkom_career/data/repository/register/register_repository_impl.dart';
 import 'package:telkom_career/presentation/navigation/SARoute.dart';
 import 'package:flutter/services.dart';
@@ -24,6 +25,7 @@ import 'package:telkom_career/presentation/pages/profile/cubit/profile_change_pa
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_edit_profile_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_update_ability_cubit.dart';
+import 'package:telkom_career/presentation/pages/profile/cubit/profile_update_language_cubit.dart';
 import 'package:telkom_career/presentation/pages/register/cubit/register_cubit.dart';
 import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 
@@ -107,6 +109,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               ProfileUpdateAbilityCubit(ProfileUpdateAbilityRepositoryImpl()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              ProfileUpdateLanguageCubit(ProfileUpdateLanguageRepositoryImpl()),
         ),
       ],
       child: MaterialApp.router(

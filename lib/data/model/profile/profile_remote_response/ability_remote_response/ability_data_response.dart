@@ -7,7 +7,7 @@ part 'ability_data_response.g.dart';
 
 @JsonSerializable()
 class AbilityDataResponse implements AbilityDataResponseMApper {
-  String? ability;
+  List<String>? ability;
   AbilityDataResponse({
     this.ability,
   });

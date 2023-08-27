@@ -6,7 +6,7 @@ part 'language_data_reponse.g.dart';
 
 @JsonSerializable()
 class LanguageDataResponse implements LanguageDataResponseMapper {
-  String? language;
+  List<String>? language;
   LanguageDataResponse({
     this.language,
   });
@@ -18,7 +18,7 @@ class LanguageDataResponse implements LanguageDataResponseMapper {
 
   @override
   LanguageData toLanguageData() {
-    return LanguageData(language: "");
+    return LanguageData(language: language);
   }
 }
 

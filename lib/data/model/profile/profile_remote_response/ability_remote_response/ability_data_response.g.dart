@@ -8,7 +8,8 @@ part of 'ability_data_response.dart';
 
 AbilityDataResponse _$AbilityDataResponseFromJson(Map<String, dynamic> json) =>
     AbilityDataResponse(
-      ability: json['ability'] as String?,
+      ability:
+          (json['ability'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$AbilityDataResponseToJson(

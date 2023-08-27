@@ -701,13 +701,7 @@ class _ProfileBlankState extends State<ProfileBlank> {
   }
 }
 
-
-
-
-
-
-
-// // ignore_for_file: non_constant_identifier_names, deprecated_member_use, unused_local_variable, avoid_print, unused_element, no_leading_underscores_for_local_identifiers
+// ignore_for_file: non_constant_identifier_names, deprecated_member_use, unused_local_variable, avoid_print, unused_element, no_leading_underscores_for_local_identifiers
 
 // part of '../pages.dart';
 

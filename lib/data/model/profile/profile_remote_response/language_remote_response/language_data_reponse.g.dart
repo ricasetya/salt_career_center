@@ -9,7 +9,9 @@ part of 'language_data_reponse.dart';
 LanguageDataResponse _$LanguageDataResponseFromJson(
         Map<String, dynamic> json) =>
     LanguageDataResponse(
-      language: json['language'] as String?,
+      language: (json['language'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$LanguageDataResponseToJson(

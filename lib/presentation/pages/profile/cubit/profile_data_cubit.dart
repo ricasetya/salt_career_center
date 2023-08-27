@@ -26,6 +26,7 @@ class ProfileDataCubit extends Cubit<ProfileDataState> {
     );
     if (response is ResultSuccess) {
       emit(ProfileDataIsSuccess(data: (response as ResultSuccess).data));
+      //final token = await Commons().getUid;
       print("Data Profile Succes");
     } else {
       emit(ProfileDataIsError(message: response.toString()));

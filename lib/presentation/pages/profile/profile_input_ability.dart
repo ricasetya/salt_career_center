@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 part of '../pages.dart';
 
 class ProfileInputAbility extends StatefulWidget {
@@ -18,6 +20,31 @@ class _ProfileInputAbilityState extends State<ProfileInputAbility> {
   final TextEditingController _ability8 = TextEditingController();
   final TextEditingController _ability9 = TextEditingController();
   final TextEditingController _ability10 = TextEditingController();
+
+  late ProfileUpdateAbilityCubit _profileUpdateAbilityCubit;
+
+  @override
+  void initState() {
+    _profileUpdateAbilityCubit =
+        ProfileUpdateAbilityCubit(ProfileUpdateAbilityRepositoryImpl());
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _ability1;
+    _ability2;
+    _ability3;
+    _ability4;
+    _ability5;
+    _ability6;
+    _ability7;
+    _ability8;
+    _ability9;
+    _ability10;
+    _profileUpdateAbilityCubit.close();
+    super.dispose();
+  }
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
@@ -46,304 +73,317 @@ class _ProfileInputAbilityState extends State<ProfileInputAbility> {
           ),
         ),
         body: SingleChildScrollView(
-          child: SafeArea(
-            child: Container(
-              color: Colors.grey[100],
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    margin: const EdgeInsets.only(top: 16),
-                    alignment: Alignment.topLeft,
-                    padding: const EdgeInsets.only(left: 16),
-                    child: const Text(
-                      "Maksimal 10 Kemampuan",
-                      style: TextStyle(
-                          fontFamily: "inter_semibold",
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xff333333)),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
-                    child: TextFormField(
-                      cursorColor: const Color(0xff333333),
-                      controller: _ability1,
-                      style: const TextStyle(
-                        fontFamily: "inter_regular",
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff333333),
+          child: BlocConsumer<ProfileUpdateAbilityCubit,
+              ProfileUpdateAbilityState>(
+            listener: (context, profileUpdateAbilityState) {
+              if (profileUpdateAbilityState is ProfileUpdateAbilityIsSuccess) {
+                context.goNamed(Routes.profileblankPage);
+              } else if (profileUpdateAbilityState
+                  is ProfileUpdateAbilityIsFailed) {
+                print("Update Ability Failed");
+              }
+            },
+            builder: (context, state) {
+              return SafeArea(
+                child: Container(
+                  color: Colors.grey[100],
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        margin: const EdgeInsets.only(top: 16),
+                        alignment: Alignment.topLeft,
+                        padding: const EdgeInsets.only(left: 16),
+                        child: const Text(
+                          "Maksimal 10 Kemampuan",
+                          style: TextStyle(
+                              fontFamily: "inter_semibold",
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xff333333)),
+                        ),
                       ),
-                      decoration: InputDecoration(
-                        hintText: "Kemampuan 1",
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
+                        child: TextFormField(
+                          cursorColor: const Color(0xff333333),
+                          controller: _ability1,
+                          style: const TextStyle(
+                            fontFamily: "inter_regular",
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
                             color: Color(0xff333333),
                           ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        fillColor: const Color(0xffFFFFFF),
-                        filled: true,
-                      ),
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.text,
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
-                    child: TextFormField(
-                      cursorColor: const Color(0xff333333),
-                      controller: _ability2,
-                      style: const TextStyle(
-                        fontFamily: "inter_regular",
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff333333),
-                      ),
-                      decoration: InputDecoration(
-                        hintText: "Kemampuan 2",
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xff666666),
+                          decoration: InputDecoration(
+                            hintText: "Kemampuan 1",
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xff333333),
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            fillColor: const Color(0xffFFFFFF),
+                            filled: true,
                           ),
+                          textAlign: TextAlign.left,
+                          keyboardType: TextInputType.text,
                         ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        fillColor: const Color(0xffFFFFFF),
-                        filled: true,
                       ),
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.text,
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
-                    child: TextFormField(
-                      controller: _ability3,
-                      style: const TextStyle(
-                        fontFamily: "inter_regular",
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff333333),
-                      ),
-                      decoration: InputDecoration(
-                        hintText: "Kemampuan 3",
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xff666666),
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        fillColor: const Color(0xffFFFFFF),
-                        filled: true,
-                      ),
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.text,
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
-                    child: TextFormField(
-                      cursorColor: const Color(0xff333333),
-                      controller: _ability4,
-                      style: const TextStyle(
-                        fontFamily: "inter_regular",
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff333333),
-                      ),
-                      decoration: InputDecoration(
-                        hintText: "Kemampuan 4",
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
+                        child: TextFormField(
+                          cursorColor: const Color(0xff333333),
+                          controller: _ability2,
+                          style: const TextStyle(
+                            fontFamily: "inter_regular",
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
                             color: Color(0xff333333),
                           ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        fillColor: const Color(0xffFFFFFF),
-                        filled: true,
-                      ),
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.text,
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
-                    child: TextFormField(
-                      cursorColor: const Color(0xff333333),
-                      controller: _ability5,
-                      style: const TextStyle(
-                        fontFamily: "inter_regular",
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff333333),
-                      ),
-                      decoration: InputDecoration(
-                        hintText: "Kemampuan 5",
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xff666666),
+                          decoration: InputDecoration(
+                            hintText: "Kemampuan 2",
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xff666666),
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            fillColor: const Color(0xffFFFFFF),
+                            filled: true,
                           ),
+                          textAlign: TextAlign.left,
+                          keyboardType: TextInputType.text,
                         ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        fillColor: const Color(0xffFFFFFF),
-                        filled: true,
                       ),
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.text,
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
-                    child: TextFormField(
-                      controller: _ability6,
-                      style: const TextStyle(
-                        fontFamily: "inter_regular",
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff333333),
-                      ),
-                      decoration: InputDecoration(
-                        hintText: "Kemampuan 6",
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xff666666),
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        fillColor: const Color(0xffFFFFFF),
-                        filled: true,
-                      ),
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.text,
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
-                    child: TextFormField(
-                      cursorColor: const Color(0xff333333),
-                      controller: _ability7,
-                      style: const TextStyle(
-                        fontFamily: "inter_regular",
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff333333),
-                      ),
-                      decoration: InputDecoration(
-                        hintText: "Kemampuan 7",
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
+                        child: TextFormField(
+                          controller: _ability3,
+                          style: const TextStyle(
+                            fontFamily: "inter_regular",
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
                             color: Color(0xff333333),
                           ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        fillColor: const Color(0xffFFFFFF),
-                        filled: true,
-                      ),
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.text,
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
-                    child: TextFormField(
-                      cursorColor: const Color(0xff333333),
-                      controller: _ability8,
-                      style: const TextStyle(
-                        fontFamily: "inter_regular",
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff333333),
-                      ),
-                      decoration: InputDecoration(
-                        hintText: "Kemampuan 8",
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xff666666),
+                          decoration: InputDecoration(
+                            hintText: "Kemampuan 3",
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xff666666),
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            fillColor: const Color(0xffFFFFFF),
+                            filled: true,
                           ),
+                          textAlign: TextAlign.left,
+                          keyboardType: TextInputType.text,
                         ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        fillColor: const Color(0xffFFFFFF),
-                        filled: true,
                       ),
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.text,
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
-                    child: TextFormField(
-                      controller: _ability9,
-                      style: const TextStyle(
-                        fontFamily: "inter_regular",
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff333333),
-                      ),
-                      decoration: InputDecoration(
-                        hintText: "Kemampuan 9",
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xff666666),
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        fillColor: const Color(0xffFFFFFF),
-                        filled: true,
-                      ),
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.text,
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(16, 16, 15, 100),
-                    child: TextFormField(
-                      cursorColor: const Color(0xff333333),
-                      controller: _ability10,
-                      style: const TextStyle(
-                        fontFamily: "inter_regular",
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff333333),
-                      ),
-                      decoration: InputDecoration(
-                        hintText: "Kemampuan 10",
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
+                        child: TextFormField(
+                          cursorColor: const Color(0xff333333),
+                          controller: _ability4,
+                          style: const TextStyle(
+                            fontFamily: "inter_regular",
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
                             color: Color(0xff333333),
                           ),
+                          decoration: InputDecoration(
+                            hintText: "Kemampuan 4",
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xff333333),
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            fillColor: const Color(0xffFFFFFF),
+                            filled: true,
+                          ),
+                          textAlign: TextAlign.left,
+                          keyboardType: TextInputType.text,
                         ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        fillColor: const Color(0xffFFFFFF),
-                        filled: true,
                       ),
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.text,
-                    ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
+                        child: TextFormField(
+                          cursorColor: const Color(0xff333333),
+                          controller: _ability5,
+                          style: const TextStyle(
+                            fontFamily: "inter_regular",
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff333333),
+                          ),
+                          decoration: InputDecoration(
+                            hintText: "Kemampuan 5",
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xff666666),
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            fillColor: const Color(0xffFFFFFF),
+                            filled: true,
+                          ),
+                          textAlign: TextAlign.left,
+                          keyboardType: TextInputType.text,
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
+                        child: TextFormField(
+                          controller: _ability6,
+                          style: const TextStyle(
+                            fontFamily: "inter_regular",
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff333333),
+                          ),
+                          decoration: InputDecoration(
+                            hintText: "Kemampuan 6",
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xff666666),
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            fillColor: const Color(0xffFFFFFF),
+                            filled: true,
+                          ),
+                          textAlign: TextAlign.left,
+                          keyboardType: TextInputType.text,
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
+                        child: TextFormField(
+                          cursorColor: const Color(0xff333333),
+                          controller: _ability7,
+                          style: const TextStyle(
+                            fontFamily: "inter_regular",
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff333333),
+                          ),
+                          decoration: InputDecoration(
+                            hintText: "Kemampuan 7",
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xff333333),
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            fillColor: const Color(0xffFFFFFF),
+                            filled: true,
+                          ),
+                          textAlign: TextAlign.left,
+                          keyboardType: TextInputType.text,
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
+                        child: TextFormField(
+                          cursorColor: const Color(0xff333333),
+                          controller: _ability8,
+                          style: const TextStyle(
+                            fontFamily: "inter_regular",
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff333333),
+                          ),
+                          decoration: InputDecoration(
+                            hintText: "Kemampuan 8",
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xff666666),
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            fillColor: const Color(0xffFFFFFF),
+                            filled: true,
+                          ),
+                          textAlign: TextAlign.left,
+                          keyboardType: TextInputType.text,
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(16, 16, 15, 0),
+                        child: TextFormField(
+                          controller: _ability9,
+                          style: const TextStyle(
+                            fontFamily: "inter_regular",
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff333333),
+                          ),
+                          decoration: InputDecoration(
+                            hintText: "Kemampuan 9",
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xff666666),
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            fillColor: const Color(0xffFFFFFF),
+                            filled: true,
+                          ),
+                          textAlign: TextAlign.left,
+                          keyboardType: TextInputType.text,
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(16, 16, 15, 100),
+                        child: TextFormField(
+                          cursorColor: const Color(0xff333333),
+                          controller: _ability10,
+                          style: const TextStyle(
+                            fontFamily: "inter_regular",
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff333333),
+                          ),
+                          decoration: InputDecoration(
+                            hintText: "Kemampuan 10",
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xff333333),
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            fillColor: const Color(0xffFFFFFF),
+                            filled: true,
+                          ),
+                          textAlign: TextAlign.left,
+                          keyboardType: TextInputType.text,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           ),
         ),
         bottomSheet: Container(
@@ -352,11 +392,29 @@ class _ProfileInputAbilityState extends State<ProfileInputAbility> {
           width: 375,
           child: ElevatedButton(
             onPressed: () {
-              if (_formkey.currentState!.validate()) {
-                context.go('/profileblank');
-              } else {
-                return;
-              }
+              // if (_formkey.currentState!.validate()) {
+              //   context.go('/profileblank');
+              // } else {
+              //   return;
+              // }
+
+              BlocProvider.of<ProfileUpdateAbilityCubit>(context)
+                  .fetchProfileUpdateAbility(
+                ProfileUpdateAbilityRequest(
+                  [
+                    _ability1.text,
+                    _ability2.text,
+                    _ability3.text,
+                    _ability4.text,
+                    _ability5.text,
+                    _ability6.text,
+                    _ability7.text,
+                    _ability8.text,
+                    _ability9.text,
+                    _ability10.text,
+                  ],
+                ),
+              );
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xffEA232A),

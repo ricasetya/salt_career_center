@@ -915,10 +915,12 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                       ),
                                     ),
                                     Container(
-                                      margin: const EdgeInsets.only(top: 0),
-                                      child: const Text(
-                                        "---",
-                                        style: TextStyle(
+                                      margin: const EdgeInsets.only(top: 8),
+                                      child: Text(
+                                        profileDataState.data.skill == null
+                                            ? "---"
+                                            : profileDataState.data.skill!,
+                                        style: const TextStyle(
                                           fontFamily: 'inter_semibold',
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
@@ -939,10 +941,14 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                       ),
                                     ),
                                     Container(
-                                      margin: const EdgeInsets.only(top: 0),
-                                      child: const Text(
-                                        "---",
-                                        style: TextStyle(
+                                      margin: const EdgeInsets.only(top: 8),
+                                      child: Text(
+                                        profileDataState.data.phoneNumber ==
+                                                null
+                                            ? "---"
+                                            : profileDataState
+                                                .data.phoneNumber!,
+                                        style: const TextStyle(
                                           fontFamily: 'inter_semibold',
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,

@@ -2,10 +2,7 @@
 //import 'dart:math';
 
 import 'package:json_annotation/json_annotation.dart';
-
-import 'package:telkom_career/data/model/profile/profile_remote_response/ability_remote_response/ability_data_response.dart';
 import 'package:telkom_career/data/model/profile/profile_remote_response/education_remote_response/education_data_response.dart';
-import 'package:telkom_career/data/model/profile/profile_remote_response/language_remote_response/language_data_reponse.dart';
 import 'package:telkom_career/data/model/profile/profile_remote_response/work_experience_remote_response/work_experience_data_response.dart';
 import 'package:telkom_career/domain/model/data/profile/profile_data.dart';
 
@@ -21,8 +18,8 @@ class ProfileDataRemoteResponse implements ProfileDataRemoteResponseMapper {
   String? phoneNumber;
   List<WorkExperienceDataResponse>? workExperience;
   List<EducationDataResponse>? education;
-  List<AbilityDataResponse>? ability;
-  List<LanguageDataResponse>? language;
+  List<String>? ability;
+  List<String>? language;
   String? cvResume;
   String? portofolio;
   String? urlPortofolio;
@@ -63,8 +60,10 @@ class ProfileDataRemoteResponse implements ProfileDataRemoteResponseMapper {
       workExperience:
           workExperience?.map((e) => e.toWorkExperienceData()).toList(),
       education: education?.map((e) => e.toEducationData()).toList(),
-      ability: ability?.map((e) => e.toAbilityData()).toList(),
-      language: language?.map((e) => e.toLanguageData()).toList(),
+      //ability: ability?.map((e) => e.toAbilityData()).toList(),
+      //language: language?.map((e) => e.toLanguageData()).toList(),
+      ability: ability,
+      language: language,
       cvResume: cvResume,
       portofolio: portofolio,
       urlPortofolio: urlPortofolio,

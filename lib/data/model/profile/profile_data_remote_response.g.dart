@@ -23,11 +23,10 @@ ProfileDataRemoteResponse _$ProfileDataRemoteResponseFromJson(
           ?.map(
               (e) => EducationDataResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
-      ability: (json['ability'] as List<dynamic>?)
-          ?.map((e) => AbilityDataResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      ability:
+          (json['ability'] as List<dynamic>?)?.map((e) => e as String).toList(),
       language: (json['language'] as List<dynamic>?)
-          ?.map((e) => LanguageDataResponse.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => e as String)
           .toList(),
       cvResume: json['cvResume'] as String?,
       portofolio: json['portofolio'] as String?,

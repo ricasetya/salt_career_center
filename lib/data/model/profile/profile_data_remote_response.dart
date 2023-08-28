@@ -7,12 +7,7 @@ import 'package:telkom_career/data/model/profile/profile_remote_response/ability
 import 'package:telkom_career/data/model/profile/profile_remote_response/education_remote_response/education_data_response.dart';
 import 'package:telkom_career/data/model/profile/profile_remote_response/language_remote_response/language_data_reponse.dart';
 import 'package:telkom_career/data/model/profile/profile_remote_response/work_experience_remote_response/work_experience_data_response.dart';
-
-//import 'package:telkom_career/domain/model/data/profile/ability_data.dart';
-// import 'package:telkom_career/domain/model/data/profile/education_data.dart';
-// import 'package:telkom_career/domain/model/data/profile/language_data.dart';
 import 'package:telkom_career/domain/model/data/profile/profile_data.dart';
-//import 'package:telkom_career/domain/model/data/profile/work_experience_data.dart';
 
 part 'profile_data_remote_response.g.dart';
 

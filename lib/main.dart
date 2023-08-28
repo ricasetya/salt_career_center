@@ -21,11 +21,11 @@ import 'package:telkom_career/presentation/pages/forget_password/cubit/forget_pa
 import 'package:telkom_career/presentation/pages/forget_password/cubit/forget_password_update_cubit.dart';
 import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
 import 'package:telkom_career/presentation/pages/login_moc/cubit/loginmoc_cubit.dart';
-import 'package:telkom_career/presentation/pages/profile/cubit/profile_change_password_cubit.dart';
-import 'package:telkom_career/presentation/pages/profile/cubit/profile_data_cubit.dart';
-import 'package:telkom_career/presentation/pages/profile/cubit/profile_edit_profile_cubit.dart';
-import 'package:telkom_career/presentation/pages/profile/cubit/profile_update_ability_cubit.dart';
-import 'package:telkom_career/presentation/pages/profile/cubit/profile_update_language_cubit.dart';
+import 'package:telkom_career/presentation/pages/profile/cubit/profile_change_password/profile_change_password_cubit.dart';
+import 'package:telkom_career/presentation/pages/profile/cubit/profile_data/profile_data_cubit.dart';
+import 'package:telkom_career/presentation/pages/profile/cubit/profile_edit_profile/profile_edit_profile_cubit.dart';
+import 'package:telkom_career/presentation/pages/profile/cubit/profile_update_ability/profile_update_ability_cubit.dart';
+import 'package:telkom_career/presentation/pages/profile/cubit/profile_update_language/profile_update_language_cubit.dart';
 import 'package:telkom_career/presentation/pages/register/cubit/register_cubit.dart';
 import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 

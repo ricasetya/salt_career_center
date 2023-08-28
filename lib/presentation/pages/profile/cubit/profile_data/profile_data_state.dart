@@ -16,9 +16,9 @@ class ProfileDataIsEmpty extends ProfileDataState {}
 
 class ProfileDataIsSuccess extends ProfileDataState {
   ProfileData data;
-  ProfileDataIsSuccess({
-    required this.data,
-  });
+  ProfileDataIsSuccess(
+    this.data,
+  );
 }
 
 class ProfileDataIsError extends ProfileDataState {

@@ -18,14 +18,13 @@ class ProfileDataCubit extends Cubit<ProfileDataState> {
 
   Future<void> fetchProfileData() async {
     emit(ProfileDataIsLoading());
-    final token = await Commons().getUid;
+    final token = await Commons().getUid();
     print("TOKEN idProfileData = ${token}");
 
-    final response = await repository.fetchProfileData(
-      AuthenticationHeaderRequest(""),
-    );
+    final response =
+        await repository.fetchProfileData(AuthenticationHeaderRequest(token));
     if (response is ResultSuccess) {
-      emit(ProfileDataIsSuccess(data: (response as ResultSuccess).data));
+      emit(ProfileDataIsSuccess((response as ResultSuccess).data));
       //final token = await Commons().getUid;
       print("Data Profile Succes");
     } else {

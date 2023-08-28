@@ -20,6 +20,9 @@ class ProfileDataRepositoryImpl implements ProfileDataRepository {
       final response = await profileDataRemoteService.fetchProfileData(header);
       print("STATUS PROFILE DATA : ${response.statusCode}");
       if (response.statusCode == 200 || response.statusCode == 201) {
+        // final Map<String, dynamic> responseBody =
+        //     jsonDecode(response.body) as Map<String, dynamic>;
+
         BaseRemoteResponseMoc<ProfileDataRemoteResponse> baseProfileData =
             BaseRemoteResponseMoc<ProfileDataRemoteResponse>.fromJson(
           jsonDecode(response.body),
@@ -37,7 +40,7 @@ class ProfileDataRepositoryImpl implements ProfileDataRepository {
         }
       } else {
         return ResultError(message: response.toString());
-        //return ResultError(message: "ERROR NOT NULL");
+        //print("Eroor ${response.body}");
       }
     } catch (error) {
       return ResultError(message: error.toString());

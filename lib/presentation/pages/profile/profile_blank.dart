@@ -701,7 +701,7 @@ class _ProfileBlankState extends State<ProfileBlank> {
   }
 }
 
-// ignore_for_file: non_constant_identifier_names, deprecated_member_use, unused_local_variable, avoid_print, unused_element, no_leading_underscores_for_local_identifiers
+// // ignore_for_file: non_constant_identifier_names, deprecated_member_use, unused_local_variable, avoid_print, unused_element, no_leading_underscores_for_local_identifiers
 
 // part of '../pages.dart';
 
@@ -867,479 +867,500 @@ class _ProfileBlankState extends State<ProfileBlank> {
 //           child: Stack(
 //             children: <Widget>[
 //               BlocBuilder<ProfileDataCubit, ProfileDataState>(
-//                   builder: (context, profileDataState) {
-//                 if (profileDataState is ProfileDataIsSuccess) {
-//                   final data = profileDataState.data;
-//                   print(profileDataState.data);
-//                   return Column(
-//                     mainAxisAlignment: MainAxisAlignment.center,
-//                     children: [
-//                       SizedBox(
-//                         height: height * 0.25,
-//                         child: Container(
-//                           margin: const EdgeInsets.only(top: 10),
-//                           color: const Color.fromRGBO(255, 255, 255, 1),
-//                           alignment: Alignment.center,
-//                           child: Column(
-//                             children: [
-//                               Container(
-//                                 margin: const EdgeInsets.only(top: 16),
-//                                 child: InkWell(
-//                                     onTap: () {
-//                                       _showSelectPhotoOptions(context);
-//                                       setState(() {});
-//                                     },
-//                                     child: _imageFile == null
-//                                         ? const CircleAvatar(
-//                                             backgroundImage: AssetImage(
-//                                                 "assets/images/avatar.png"),
-//                                           )
-//                                         : CircleAvatar(
-//                                             backgroundImage: FileImage(
-//                                                 File(_imageFile!.path)),
-//                                           )),
-//                               ),
-//                               Container(
-//                                 margin: const EdgeInsets.only(top: 8),
-//                                 child: Text(
-//                                   "${profileDataState.data.name}",
-//                                   style: const TextStyle(
-//                                     fontFamily: 'inter_semibold',
-//                                     fontSize: 14,
-//                                     fontWeight: FontWeight.w600,
-//                                     color: Color(0xff333333),
-//                                   ),
-//                                 ),
-//                               ),
-//                               Container(
-//                                 margin: const EdgeInsets.only(top: 0),
-//                                 child: const Text(
-//                                   "---",
-//                                   style: TextStyle(
-//                                     fontFamily: 'inter_semibold',
-//                                     fontSize: 14,
-//                                     fontWeight: FontWeight.w600,
-//                                     color: Color(0xff333333),
-//                                   ),
-//                                 ),
-//                               ),
-//                               Container(
-//                                 margin: const EdgeInsets.only(top: 8),
-//                                 child: Text(
-//                                   "${profileDataState.data.email}",
-//                                   style: const TextStyle(
-//                                     fontFamily: 'inter_regular',
-//                                     fontSize: 12,
-//                                     fontWeight: FontWeight.w400,
-//                                     color: Color(0xff333333),
-//                                   ),
-//                                 ),
-//                               ),
-//                               Container(
-//                                 margin: const EdgeInsets.only(top: 0),
-//                                 child: const Text(
-//                                   "---",
-//                                   style: TextStyle(
-//                                     fontFamily: 'inter_semibold',
-//                                     fontSize: 14,
-//                                     fontWeight: FontWeight.w600,
-//                                     color: Color(0xff333333),
-//                                   ),
-//                                 ),
-//                               ),
-//                               Container(
-//                                 margin: const EdgeInsets.only(top: 8),
-//                                 child: InkWell(
-//                                   onTap: () =>
-//                                       context.go('/profileEditProfile'),
-//                                   child: const Text(
-//                                     "Sunting Profil",
-//                                     style: TextStyle(
-//                                       fontFamily: 'inter_semibold',
-//                                       fontSize: 14,
-//                                       fontWeight: FontWeight.w600,
-//                                       color: Color(0xffEA232A),
+//                 builder: (context, profileDataState) {
+//                   if (profileDataState is ProfileDataIsSuccess) {
+//                     final data = profileDataState.data;
+//                     print(profileDataState.data);
+//                     return BlocBuilder<ProfileDataCubit, ProfileDataState>(
+//                         builder: (context, profileDataState) {
+//                       if (profileDataState is ProfileDataIsSuccess) {
+//                         return Column(
+//                           mainAxisAlignment: MainAxisAlignment.center,
+//                           children: [
+//                             SizedBox(
+//                               height: height * 0.25,
+//                               child: Container(
+//                                 margin: const EdgeInsets.only(top: 10),
+//                                 color: const Color.fromRGBO(255, 255, 255, 1),
+//                                 alignment: Alignment.center,
+//                                 child: Column(
+//                                   children: [
+//                                     Container(
+//                                       margin: const EdgeInsets.only(top: 16),
+//                                       child: InkWell(
+//                                           onTap: () {
+//                                             _showSelectPhotoOptions(context);
+//                                             setState(() {});
+//                                           },
+//                                           child: _imageFile == null
+//                                               ? const CircleAvatar(
+//                                                   backgroundImage: AssetImage(
+//                                                       "assets/images/avatar.png"),
+//                                                 )
+//                                               : CircleAvatar(
+//                                                   backgroundImage: FileImage(
+//                                                       File(_imageFile!.path)),
+//                                                 )),
 //                                     ),
-//                                   ),
-//                                 ),
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ),
-//                       SizedBox(
-//                         height: height * 0.1,
-//                         child: Container(
-//                           margin: const EdgeInsets.only(top: 16),
-//                           color: const Color.fromRGBO(255, 255, 255, 1),
-//                           child: Column(
-//                             children: [
-//                               Row(
-//                                 mainAxisAlignment:
-//                                     MainAxisAlignment.spaceBetween,
-//                                 children: [
-//                                   Container(
-//                                     margin:
-//                                         const EdgeInsets.only(left: 16, top: 8),
-//                                     alignment: Alignment.topLeft,
-//                                     child: const Text(
-//                                       "Pengalaman Kerja",
-//                                       style: TextStyle(
-//                                         fontFamily: "inter_semibold",
-//                                         fontSize: 14,
-//                                         fontWeight: FontWeight.w600,
-//                                         color: Color(0xff333333),
+//                                     Container(
+//                                       margin: const EdgeInsets.only(top: 8),
+//                                       child: Text(
+//                                         "${profileDataState.data.name}",
+//                                         style: const TextStyle(
+//                                           fontFamily: 'inter_semibold',
+//                                           fontSize: 14,
+//                                           fontWeight: FontWeight.w600,
+//                                           color: Color(0xff333333),
+//                                         ),
 //                                       ),
 //                                     ),
-//                                   ),
-//                                   Container(
-//                                     alignment: Alignment.topRight,
-//                                     margin: const EdgeInsets.only(
-//                                         top: 8, right: 15),
-//                                     child: InkWell(
-//                                       onTap: () => context.go('/experience'),
+//                                     Container(
+//                                       margin: const EdgeInsets.only(top: 0),
 //                                       child: const Text(
-//                                         "Tambah",
-//                                         textAlign: TextAlign.end,
+//                                         "---",
+//                                         style: TextStyle(
+//                                           fontFamily: 'inter_semibold',
+//                                           fontSize: 14,
+//                                           fontWeight: FontWeight.w600,
+//                                           color: Color(0xff333333),
+//                                         ),
+//                                       ),
+//                                     ),
+//                                     Container(
+//                                       margin: const EdgeInsets.only(top: 8),
+//                                       child: Text(
+//                                         "${profileDataState.data.email}",
+//                                         style: const TextStyle(
+//                                           fontFamily: 'inter_regular',
+//                                           fontSize: 12,
+//                                           fontWeight: FontWeight.w400,
+//                                           color: Color(0xff333333),
+//                                         ),
+//                                       ),
+//                                     ),
+//                                     Container(
+//                                       margin: const EdgeInsets.only(top: 0),
+//                                       child: const Text(
+//                                         "---",
+//                                         style: TextStyle(
+//                                           fontFamily: 'inter_semibold',
+//                                           fontSize: 14,
+//                                           fontWeight: FontWeight.w600,
+//                                           color: Color(0xff333333),
+//                                         ),
+//                                       ),
+//                                     ),
+//                                     Container(
+//                                       margin: const EdgeInsets.only(top: 8),
+//                                       child: InkWell(
+//                                         onTap: () =>
+//                                             context.go('/profileEditProfile'),
+//                                         child: const Text(
+//                                           "Sunting Profil",
+//                                           style: TextStyle(
+//                                             fontFamily: 'inter_semibold',
+//                                             fontSize: 14,
+//                                             fontWeight: FontWeight.w600,
+//                                             color: Color(0xffEA232A),
+//                                           ),
+//                                         ),
+//                                       ),
+//                                     ),
+//                                   ],
+//                                 ),
+//                               ),
+//                             ),
+//                             SizedBox(
+//                               height: height * 0.1,
+//                               child: Container(
+//                                 margin: const EdgeInsets.only(top: 16),
+//                                 color: const Color.fromRGBO(255, 255, 255, 1),
+//                                 child: Column(
+//                                   children: [
+//                                     Row(
+//                                       mainAxisAlignment:
+//                                           MainAxisAlignment.spaceBetween,
+//                                       children: [
+//                                         Container(
+//                                           margin: const EdgeInsets.only(
+//                                               left: 16, top: 8),
+//                                           alignment: Alignment.topLeft,
+//                                           child: const Text(
+//                                             "Pengalaman Kerja",
+//                                             style: TextStyle(
+//                                               fontFamily: "inter_semibold",
+//                                               fontSize: 14,
+//                                               fontWeight: FontWeight.w600,
+//                                               color: Color(0xff333333),
+//                                             ),
+//                                           ),
+//                                         ),
+//                                         Container(
+//                                           alignment: Alignment.topRight,
+//                                           margin: const EdgeInsets.only(
+//                                               top: 8, right: 15),
+//                                           child: InkWell(
+//                                             onTap: () =>
+//                                                 context.go('/experience'),
+//                                             child: const Text(
+//                                               "Tambah",
+//                                               textAlign: TextAlign.end,
+//                                               style: TextStyle(
+//                                                 fontFamily: "inter_semibold",
+//                                                 fontSize: 12,
+//                                                 fontWeight: FontWeight.w600,
+//                                                 color: Color(0xffEA232A),
+//                                               ),
+//                                             ),
+//                                           ),
+//                                         ),
+//                                       ],
+//                                     ),
+//                                     const Divider(
+//                                       thickness: 2,
+//                                       indent: 16,
+//                                       endIndent: 16,
+//                                     ),
+//                                     Container(
+//                                       alignment: Alignment.topLeft,
+//                                       margin: const EdgeInsets.only(left: 16),
+//                                       child: const Text(
+//                                         "Belum ada data dimasukkan",
 //                                         style: TextStyle(
 //                                           fontFamily: "inter_semibold",
 //                                           fontSize: 12,
 //                                           fontWeight: FontWeight.w600,
-//                                           color: Color(0xffEA232A),
+//                                           color: Color(0xff666666),
 //                                         ),
 //                                       ),
 //                                     ),
-//                                   ),
-//                                 ],
-//                               ),
-//                               const Divider(
-//                                 thickness: 2,
-//                                 indent: 16,
-//                                 endIndent: 16,
-//                               ),
-//                               Container(
-//                                 alignment: Alignment.topLeft,
-//                                 margin: const EdgeInsets.only(left: 16),
-//                                 child: const Text(
-//                                   "Belum ada data dimasukkan",
-//                                   style: TextStyle(
-//                                     fontFamily: "inter_semibold",
-//                                     fontSize: 12,
-//                                     fontWeight: FontWeight.w600,
-//                                     color: Color(0xff666666),
-//                                   ),
+//                                   ],
 //                                 ),
 //                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ),
-//                       SizedBox(
-//                         height: height * 0.1,
-//                         child: Container(
-//                           margin: const EdgeInsets.only(top: 8),
-//                           color: const Color.fromRGBO(255, 255, 255, 1),
-//                           child: Column(
-//                             children: [
-//                               Row(
-//                                 mainAxisAlignment:
-//                                     MainAxisAlignment.spaceBetween,
-//                                 children: [
-//                                   Container(
-//                                     margin:
-//                                         const EdgeInsets.only(left: 16, top: 8),
-//                                     alignment: Alignment.topLeft,
-//                                     child: const Text(
-//                                       "Pendidikan",
-//                                       style: TextStyle(
-//                                         fontFamily: "inter_semibold",
-//                                         fontSize: 14,
-//                                         fontWeight: FontWeight.w600,
-//                                         color: Color(0xff333333),
+//                             ),
+//                             SizedBox(
+//                               height: height * 0.1,
+//                               child: Container(
+//                                 margin: const EdgeInsets.only(top: 8),
+//                                 color: const Color.fromRGBO(255, 255, 255, 1),
+//                                 child: Column(
+//                                   children: [
+//                                     Row(
+//                                       mainAxisAlignment:
+//                                           MainAxisAlignment.spaceBetween,
+//                                       children: [
+//                                         Container(
+//                                           margin: const EdgeInsets.only(
+//                                               left: 16, top: 8),
+//                                           alignment: Alignment.topLeft,
+//                                           child: const Text(
+//                                             "Pendidikan",
+//                                             style: TextStyle(
+//                                               fontFamily: "inter_semibold",
+//                                               fontSize: 14,
+//                                               fontWeight: FontWeight.w600,
+//                                               color: Color(0xff333333),
+//                                             ),
+//                                           ),
+//                                         ),
+//                                         Container(
+//                                           alignment: Alignment.topRight,
+//                                           margin: const EdgeInsets.only(
+//                                               top: 8, right: 15),
+//                                           child: const Text(
+//                                             "Tambah",
+//                                             textAlign: TextAlign.end,
+//                                             style: TextStyle(
+//                                               fontFamily: "inter_semibold",
+//                                               fontSize: 12,
+//                                               fontWeight: FontWeight.w600,
+//                                               color: Color(0xffEA232A),
+//                                             ),
+//                                           ),
+//                                         ),
+//                                       ],
+//                                     ),
+//                                     const Divider(
+//                                       thickness: 2,
+//                                       indent: 16,
+//                                       endIndent: 16,
+//                                     ),
+//                                     Container(
+//                                       alignment: Alignment.topLeft,
+//                                       margin: const EdgeInsets.only(left: 16),
+//                                       child: const Text(
+//                                         "Belum ada data dimasukkan",
+//                                         style: TextStyle(
+//                                           fontFamily: "inter_semibold",
+//                                           fontSize: 12,
+//                                           fontWeight: FontWeight.w600,
+//                                           color: Color(0xff666666),
+//                                         ),
 //                                       ),
 //                                     ),
-//                                   ),
-//                                   Container(
-//                                     alignment: Alignment.topRight,
-//                                     margin: const EdgeInsets.only(
-//                                         top: 8, right: 15),
-//                                     child: const Text(
-//                                       "Tambah",
-//                                       textAlign: TextAlign.end,
-//                                       style: TextStyle(
-//                                         fontFamily: "inter_semibold",
-//                                         fontSize: 12,
-//                                         fontWeight: FontWeight.w600,
-//                                         color: Color(0xffEA232A),
-//                                       ),
-//                                     ),
-//                                   ),
-//                                 ],
-//                               ),
-//                               const Divider(
-//                                 thickness: 2,
-//                                 indent: 16,
-//                                 endIndent: 16,
-//                               ),
-//                               Container(
-//                                 alignment: Alignment.topLeft,
-//                                 margin: const EdgeInsets.only(left: 16),
-//                                 child: const Text(
-//                                   "Belum ada data dimasukkan",
-//                                   style: TextStyle(
-//                                     fontFamily: "inter_semibold",
-//                                     fontSize: 12,
-//                                     fontWeight: FontWeight.w600,
-//                                     color: Color(0xff666666),
-//                                   ),
+//                                   ],
 //                                 ),
 //                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ),
-//                       SizedBox(
-//                         height: height * 0.1,
-//                         child: Container(
-//                           margin: const EdgeInsets.only(top: 8),
-//                           color: const Color.fromRGBO(255, 255, 255, 1),
-//                           child: Column(
-//                             children: [
-//                               Container(
-//                                 alignment: Alignment.topLeft,
-//                                 margin: const EdgeInsets.only(left: 16, top: 8),
-//                                 child: const Text(
-//                                   "Kemampuan",
-//                                   style: TextStyle(
-//                                     fontFamily: "inter_semibold",
-//                                     fontSize: 14,
-//                                     fontWeight: FontWeight.w600,
-//                                     color: Color(0xff333333),
-//                                   ),
+//                             ),
+//                             SizedBox(
+//                               height: height * 0.1,
+//                               child: Container(
+//                                 margin: const EdgeInsets.only(top: 8),
+//                                 color: const Color.fromRGBO(255, 255, 255, 1),
+//                                 child: Column(
+//                                   children: [
+//                                     Container(
+//                                       alignment: Alignment.topLeft,
+//                                       margin: const EdgeInsets.only(
+//                                           left: 16, top: 8),
+//                                       child: const Text(
+//                                         "Kemampuan",
+//                                         style: TextStyle(
+//                                           fontFamily: "inter_semibold",
+//                                           fontSize: 14,
+//                                           fontWeight: FontWeight.w600,
+//                                           color: Color(0xff333333),
+//                                         ),
+//                                       ),
+//                                     ),
+//                                     const Divider(
+//                                       thickness: 2,
+//                                       indent: 16,
+//                                       endIndent: 16,
+//                                     ),
+//                                     Row(
+//                                       mainAxisAlignment:
+//                                           MainAxisAlignment.spaceBetween,
+//                                       children: [
+//                                         Container(
+//                                           margin:
+//                                               const EdgeInsets.only(left: 16),
+//                                           alignment: Alignment.topLeft,
+//                                           child: const Text(
+//                                             "Belum ada data dimasukkan",
+//                                             style: TextStyle(
+//                                               fontFamily: "inter_semibold",
+//                                               fontSize: 12,
+//                                               fontWeight: FontWeight.w600,
+//                                               color: Color(0xff666666),
+//                                             ),
+//                                           ),
+//                                         ),
+//                                         Container(
+//                                           alignment: Alignment.topRight,
+//                                           margin:
+//                                               const EdgeInsets.only(right: 15),
+//                                           child: InkWell(
+//                                             onTap: () => context
+//                                                 .go('/profileinputability'),
+//                                             child: Image.asset(
+//                                               'assets/icons/icon_edit.png',
+//                                               color: const Color(0xff999999),
+//                                             ),
+//                                           ),
+//                                         ),
+//                                       ],
+//                                     ),
+//                                   ],
 //                                 ),
 //                               ),
-//                               const Divider(
-//                                 thickness: 2,
-//                                 indent: 16,
-//                                 endIndent: 16,
-//                               ),
-//                               Row(
-//                                 mainAxisAlignment:
-//                                     MainAxisAlignment.spaceBetween,
-//                                 children: [
-//                                   Container(
-//                                     margin: const EdgeInsets.only(left: 16),
-//                                     alignment: Alignment.topLeft,
-//                                     child: const Text(
-//                                       "Belum ada data dimasukkan",
-//                                       style: TextStyle(
-//                                         fontFamily: "inter_semibold",
-//                                         fontSize: 12,
-//                                         fontWeight: FontWeight.w600,
-//                                         color: Color(0xff666666),
+//                             ),
+//                             SizedBox(
+//                               height: height * 0.1,
+//                               child: Container(
+//                                 margin: const EdgeInsets.only(top: 8),
+//                                 color: const Color.fromRGBO(255, 255, 255, 1),
+//                                 child: Column(
+//                                   children: [
+//                                     Container(
+//                                       alignment: Alignment.topLeft,
+//                                       margin: const EdgeInsets.only(
+//                                           left: 16, top: 8),
+//                                       child: const Text(
+//                                         "Bahasa",
+//                                         style: TextStyle(
+//                                           fontFamily: "inter_semibold",
+//                                           fontSize: 14,
+//                                           fontWeight: FontWeight.w600,
+//                                           color: Color(0xff333333),
+//                                         ),
 //                                       ),
 //                                     ),
-//                                   ),
-//                                   Container(
-//                                     alignment: Alignment.topRight,
-//                                     margin: const EdgeInsets.only(right: 15),
-//                                     child: InkWell(
-//                                       onTap: () =>
-//                                           context.go('/profileinputability'),
-//                                       child: Image.asset(
-//                                         'assets/icons/icon_edit.png',
-//                                         color: const Color(0xff999999),
-//                                       ),
+//                                     const Divider(
+//                                       thickness: 2,
+//                                       indent: 16,
+//                                       endIndent: 16,
 //                                     ),
-//                                   ),
-//                                 ],
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ),
-//                       SizedBox(
-//                         height: height * 0.1,
-//                         child: Container(
-//                           margin: const EdgeInsets.only(top: 8),
-//                           color: const Color.fromRGBO(255, 255, 255, 1),
-//                           child: Column(
-//                             children: [
-//                               Container(
-//                                 alignment: Alignment.topLeft,
-//                                 margin: const EdgeInsets.only(left: 16, top: 8),
-//                                 child: const Text(
-//                                   "Bahasa",
-//                                   style: TextStyle(
-//                                     fontFamily: "inter_semibold",
-//                                     fontSize: 14,
-//                                     fontWeight: FontWeight.w600,
-//                                     color: Color(0xff333333),
-//                                   ),
+//                                     Row(
+//                                       mainAxisAlignment:
+//                                           MainAxisAlignment.spaceBetween,
+//                                       children: [
+//                                         Container(
+//                                           margin:
+//                                               const EdgeInsets.only(left: 16),
+//                                           alignment: Alignment.topLeft,
+//                                           child: const Text(
+//                                             "Belum ada data dimasukkan",
+//                                             style: TextStyle(
+//                                               fontFamily: "inter_semibold",
+//                                               fontSize: 12,
+//                                               fontWeight: FontWeight.w600,
+//                                               color: Color(0xff666666),
+//                                             ),
+//                                           ),
+//                                         ),
+//                                         Container(
+//                                           alignment: Alignment.topRight,
+//                                           margin:
+//                                               const EdgeInsets.only(right: 15),
+//                                           child: InkWell(
+//                                             onTap: () => context
+//                                                 .go('/profileinputlanguage'),
+//                                             child: Image.asset(
+//                                               'assets/icons/icon_edit.png',
+//                                               color: const Color(0xff999999),
+//                                             ),
+//                                           ),
+//                                         ),
+//                                       ],
+//                                     ),
+//                                   ],
 //                                 ),
 //                               ),
-//                               const Divider(
-//                                 thickness: 2,
-//                                 indent: 16,
-//                                 endIndent: 16,
-//                               ),
-//                               Row(
-//                                 mainAxisAlignment:
-//                                     MainAxisAlignment.spaceBetween,
-//                                 children: [
-//                                   Container(
-//                                     margin: const EdgeInsets.only(left: 16),
-//                                     alignment: Alignment.topLeft,
-//                                     child: const Text(
-//                                       "Belum ada data dimasukkan",
-//                                       style: TextStyle(
-//                                         fontFamily: "inter_semibold",
-//                                         fontSize: 12,
-//                                         fontWeight: FontWeight.w600,
-//                                         color: Color(0xff666666),
+//                             ),
+//                             SizedBox(
+//                               height: height * 0.1,
+//                               child: Container(
+//                                 margin: const EdgeInsets.only(top: 8),
+//                                 color: const Color.fromRGBO(255, 255, 255, 1),
+//                                 child: Column(
+//                                   children: [
+//                                     Container(
+//                                       alignment: Alignment.topLeft,
+//                                       margin: const EdgeInsets.only(
+//                                           left: 16, top: 8),
+//                                       child: const Text(
+//                                         "CV/Resume",
+//                                         style: TextStyle(
+//                                           fontFamily: "inter_semibold",
+//                                           fontSize: 14,
+//                                           fontWeight: FontWeight.w600,
+//                                           color: Color(0xff333333),
+//                                         ),
 //                                       ),
 //                                     ),
-//                                   ),
-//                                   Container(
-//                                     alignment: Alignment.topRight,
-//                                     margin: const EdgeInsets.only(right: 15),
-//                                     child: InkWell(
-//                                       onTap: () =>
-//                                           context.go('/profileinputlanguage'),
-//                                       child: Image.asset(
-//                                         'assets/icons/icon_edit.png',
-//                                         color: const Color(0xff999999),
-//                                       ),
+//                                     const Divider(
+//                                       thickness: 2,
+//                                       indent: 16,
+//                                       endIndent: 16,
 //                                     ),
-//                                   ),
-//                                 ],
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ),
-//                       SizedBox(
-//                         height: height * 0.1,
-//                         child: Container(
-//                           margin: const EdgeInsets.only(top: 8),
-//                           color: const Color.fromRGBO(255, 255, 255, 1),
-//                           child: Column(
-//                             children: [
-//                               Container(
-//                                 alignment: Alignment.topLeft,
-//                                 margin: const EdgeInsets.only(left: 16, top: 8),
-//                                 child: const Text(
-//                                   "CV/Resume",
-//                                   style: TextStyle(
-//                                     fontFamily: "inter_semibold",
-//                                     fontSize: 14,
-//                                     fontWeight: FontWeight.w600,
-//                                     color: Color(0xff333333),
-//                                   ),
+//                                     Row(
+//                                       mainAxisAlignment:
+//                                           MainAxisAlignment.spaceBetween,
+//                                       children: [
+//                                         Container(
+//                                           margin:
+//                                               const EdgeInsets.only(left: 16),
+//                                           alignment: Alignment.topLeft,
+//                                           child: const Text(
+//                                             "Belum ada data dimasukkan",
+//                                             style: TextStyle(
+//                                               fontFamily: "inter_semibold",
+//                                               fontSize: 12,
+//                                               fontWeight: FontWeight.w600,
+//                                               color: Color(0xff666666),
+//                                             ),
+//                                           ),
+//                                         ),
+//                                         Container(
+//                                           alignment: Alignment.topRight,
+//                                           margin:
+//                                               const EdgeInsets.only(right: 15),
+//                                           child: InkWell(
+//                                             child: Image.asset(
+//                                               'assets/icons/icon_edit.png',
+//                                               color: const Color(0xff999999),
+//                                             ),
+//                                           ),
+//                                         ),
+//                                       ],
+//                                     ),
+//                                   ],
 //                                 ),
 //                               ),
-//                               const Divider(
-//                                 thickness: 2,
-//                                 indent: 16,
-//                                 endIndent: 16,
-//                               ),
-//                               Row(
-//                                 mainAxisAlignment:
-//                                     MainAxisAlignment.spaceBetween,
-//                                 children: [
-//                                   Container(
-//                                     margin: const EdgeInsets.only(left: 16),
-//                                     alignment: Alignment.topLeft,
-//                                     child: const Text(
-//                                       "Belum ada data dimasukkan",
-//                                       style: TextStyle(
-//                                         fontFamily: "inter_semibold",
-//                                         fontSize: 12,
-//                                         fontWeight: FontWeight.w600,
-//                                         color: Color(0xff666666),
+//                             ),
+//                             SizedBox(
+//                               height: height * 0.1,
+//                               child: Container(
+//                                 margin: const EdgeInsets.only(top: 8),
+//                                 color: const Color.fromRGBO(255, 255, 255, 1),
+//                                 child: Column(
+//                                   children: [
+//                                     Container(
+//                                       alignment: Alignment.topLeft,
+//                                       margin: const EdgeInsets.only(
+//                                           left: 16, top: 8),
+//                                       child: const Text(
+//                                         "Portofolio",
+//                                         style: TextStyle(
+//                                           fontFamily: "inter_semibold",
+//                                           fontSize: 14,
+//                                           fontWeight: FontWeight.w600,
+//                                           color: Color(0xff333333),
+//                                         ),
 //                                       ),
 //                                     ),
-//                                   ),
-//                                   Container(
-//                                     alignment: Alignment.topRight,
-//                                     margin: const EdgeInsets.only(right: 15),
-//                                     child: InkWell(
-//                                       child: Image.asset(
-//                                         'assets/icons/icon_edit.png',
-//                                         color: const Color(0xff999999),
-//                                       ),
+//                                     const Divider(
+//                                       thickness: 2,
+//                                       indent: 16,
+//                                       endIndent: 16,
 //                                     ),
-//                                   ),
-//                                 ],
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ),
-//                       SizedBox(
-//                         height: height * 0.1,
-//                         child: Container(
-//                           margin: const EdgeInsets.only(top: 8),
-//                           color: const Color.fromRGBO(255, 255, 255, 1),
-//                           child: Column(
-//                             children: [
-//                               Container(
-//                                 alignment: Alignment.topLeft,
-//                                 margin: const EdgeInsets.only(left: 16, top: 8),
-//                                 child: const Text(
-//                                   "Portofolio",
-//                                   style: TextStyle(
-//                                     fontFamily: "inter_semibold",
-//                                     fontSize: 14,
-//                                     fontWeight: FontWeight.w600,
-//                                     color: Color(0xff333333),
-//                                   ),
+//                                     Row(
+//                                       mainAxisAlignment:
+//                                           MainAxisAlignment.spaceBetween,
+//                                       children: [
+//                                         Container(
+//                                           margin:
+//                                               const EdgeInsets.only(left: 16),
+//                                           alignment: Alignment.topLeft,
+//                                           child: const Text(
+//                                             "Belum ada data dimasukkan",
+//                                             style: TextStyle(
+//                                               fontFamily: "inter_semibold",
+//                                               fontSize: 12,
+//                                               fontWeight: FontWeight.w600,
+//                                               color: Color(0xff666666),
+//                                             ),
+//                                           ),
+//                                         ),
+//                                         Container(
+//                                           alignment: Alignment.topRight,
+//                                           margin:
+//                                               const EdgeInsets.only(right: 15),
+//                                           child: InkWell(
+//                                             child: Image.asset(
+//                                               'assets/icons/icon_edit.png',
+//                                               color: const Color(0xff999999),
+//                                             ),
+//                                           ),
+//                                         ),
+//                                       ],
+//                                     ),
+//                                   ],
 //                                 ),
 //                               ),
-//                               const Divider(
-//                                 thickness: 2,
-//                                 indent: 16,
-//                                 endIndent: 16,
-//                               ),
-//                               Row(
-//                                 mainAxisAlignment:
-//                                     MainAxisAlignment.spaceBetween,
-//                                 children: [
-//                                   Container(
-//                                     margin: const EdgeInsets.only(left: 16),
-//                                     alignment: Alignment.topLeft,
-//                                     child: const Text(
-//                                       "Belum ada data dimasukkan",
-//                                       style: TextStyle(
-//                                         fontFamily: "inter_semibold",
-//                                         fontSize: 12,
-//                                         fontWeight: FontWeight.w600,
-//                                         color: Color(0xff666666),
-//                                       ),
-//                                     ),
-//                                   ),
-//                                   Container(
-//                                     alignment: Alignment.topRight,
-//                                     margin: const EdgeInsets.only(right: 15),
-//                                     child: InkWell(
-//                                       child: Image.asset(
-//                                         'assets/icons/icon_edit.png',
-//                                         color: const Color(0xff999999),
-//                                       ),
-//                                     ),
-//                                   ),
-//                                 ],
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ),
-//                     ],
-//                   );
-//                 } else {
-//                   return Container();
-//                 }
-//               }),
+//                             ),
+//                           ],
+//                         );
+//                       } else if (profileDataState is ProfileDataIsError) {
+//                         print(profileDataState.message);
+//                       }
+//                       return "".text.make();
+//                     });
+//                   }
+//                   return "".text.make();
+//                 },
+//               ),
 //             ],
 //           ),
 //         ),

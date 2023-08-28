@@ -2,10 +2,9 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:telkom_career/domain/base/authentication_header_request.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
-import 'package:telkom_career/presentation/pages/profile/cubit/profile_data_cubit.dart';
+import 'package:telkom_career/presentation/pages/profile/cubit/profile_data/profile_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 import '../pages/pages.dart';
 import 'Routes.dart';

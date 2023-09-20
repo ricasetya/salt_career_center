@@ -1,9 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: avoid_print, unused_field
 
 part of '../pages.dart';
 
 class ProfileEditProfile extends StatefulWidget {
-  const ProfileEditProfile({super.key});
+  final ProfileEditProfileData userData;
+  const ProfileEditProfile({
+    Key? key,
+    required this.userData,
+  }) : super(key: key);
 
   @override
   State<ProfileEditProfile> createState() => _ProfileEditProfileState();
@@ -11,7 +16,7 @@ class ProfileEditProfile extends StatefulWidget {
 
 class _ProfileEditProfileState extends State<ProfileEditProfile> {
   bool isAgree = false;
-  late ProfileEditProfileCubit _profileEditProfileCubit;
+  //late ProfileEditProfileCubit _profileEditProfileCubit;
 
   final TextEditingController _name = TextEditingController();
   final TextEditingController _title = TextEditingController();
@@ -21,17 +26,24 @@ class _ProfileEditProfileState extends State<ProfileEditProfile> {
 
   @override
   void initState() {
+    _name.text = widget.userData.name;
+    _title.text = widget.userData.skill;
+    _nomorPonsel.text = widget.userData.phoneNumber;
     super.initState();
-    _profileEditProfileCubit =
-        ProfileEditProfileCubit(ProfileEditProfileRepositoryImpl());
+
+    // _profileEditProfileCubit =
+    //     ProfileEditProfileCubit(ProfileEditProfileRepositoryImpl());
   }
 
   @override
   void dispose() {
-    _name;
-    _title;
-    _nomorPonsel;
-    _profileEditProfileCubit.close();
+    // _name;
+    // _title;
+    // _nomorPonsel;
+    _name.text = widget.userData.name;
+    _title.text = widget.userData.skill;
+    _nomorPonsel.text = widget.userData.phoneNumber;
+    //_profileEditProfileCubit.close();
     super.dispose();
   }
 
@@ -113,7 +125,7 @@ class _ProfileEditProfileState extends State<ProfileEditProfile> {
                           color: Color(0xff333333),
                         ),
                         decoration: InputDecoration(
-                          hintText: "Nama",
+                          hintText: _name.text,
                           focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0xff333333),
@@ -154,7 +166,7 @@ class _ProfileEditProfileState extends State<ProfileEditProfile> {
                           color: Color(0xff333333),
                         ),
                         decoration: InputDecoration(
-                          hintText: "Title/Posisi",
+                          hintText: _title.text,
                           focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0xff666666),
@@ -195,7 +207,7 @@ class _ProfileEditProfileState extends State<ProfileEditProfile> {
                           color: Color(0xff333333),
                         ),
                         decoration: InputDecoration(
-                          hintText: "Nomor Ponsel",
+                          hintText: _nomorPonsel.text,
                           focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Color(0xff666666),

@@ -22,7 +22,7 @@ abstract class BaseConfig {
   static const String PROFILE_DATA = "/profile";
   static const String LISTS_COMPANY = "/list-company";
   static const String CHANGE_PASSWORD = "/change/password";
-  static const String UPDATE_PHOTO = "/profile/1/update-photo";
+  static const String UPDATE_PHOTO = "/profile/update-photo";
   static const String UPDATE_PROFILE = "/profile/update-profile";
   static const String UPDATE_ABILITY = "/profile/update-ability";
   static const String UPDATE_LANGUAGE = "/profile/update-language";

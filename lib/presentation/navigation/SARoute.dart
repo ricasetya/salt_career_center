@@ -2,6 +2,7 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:telkom_career/domain/model/data/profile/profile_edit_profile_data.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_data/profile_data_cubit.dart';
@@ -105,7 +106,11 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
   GoRoute(
       path: "/profileEditProfile",
       name: Routes.profileEditProfilePage,
-      builder: (context, state) => const ProfileEditProfile()),
+      builder: (context, state) //=> const ProfileEditProfile(),
+          {
+        final userData = state.extra as ProfileEditProfileData;
+        return ProfileEditProfile(userData: userData);
+      }),
   GoRoute(
       path: "/profileinputability",
       name: Routes.profileinputabilityPage,

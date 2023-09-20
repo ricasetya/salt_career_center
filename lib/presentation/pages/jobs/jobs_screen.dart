@@ -185,7 +185,7 @@ class _JobsScreenState extends State<JobsScreen> {
         BlocBuilder<ListJobCubit, ListJobState>(
           builder: (context, pekerjaanState) {
             if (pekerjaanState is ListJobIsSucces) {
-              print("build ListJob");
+              print("build Jobs");
               pekerjaanState.data.forEach((element) {
                 print(element.company);
               });

@@ -16,23 +16,32 @@ class _ProfileBlankState extends State<ProfileBlank> {
   //final _formKey = GlobalKey<FormState>();
   late int _bottomNavCurrentIndext = 0;
   File? photo;
-  String _urlImage = '';
+  String urlPhoto = '';
   late ProfileDataCubit _profileDataCubit;
+  bool _isLoading = false;
+
+  Future<void> _uploadImage() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    await BlocProvider.of<UpdatePhotoCubit>(context)
+        .fetchProfileUpdatePhoto(photo!);
+
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   Future<void> ChoiceImageCamera() async {
-    final ImagePicker _picker = ImagePicker();
-    final pickedFile = await _picker.getImage(source: ImageSource.camera);
+    final picker = ImagePicker();
+    final pickedImage = await picker.pickImage(source: ImageSource.camera);
 
-    if (pickedFile != null) {
+    if (pickedImage != null) {
       setState(
         () {
-          // BlocProvider.of<UpdatePhotoCubit>(context).fetchProfileUpdatePhoto(
-          //   ProfileUpdatePhotoRequest(
-          //     photo = File(pickedFile.path),
-          //   ),
-          // );
-          photo = File(pickedFile.path);
-          _urlImage = '';
+          photo = File(pickedImage.path);
+          urlPhoto = '';
         },
       );
     }
@@ -40,13 +49,13 @@ class _ProfileBlankState extends State<ProfileBlank> {
 
   Future<void> ChoiceImageGallery() async {
     final ImagePicker _picker = ImagePicker();
-    final pickedFile = await _picker.getImage(source: ImageSource.gallery);
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
       setState(
         () {
           photo = File(pickedFile.path);
-          _urlImage = '';
+          urlPhoto = '';
         },
       );
     }
@@ -54,7 +63,7 @@ class _ProfileBlankState extends State<ProfileBlank> {
 
   @override
   void initState() {
-    _urlImage.text;
+    urlPhoto.text;
 
     _profileDataCubit = ProfileDataCubit(ProfileDataRepositoryImpl());
     super.initState();
@@ -65,7 +74,7 @@ class _ProfileBlankState extends State<ProfileBlank> {
     _profileDataCubit.close();
     _bottomNavCurrentIndext;
     photo;
-    _urlImage;
+    urlPhoto;
 
     super.dispose();
   }
@@ -83,78 +92,146 @@ class _ProfileBlankState extends State<ProfileBlank> {
         builder: (context, scrollController) {
           return SingleChildScrollView(
             controller: scrollController,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 18, top: 28),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Image.asset("assets/icons/camera.png"),
-                      const SizedBox(width: 12),
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            ChoiceImageCamera();
-                            //context.goNamed(Routes.profileinputabilityPage);
-                          });
-                          //ChoiceImage(ImageSource.camera);
-                          //context.goNamed(Routes.profileEditProfilePage);
-                        },
-                        child: const Text(
-                          "Ambil foto",
-                          style: TextStyle(
-                              fontFamily: "inter_bold",
-                              fontSize: 16,
-                              color: Color.fromRGBO(51, 51, 51, 1),
-                              fontWeight: FontWeight.w600),
+            child: BlocConsumer<UpdatePhotoCubit, UpdatePhotoState>(
+                listener: (context, state) {
+              if (state is UpdatePhotoIsSucces) {
+                context.goNamed(Routes.profileblankPage);
+              } else if (state is UpdatePhotoIsError) {
+                print("Change Photo Failed");
+              }
+            }, builder: (context, state) {
+              return Container(
+                padding: const EdgeInsets.only(left: 18, top: 28),
+                child: Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Image.asset("assets/icons/camera.png"),
+                            const SizedBox(width: 12),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  ChoiceImageCamera();
+                                  //context.goNamed(Routes.profileinputabilityPage);
+                                });
+                                //ChoiceImage(ImageSource.camera);
+                                //context.goNamed(Routes.profileEditProfilePage);
+                              },
+                              child: const Text(
+                                "Ambil foto",
+                                style: TextStyle(
+                                    fontFamily: "inter_bold",
+                                    fontSize: 16,
+                                    color: Color.fromRGBO(51, 51, 51, 1),
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 24),
-                  Row(
-                    children: [
-                      Image.asset("assets/icons/galery.png"),
-                      const SizedBox(width: 12),
-                      InkWell(
-                        onTap: () {
-                          ChoiceImageGallery();
-                        },
-                        child: const Text(
-                          "Pilih dari galeri",
-                          style: TextStyle(
-                              fontFamily: "inter_bold",
-                              fontSize: 16,
-                              color: Color.fromRGBO(51, 51, 51, 1),
-                              fontWeight: FontWeight.w600),
+                        const SizedBox(height: 24),
+                        Row(
+                          children: [
+                            Image.asset("assets/icons/galery.png"),
+                            const SizedBox(width: 12),
+                            InkWell(
+                              onTap: () {
+                                //_uploadImage();
+                                ChoiceImageGallery();
+                              },
+                              child: const Text(
+                                "Pilih dari galeri",
+                                style: TextStyle(
+                                    fontFamily: "inter_bold",
+                                    fontSize: 16,
+                                    color: Color.fromRGBO(51, 51, 51, 1),
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 24),
-                  Row(
-                    children: [
-                      Image.asset("assets/icons/trash.png"),
-                      const SizedBox(width: 12),
-                      InkWell(
-                        onTap: () {
-                          // ChoiceImage(ImageSource.camera);
-                        },
-                        child: const Text(
-                          "Hapus foto",
-                          style: TextStyle(
-                              fontFamily: "inter_bold",
-                              fontSize: 16,
-                              color: Color.fromRGBO(51, 51, 51, 1),
-                              fontWeight: FontWeight.w600),
+                        const SizedBox(height: 24),
+                        Row(
+                          children: [
+                            Image.asset("assets/icons/trash.png"),
+                            const SizedBox(width: 12),
+                            InkWell(
+                              onTap: () {
+                                _uploadImage();
+                              },
+                              child: const Text(
+                                "Simpan foto",
+                                style: TextStyle(
+                                    fontFamily: "inter_bold",
+                                    fontSize: 16,
+                                    color: Color.fromRGBO(51, 51, 51, 1),
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+                        // const SizedBox(height: 24),
+                        // Row(
+                        //   children: [
+                        //     Image.asset("assets/icons/trash.png"),
+                        //     const SizedBox(width: 12),
+                        //     InkWell(
+                        //       onTap: () {
+                        //         // ChoiceImage(ImageSource.camera);
+                        //       },
+                        //       child: const Text(
+                        //         "Hapus foto",
+                        //         style: TextStyle(
+                        //             fontFamily: "inter_bold",
+                        //             fontSize: 16,
+                        //             color: Color.fromRGBO(51, 51, 51, 1),
+                        //             fontWeight: FontWeight.w600),
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
+                      ],
+                    ),
+                    // Container(
+                    //   padding: const EdgeInsets.only(top: 24, bottom: 50),
+                    //   alignment: Alignment.center,
+                    //   child: _urlImage != ''
+                    //       ? CircleAvatar(
+                    //           backgroundImage: NetworkImage(_urlImage),
+                    //           maxRadius: 50,
+                    //         )
+                    //       : CircleAvatar(
+                    //           backgroundColor: Colors.grey,
+                    //           maxRadius: 50,
+                    //           child: photo != null
+                    //               ? CircleAvatar(
+                    //                   backgroundColor: Colors.grey,
+                    //                   maxRadius: 50,
+                    //                   backgroundImage: Image.memory(
+                    //                     photo!.readAsBytesSync(),
+                    //                   ).image,
+                    //                 )
+                    //               : Container(
+                    //                   decoration: const BoxDecoration(
+                    //                     shape: BoxShape.circle,
+                    //                     color: Colors.grey,
+                    //                   ),
+                    //                   child: Transform.scale(
+                    //                     scale: 2.0,
+                    //                     child: Image.asset(
+                    //                       "assets/images/avatar.png",
+                    //                       fit: BoxFit.cover,
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //         ),
+                    // ),
+                  ],
+                ),
+              );
+            }),
           );
         },
       ),
@@ -213,7 +290,7 @@ class _ProfileBlankState extends State<ProfileBlank> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(
-                              height: height * 0.25,
+                              height: height * 0.30,
                               child: Container(
                                 margin: const EdgeInsets.only(top: 10),
                                 color: const Color.fromRGBO(255, 255, 255, 1),
@@ -227,22 +304,76 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                           _showSelectPhotoOptions(context);
                                           setState(() {});
                                         },
-                                        child: photo != null
-                                            ? const CircleAvatar(
-                                                //maxRadius: 50,
-                                                //backgroundImage: Image.memory(photo!.readAsBytesSync().photo),
-                                                backgroundImage: AssetImage(
-                                                    "assets/images/avatar.png"),
-                                              )
-                                            : CircleAvatar(
+                                        child: photo == null
+                                            ? CircleAvatar(
                                                 backgroundImage: NetworkImage(
                                                     profileDataState
                                                         .data.urlPhoto
                                                         .toString()),
-                                                // FileImage(
-                                                //   File(_imageFile!.path),
-                                                // ),
+                                                maxRadius: 50,
+                                              )
+                                            : const CircleAvatar(
+                                                backgroundColor: Colors.grey,
+                                                maxRadius: 50,
+                                                backgroundImage: AssetImage(
+                                                    "assets/images/avatar.png"),
                                               ),
+
+                                        // CircleAvatar(
+                                        //     backgroundColor: Colors.grey,
+                                        //     maxRadius: 50,
+                                        //     child: photo == null
+                                        //         ? CircleAvatar(
+                                        //             backgroundColor:
+                                        //                 Colors.grey,
+                                        //             maxRadius: 50,
+                                        //             backgroundImage:
+                                        //                 Image.memory(
+                                        //               photo!
+                                        //                   .readAsBytesSync(),
+                                        //             ).image,
+                                        //           )
+                                        //         : const CircleAvatar(
+                                        //             backgroundColor:
+                                        //                 Colors.grey,
+                                        //             maxRadius: 50,
+                                        //             backgroundImage: AssetImage(
+                                        //                 "assets/images/avatar.png"),
+                                        //           ),
+
+                                        // Container(
+                                        //     decoration:
+                                        //         const BoxDecoration(
+                                        //       shape:
+                                        //           BoxShape.circle,
+                                        //       color: Colors.grey,
+                                        //     ),
+                                        //     child: Transform.scale(
+                                        //       //scale: 2.0,
+                                        //       child: Image.asset(
+                                        //         "assets/images/avatar.png",
+                                        //         fit: BoxFit.cover,
+                                        //       ),
+                                        //     ),
+                                        //   ),
+                                        //),
+
+                                        // photo != null
+                                        //     ? const CircleAvatar(
+                                        //         //maxRadius: 50,
+                                        //         //backgroundImage: Image.memory(photo!.readAsBytesSync().photo),
+                                        //         backgroundImage: AssetImage(
+                                        //             "assets/images/avatar.png"),
+                                        //       )
+                                        //     : CircleAvatar(
+                                        //         backgroundImage: NetworkImage(
+                                        //             profileDataState
+                                        //                 .data.urlPhoto
+                                        //                 .toString()),
+                                        //         // FileImage(
+                                        //         //   File(_imageFile!.path),
+                                        //         // ),
+                                        //       ),
                                       ),
                                     ),
                                     Container(
@@ -382,19 +513,6 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                   ),
                                   buildWorkExperience(
                                       profileDataState.data.workExperience),
-                                  // Container(
-                                  //   alignment: Alignment.topLeft,
-                                  //   margin: const EdgeInsets.only(left: 16),
-                                  //   child: const Text(
-                                  //     "Belum ada data dimasukkan",
-                                  //     style: TextStyle(
-                                  //       fontFamily: "inter_semibold",
-                                  //       fontSize: 12,
-                                  //       fontWeight: FontWeight.w600,
-                                  //       color: Color(0xff666666),
-                                  //     ),
-                                  //   ),
-                                  // ),
                                 ],
                               ),
                             ),
@@ -443,25 +561,8 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                     indent: 16,
                                     endIndent: 16,
                                   ),
-
                                   buildEducationWidget(
                                       profileDataState.data.education),
-                                  // Container(
-                                  //   alignment: Alignment.topLeft,
-                                  //   margin: const EdgeInsets.only(left: 16),
-                                  //   child: Text(
-                                  //     profileDataState.data.education == null
-                                  //         ? "Belum ada data dimasukkan"
-                                  //         : profileDataState.data.education
-                                  //             .toString(),
-                                  //     style: const TextStyle(
-                                  //       fontFamily: "inter_semibold",
-                                  //       fontSize: 12,
-                                  //       fontWeight: FontWeight.w600,
-                                  //       color: Color(0xff666666),
-                                  //     ),
-                                  //   ),
-                                  // ),
                                 ],
                               ),
                             ),
@@ -495,6 +596,7 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
+                                        //    profileDataState.data.ability),
                                         Container(
                                           margin:
                                               const EdgeInsets.only(left: 16),
@@ -785,10 +887,6 @@ class _ProfileBlankState extends State<ProfileBlank> {
                 color: const Color(0xff999999),
               ),
             ),
-            // activeIcon: Image.asset(
-            //   'assets/icons/pekerjaan.png',
-            //   color: const Color(0xffEA232A),
-            // ),
             label: 'Pekerjaan',
           ),
           BottomNavigationBarItem(
@@ -796,10 +894,6 @@ class _ProfileBlankState extends State<ProfileBlank> {
               'assets/icons/kegiatan.png',
               color: const Color(0xff999999),
             ),
-            // activeIcon: Image.asset(
-            //   'assets/icons/kegiatan.png',
-            //   color: const Color(0xffEA232A),
-            // ),
             label: 'Kegiatan',
           ),
           BottomNavigationBarItem(
@@ -807,10 +901,6 @@ class _ProfileBlankState extends State<ProfileBlank> {
               'assets/icons/notif.png',
               color: const Color(0xff999999),
             ),
-            // activeIcon: Image.asset(
-            //   'assets/icons/notif.png',
-            //   color: const Color(0xffEA232A),
-            // ),
             label: 'Notifikasi',
           ),
           BottomNavigationBarItem(
@@ -831,7 +921,22 @@ class _ProfileBlankState extends State<ProfileBlank> {
 
   Widget buildWorkExperience(List<WorkExperienceData>? profileWorkExperience) {
     if (profileWorkExperience == null || profileWorkExperience.isEmpty) {
-      return const Text("Belum ada data dimasukkan");
+      return Container(
+        margin: const EdgeInsets.only(
+          left: 16,
+          bottom: 8,
+        ),
+        alignment: Alignment.centerLeft,
+        child: const Text(
+          "Belum ada data dimasukkan",
+          style: TextStyle(
+            fontFamily: "inter_semibold",
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            color: Color(0xff666666),
+          ),
+        ),
+      );
     } else {
       return ListView.builder(
         shrinkWrap: true,
@@ -841,7 +946,7 @@ class _ProfileBlankState extends State<ProfileBlank> {
 
           return Container(
             alignment: Alignment.topLeft,
-            margin: const EdgeInsets.only(left: 16),
+            margin: const EdgeInsets.only(left: 16, bottom: 8),
             child: Text(
               workExperience.Name,
               style: const TextStyle(
@@ -859,7 +964,22 @@ class _ProfileBlankState extends State<ProfileBlank> {
 
   Widget buildEducationWidget(List<EducationData>? profileEducations) {
     if (profileEducations == null || profileEducations.isEmpty) {
-      return const Text("Belum ada data dimasukkan");
+      return Container(
+        margin: const EdgeInsets.only(
+          left: 16,
+          bottom: 8,
+        ),
+        alignment: Alignment.centerLeft,
+        child: const Text(
+          "Belum ada data dimasukkan",
+          style: TextStyle(
+            fontFamily: "inter_semibold",
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            color: Color(0xff666666),
+          ),
+        ),
+      );
     } else {
       return ListView.builder(
         shrinkWrap: true,
@@ -869,9 +989,55 @@ class _ProfileBlankState extends State<ProfileBlank> {
 
           return Container(
             alignment: Alignment.topLeft,
-            margin: const EdgeInsets.only(left: 16),
+            margin: const EdgeInsets.only(left: 16, bottom: 8),
             child: Text(
               education.Name!,
+              style: const TextStyle(
+                fontFamily: "inter_semibold",
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: Color(0xff666666),
+              ),
+            ),
+          );
+        },
+      );
+    }
+  }
+
+  Widget buildAbilityWidget(List<AbilityData>? profileAbility) {
+    if (profileAbility == null || profileAbility.isEmpty) {
+      return Container(
+        margin: const EdgeInsets.only(
+          left: 16,
+          bottom: 8,
+        ),
+        alignment: Alignment.centerLeft,
+        child: const Text(
+          "Belum ada data dimasukkan",
+          style: TextStyle(
+            fontFamily: "inter_semibold",
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            color: Color(0xff666666),
+          ),
+        ),
+      );
+    } else {
+      return ListView.builder(
+        shrinkWrap: true,
+        itemCount: profileAbility.length,
+        itemBuilder: (context, index) {
+          final ability = profileAbility[index];
+
+          return Container(
+            alignment: Alignment.topLeft,
+            margin: const EdgeInsets.only(
+              left: 16,
+              bottom: 8,
+            ),
+            child: Text(
+              ability.ability!.join(", "),
               style: const TextStyle(
                 fontFamily: "inter_semibold",
                 fontSize: 12,

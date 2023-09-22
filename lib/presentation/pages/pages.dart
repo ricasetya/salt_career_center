@@ -15,6 +15,7 @@ import 'package:telkom_career/data/repository/profile/profile_data_repository_im
 import 'package:telkom_career/data/repository/profile/profile_update_ability_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_update_language_repository_impl.dart';
 import 'package:telkom_career/data/repository/register/register_repository_impl.dart';
+import 'package:telkom_career/domain/model/data/profile/get_profile/ability_data.dart';
 import 'package:telkom_career/domain/model/data/profile/get_profile/education/education_data.dart';
 import 'package:telkom_career/domain/model/data/profile/get_profile/work_experience/work_experience_data.dart';
 import 'package:telkom_career/domain/model/data/profile/profile_edit_profile_data.dart';
@@ -26,7 +27,6 @@ import 'package:telkom_career/domain/model/request/profile/profile_change_passwo
 import 'package:telkom_career/domain/model/request/profile/profile_edit_profile/profile_edit_profile_request.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_update_ability/profile_update_ability_request.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_update_language/profile_update_language_request.dart';
-import 'package:telkom_career/domain/model/request/profile/profile_update_photo/profile_update_photo_request.dart';
 import 'package:telkom_career/domain/model/request/register/register_request.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/about_company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/jobs_company_data_cubit.dart';

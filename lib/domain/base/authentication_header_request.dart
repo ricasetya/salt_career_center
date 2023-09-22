@@ -12,3 +12,17 @@ class AuthenticationHeaderRequest {
     };
   }
 }
+
+class AuthenticationHeadersRequestUpload {
+  String accesToken;
+  AuthenticationHeadersRequestUpload(
+    this.accesToken,
+  );
+
+  Map<String, String> toHeader() {
+    return {
+      'Authorization': 'Bearer $accesToken',
+      // 'Content-Type': 'multipart/form-data',
+    };
+  }
+}

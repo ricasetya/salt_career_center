@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, depend_on_referenced_packages, avoid_print, unused_import
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:telkom_career/base/result_entity.dart';
@@ -19,34 +21,24 @@ class UpdatePhotoCubit extends Cubit<UpdatePhotoState> {
   ) : super(UpdatePhotoInitial());
 
   Future<void> fetchProfileUpdatePhoto(
-      ProfileUpdatePhotoRequest request) async {
-    final token = await Commons().getUid();
+    File image,
+    //String id,
+  ) async {
     emit(UpdatePhotoInitial());
+    final token = await Commons().getUid();
 
     final response = await repository.fetchProfileUpdatePhoto(
-        request, AuthenticationHeaderRequest(token));
+      AuthenticationHeadersRequestUpload(token),
+      image,
+      // id,
+    );
 
     if (response is ResultSuccess) {
       emit(
-        UpdatePhotoIsSucces(message: (response as ResultSuccess).toString()),
+        UpdatePhotoIsSucces(message: 'UPDATE PHOTO SUCCESS'),
       );
     } else {
       emit(UpdatePhotoIsError(message: (response as ResultError).message));
     }
   }
-
-  // Future<void> updatePhoto(String id, String profileId) async {
-  //   emit(UpdatePhotoIsLoading());
-
-  //   final response = await repository.updatePhoto(id, profileId);
-  //   if (response is ResultSuccess) {
-  //     if (response.data == null) {}
-  //     emit(UpdatePhotoIsSucces(message: ""));
-
-  //     print("Succes");
-  //   } else if (response is ResultError) {
-  //     emit(UpdatePhotoIsError(message: response.message));
-  //     print("eror");
-  //   }
-  //}
 }

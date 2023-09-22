@@ -304,7 +304,7 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                           _showSelectPhotoOptions(context);
                                           setState(() {});
                                         },
-                                        child: photo == null
+                                        child: photo != null
                                             ? CircleAvatar(
                                                 backgroundImage: NetworkImage(
                                                     profileDataState

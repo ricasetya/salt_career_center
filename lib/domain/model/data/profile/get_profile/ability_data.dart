@@ -5,7 +5,3 @@ class AbilityData {
     this.ability,
   );
 }
-
-
-
-// listview builder

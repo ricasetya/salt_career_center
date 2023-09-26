@@ -14,11 +14,13 @@ import 'package:telkom_career/data/repository/profile/profile_change_password_re
 import 'package:telkom_career/data/repository/profile/profile_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_update_ability_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_update_language_repository_impl.dart';
+import 'package:telkom_career/data/repository/profile/profile_update_photo_repository_impl.dart';
 import 'package:telkom_career/data/repository/register/register_repository_impl.dart';
 import 'package:telkom_career/domain/model/data/profile/get_profile/ability_data.dart';
 import 'package:telkom_career/domain/model/data/profile/get_profile/education/education_data.dart';
 import 'package:telkom_career/domain/model/data/profile/get_profile/work_experience/work_experience_data.dart';
 import 'package:telkom_career/domain/model/data/profile/profile_edit_profile_data.dart';
+import 'package:telkom_career/domain/model/data/profile/profile_update_photo_data.dart';
 import 'package:telkom_career/domain/model/request/forget_password/forget_password_otp_request.dart';
 import 'package:telkom_career/domain/model/request/forget_password/forget_password_request.dart';
 import 'package:telkom_career/domain/model/request/forget_password/forget_password_update_request.dart';
@@ -90,6 +92,7 @@ part 'profile/profile_edit_profile.dart';
 part 'profile/profile_input_ability.dart';
 part 'profile/profile_input_language.dart';
 part 'profile/input_work_experience.dart';
+part 'profile/profile_update_photo.dart';
 
 // akbar
 part 'profile/profile_input_portofolio.dart';

@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, unused_field, unnecessary_null_comparison
 // ignore_for_file: non_constant_identifier_names, deprecated_member_use, unused_local_variable, avoid_print, unused_element, no_leading_underscores_for_local_identifiers
 
 part of '../pages.dart';
@@ -301,22 +301,25 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                       margin: const EdgeInsets.only(top: 16),
                                       child: InkWell(
                                         onTap: () {
-                                          _showSelectPhotoOptions(context);
-                                          setState(() {});
+                                          context.goNamed(
+                                              Routes.profileEditPhotoPage);
+                                          // _showSelectPhotoOptions(context);
+                                          // setState(() {});
                                         },
-                                        child: photo != null
+
+                                        child: data.urlPhoto != ''
                                             ? CircleAvatar(
                                                 backgroundImage: NetworkImage(
-                                                    profileDataState
-                                                        .data.urlPhoto
-                                                        .toString()),
+                                                  profileDataState
+                                                      .data.urlPhoto!,
+                                                ),
                                                 maxRadius: 50,
                                               )
                                             : const CircleAvatar(
-                                                backgroundColor: Colors.grey,
+                                                //backgroundColor: Colors.grey,
                                                 maxRadius: 50,
                                                 backgroundImage: AssetImage(
-                                                    "assets/images/avatar.png"),
+                                                    'assets/images/avatar.png'),
                                               ),
 
                                         // CircleAvatar(
@@ -601,7 +604,9 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                           margin:
                                               const EdgeInsets.only(left: 16),
                                           alignment: Alignment.topLeft,
-                                          child: Text(
+                                          child:
+                                              //buildAbilityWidget(profileDataState.data.ability),
+                                              Text(
                                             profileDataState.data.ability ==
                                                     null
                                                 ? "Belum ada data dimasukkan"

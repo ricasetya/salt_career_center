@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 part of '../pages.dart';
 
 class ProfileSettings extends StatefulWidget {
@@ -116,19 +118,79 @@ class _ProfileSettingsState extends State<ProfileSettings> {
       backgroundColor: Colors.grey[200],
       body: Column(
         children: <Widget>[
-          SizedBox(
-            height: height * 0.36767,
-            child: Container(
-              margin: const EdgeInsets.only(top: 16),
-              color: const Color.fromRGBO(255, 255, 255, 1),
-              alignment: Alignment.topLeft,
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.fromLTRB(16, 12, 15, 12),
+          Container(
+            margin: const EdgeInsets.only(top: 16),
+            color: const Color.fromRGBO(255, 255, 255, 1),
+            alignment: Alignment.topLeft,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.fromLTRB(16, 12, 15, 12),
+                  child: const Text(
+                    'Syarat dan Ketentuan',
+                    style: TextStyle(
+                      fontFamily: "inter_semibold",
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff333333),
+                    ),
+                  ),
+                ),
+                const Divider(
+                  thickness: 2,
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.fromLTRB(16, 12, 15, 12),
+                  child: const Text(
+                    'Privasi',
+                    style: TextStyle(
+                      fontFamily: "inter_semibold",
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff333333),
+                    ),
+                  ),
+                ),
+                const Divider(
+                  thickness: 2,
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.fromLTRB(16, 12, 15, 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const <Widget>[
+                      Text(
+                        'Versi Aplikasi',
+                        style: TextStyle(
+                          fontFamily: "inter_semibold",
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff333333),
+                        ),
+                      ),
+                      Text(
+                        'V1.0.0',
+                        style: TextStyle(
+                          fontFamily: "inter_regular",
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xff666666),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Divider(thickness: 2),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.fromLTRB(16, 12, 15, 12),
+                  child: GestureDetector(
+                    onTap: () => context.go('/profileChangePassword'),
                     child: const Text(
-                      'Syarat dan Ketentuan',
+                      'Ganti Password',
                       style: TextStyle(
                         fontFamily: "inter_semibold",
                         fontSize: 14,
@@ -137,14 +199,22 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                       ),
                     ),
                   ),
-                  const Divider(
-                    thickness: 2,
-                  ),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.fromLTRB(16, 12, 15, 12),
+                ),
+                const Divider(
+                  thickness: 2,
+                ),
+                Container(
+                  // decoration: BoxDecoration(
+                  //   border: Border.all(width: 1),
+                  // ),
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+                  child: GestureDetector(
+                    onTap: () {
+                      _showDialog(context);
+                    },
                     child: const Text(
-                      'Privasi',
+                      'Keluar',
                       style: TextStyle(
                         fontFamily: "inter_semibold",
                         fontSize: 14,
@@ -153,79 +223,11 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                       ),
                     ),
                   ),
-                  const Divider(
-                    thickness: 2,
-                  ),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.fromLTRB(16, 12, 15, 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const <Widget>[
-                        Text(
-                          'Versi Aplikasi',
-                          style: TextStyle(
-                            fontFamily: "inter_semibold",
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xff333333),
-                          ),
-                        ),
-                        Text(
-                          'V1.0.0',
-                          style: TextStyle(
-                            fontFamily: "inter_regular",
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff666666),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Divider(thickness: 2),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.fromLTRB(16, 12, 15, 12),
-                    child: GestureDetector(
-                      onTap: () => context.go('/profileupdatepassword'),
-                      child: const Text(
-                        'Ganti Password',
-                        style: TextStyle(
-                          fontFamily: "inter_semibold",
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xff333333),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Divider(
-                    thickness: 2,
-                  ),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.fromLTRB(16, 12, 15, 12),
-                    child: GestureDetector(
-                      onTap: () {
-                        _showDialog(context);
-                      },
-                      child: const Text(
-                        'Keluar',
-                        style: TextStyle(
-                          fontFamily: "inter_semibold",
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xff333333),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Divider(
-                    thickness: 2,
-                  ),
-                ],
-              ),
+                ),
+                // const Divider(
+                //   thickness: 2,
+                //  ),
+              ],
             ),
           ),
         ],

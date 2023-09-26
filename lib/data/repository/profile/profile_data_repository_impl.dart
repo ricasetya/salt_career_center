@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:telkom_career/base/login_moc/base_remote_response.dart';
@@ -16,7 +18,11 @@ class ProfileDataRepositoryImpl implements ProfileDataRepository {
       AuthenticationHeaderRequest header) async {
     try {
       final response = await profileDataRemoteService.fetchProfileData(header);
+      print("STATUS PROFILE DATA : ${response.statusCode}");
       if (response.statusCode == 200 || response.statusCode == 201) {
+        // final Map<String, dynamic> responseBody =
+        //     jsonDecode(response.body) as Map<String, dynamic>;
+
         BaseRemoteResponseMoc<ProfileDataRemoteResponse> baseProfileData =
             BaseRemoteResponseMoc<ProfileDataRemoteResponse>.fromJson(
           jsonDecode(response.body),
@@ -26,14 +32,15 @@ class ProfileDataRepositoryImpl implements ProfileDataRepository {
         );
 
         if (baseProfileData.status == null) {
-          return ResultError(message: baseProfileData.status!.message);
+          return ResultError(message: baseProfileData.status?.message);
         } else if (baseProfileData.status?.code != 0) {
           return ResultError(message: baseProfileData.status!.message);
         } else {
           return ResultSuccess(baseProfileData.data!.toProfileData());
         }
       } else {
-        return ResultError(message: "ERROR NOT NULL");
+        return ResultError(message: response.toString());
+        //print("Eroor ${response.body}");
       }
     } catch (error) {
       return ResultError(message: error.toString());

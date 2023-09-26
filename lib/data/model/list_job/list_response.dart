@@ -13,14 +13,16 @@ class ListResponse implements ListResponseMapper {
   String? position;
   String? company;
   String? address;
-  String? createdDate;
+  String? createdAt;
+  bool? status;
   String? id;
   ListResponse({
     this.logo,
     this.position,
     this.company,
     this.address,
-    this.createdDate,
+    this.createdAt,
+    this.status,
     this.id,
   });
 
@@ -31,7 +33,14 @@ class ListResponse implements ListResponseMapper {
 
   @override
   ListJobData toListJobData() {
-    return ListJobData(logo ?? "", position ?? "", company ?? "", address ?? "",
-        createdDate ?? "", id ?? "");
+    return ListJobData(
+      logo ?? "",
+      position ?? "",
+      company ?? "",
+      address ?? "",
+      createdAt ?? "",
+      id ?? "",
+      status!,
+    );
   }
 }

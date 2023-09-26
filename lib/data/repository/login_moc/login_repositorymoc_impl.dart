@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:telkom_career/base/login_moc/base_remote_response.dart';
@@ -16,6 +18,7 @@ class LoginRepositoryImplMoc implements LoginRepositoryMoc {
       LoginRequest request) async {
     try {
       final response = await remoteService.submitLogin(request);
+      print("status login: ${response.statusCode}");
       if (response.statusCode == 200 || response.statusCode == 201) {
         BaseRemoteResponseMoc<LoginRemoteResponse> baseResponseObject =
             BaseRemoteResponseMoc<LoginRemoteResponse>.fromJson(
@@ -30,13 +33,15 @@ class LoginRepositoryImplMoc implements LoginRepositoryMoc {
         } else if (baseResponseObject.status?.code != 0) {
           return ResultError(message: baseResponseObject.status!.message);
         } else {
+          print("Token IMPL= ${baseResponseObject.data!.token.toString()}");
           return ResultSuccess(baseResponseObject.data!.toUserLoginDataMoc());
         }
       } else {
-        return ResultError(message: "");
+        print("ini erornya ${response.body}");
+        return ResultError(message: response.toString());
       }
     } catch (error) {
-      return ResultError(message: "");
+      return ResultError(message: error.toString());
     }
   }
 }

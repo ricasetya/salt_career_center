@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, avoid_function_literals_in_foreach_calls, unnecessary_string_interpolations, avoid_unnecessary_containers
+
 part of '../pages.dart';
 
 class JobsScreen extends StatefulWidget {
@@ -20,6 +22,7 @@ class _JobsScreenState extends State<JobsScreen> {
   @override
   void dispose() {
     _listJobCubit.close();
+    _bottomNavCurrentIndext;
     super.dispose();
   }
 
@@ -80,7 +83,10 @@ class _JobsScreenState extends State<JobsScreen> {
         ),
         backgroundColor: Colors.grey[200],
         body: TabBarView(
-          children: [buildJobWidget(), buildJobApplyedWidget()],
+          children: [
+            buildJobWidget(),
+            buildJobApplyedWidget(),
+          ],
         ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
@@ -110,7 +116,7 @@ class _JobsScreenState extends State<JobsScreen> {
           items: [
             BottomNavigationBarItem(
               icon: GestureDetector(
-                onTap: () => context.go('/beranda'),
+                onTap: () => context.go('/homescreen'),
                 child: Image.asset(
                   'assets/icons/beranda.png',
                   color: const Color(0xff999999),
@@ -177,213 +183,206 @@ class _JobsScreenState extends State<JobsScreen> {
 
   Widget buildJobWidget() {
     print("build");
-    return SingleChildScrollView(
-      child: Column(children: [
-        BlocBuilder<ListJobCubit, ListJobState>(
-          builder: (context, pekerjaanState) {
-            if (pekerjaanState is ListJobIsSucces) {
-              print("build ListJob");
-              pekerjaanState.data.forEach((element) {
-                print(element.company);
-              });
-              return ListView.builder(
-                shrinkWrap: true,
-                itemCount: pekerjaanState.data.length,
-                itemBuilder: (context, index) {
-                  final listData = pekerjaanState.data[index];
+    return BlocBuilder<ListJobCubit, ListJobState>(
+      builder: (context, pekerjaanState) {
+        if (pekerjaanState is ListJobIsSucces) {
+          print("build Jobs");
+          pekerjaanState.data.forEach((element) {
+            print(element.company);
+          });
+          return Container(
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: pekerjaanState.data.length,
+              itemBuilder: (context, index) {
+                final listData = pekerjaanState.data[index];
 
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8, right: 16, left: 15),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              color: Colors.white,
-                              border:
-                                  Border.all(color: Colors.black, width: 0.2),
-                            ),
-                            height: 125,
-                            width: 360,
-                            child: Column(
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    context.go("/searchscreen");
-                                  },
-                                  child: Card(
-                                    elevation: 0,
-                                    child: ListTile(
-                                      leading: CircleAvatar(
-                                        backgroundColor: Colors.grey[200],
-                                        backgroundImage: NetworkImage(
-                                          "${listData.logo}",
-                                        ),
+                return SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(top: 8, right: 16, left: 15),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: Colors.white,
+                            border: Border.all(color: Colors.black, width: 0.2),
+                          ),
+                          height: 125,
+                          width: 360,
+                          child: Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  context.go("/searchscreen");
+                                },
+                                child: Card(
+                                  elevation: 0,
+                                  child: ListTile(
+                                    leading: CircleAvatar(
+                                      backgroundColor: Colors.grey[200],
+                                      backgroundImage: NetworkImage(
+                                        "${listData.logo}",
                                       ),
-                                      title: Text(
-                                        "${listData.position}",
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      subtitle: Text("${listData.company}"),
                                     ),
+                                    title: Text(
+                                      "${listData.position}",
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    subtitle: Text("${listData.company}"),
                                   ),
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 27.0),
-                                      child: Text(
-                                        "${listData.address}",
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 27.0),
+                                    child: Text(
+                                      "${listData.address}",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 8, left: 27.0),
-                                      child: Text(
-                                        "${listData.createdDate}",
-                                        style: const TextStyle(
-                                          fontSize: 10,
-                                        ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 8, left: 27.0),
+                                    child: Text(
+                                      "${listData.createdAt}",
+                                      style: const TextStyle(
+                                        fontSize: 10,
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
-                  );
-                },
-              );
-            } else if (ListJobState is ListJobIsLoading) {
-              return const CircularProgressIndicator().centered();
-            }
-            return Container(
-              child: "".text.makeCentered(),
-            );
-          },
-        ),
-      ]),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          );
+        } else if (ListJobState is ListJobIsLoading) {
+          return const CircularProgressIndicator().centered();
+        }
+        return Container(
+          child: "".text.makeCentered(),
+        );
+      },
     );
   }
 
   Widget buildJobApplyedWidget() {
     print("build");
-    return SingleChildScrollView(
-      child: Column(children: [
-        BlocBuilder<ListJobCubit, ListJobState>(
-          builder: (context, pekerjaanState) {
-            if (pekerjaanState is ListJobIsSucces) {
-              print("build ListJob");
-              pekerjaanState.data.forEach((element) {
-                print(element.company);
-              });
-              return ListView.builder(
-                shrinkWrap: true,
-                itemCount: pekerjaanState.data.length,
-                itemBuilder: (context, index) {
-                  final listData = pekerjaanState.data[index];
+    return BlocBuilder<ListJobCubit, ListJobState>(
+      builder: (context, pekerjaanState) {
+        if (pekerjaanState is ListJobIsSucces) {
+          print("build ListJob");
+          pekerjaanState.data.forEach((element) {
+            print(element.company);
+          });
+          return Container(
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: pekerjaanState.data.length,
+              itemBuilder: (context, index) {
+                final listData = pekerjaanState.data[index];
 
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8, right: 16, left: 15),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              color: Colors.white,
-                              border:
-                                  Border.all(color: Colors.black, width: 0.2),
-                            ),
-                            height: 125,
-                            width: 360,
-                            child: Column(
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    context.go("/searchscreen");
-                                  },
-                                  child: Card(
-                                    elevation: 0,
-                                    child: ListTile(
-                                      leading: CircleAvatar(
-                                        backgroundColor: Colors.grey[200],
-                                        backgroundImage: NetworkImage(
-                                          "${listData.logo}",
-                                        ),
+                return SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(top: 8, right: 16, left: 15),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: Colors.white,
+                            border: Border.all(color: Colors.black, width: 0.2),
+                          ),
+                          height: 125,
+                          width: 360,
+                          child: Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  context.go("/searchscreen");
+                                },
+                                child: Card(
+                                  elevation: 0,
+                                  child: ListTile(
+                                    leading: CircleAvatar(
+                                      backgroundColor: Colors.grey[200],
+                                      backgroundImage: NetworkImage(
+                                        "${listData.logo}",
+                                        //"${"${BaseConfig.BASE_IMAGE}/${listData.logo}"}",
                                       ),
-                                      title: Text(
-                                        "${listData.position}",
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      subtitle: Text("${listData.company}"),
                                     ),
+                                    title: Text(
+                                      "${listData.position}",
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    subtitle: Text("${listData.company}"),
                                   ),
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 27.0),
-                                      child: Text(
-                                        "${listData.address}",
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 27.0),
+                                    child: Text(
+                                      "${listData.address}",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 8, left: 27.0),
-                                      child: Text(
-                                        "${listData.createdDate}",
-                                        style: const TextStyle(
-                                          fontSize: 10,
-                                        ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 8, left: 27.0),
+                                    child: Text(
+                                      "${listData.createdAt}",
+                                      style: const TextStyle(
+                                        fontSize: 10,
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
-                  );
-                },
-              );
-            } else if (ListJobState is ListJobIsLoading) {
-              return const CircularProgressIndicator().centered();
-            }
-            return Container(
-              child: "".text.makeCentered(),
-            );
-          },
-        ),
-      ]),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          );
+        } else if (ListJobState is ListJobIsLoading) {
+          return const CircularProgressIndicator().centered();
+        }
+        return Container(
+          child: "".text.makeCentered(),
+        );
+      },
     );
   }
 }

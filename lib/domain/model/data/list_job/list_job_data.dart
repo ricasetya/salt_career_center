@@ -4,14 +4,16 @@ class ListJobData {
   String position;
   String company;
   String address;
-  String createdDate;
+  String createdAt;
   String id;
+  bool status;
   ListJobData(
     this.logo,
     this.position,
     this.company,
     this.address,
-    this.createdDate,
+    this.createdAt,
     this.id,
+    this.status,
   );
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 part of 'jobs_company_data_cubit.dart';
 
 abstract class JobsCompanyDataState extends Equatable {

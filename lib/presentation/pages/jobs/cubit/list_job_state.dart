@@ -1,6 +1,8 @@
+// ignore_for_file: must_be_immutable
+
 part of 'list_job_cubit.dart';
 
-abstract class ListJobState extends Equatable {
+class ListJobState extends Equatable {
   const ListJobState();
 
   @override

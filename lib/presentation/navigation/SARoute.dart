@@ -1,11 +1,12 @@
+// ignore_for_file: file_names
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:telkom_career/domain/base/authentication_header_request.dart';
-import 'package:telkom_career/presentation/pages/company/cubit/about_company_data_cubit.dart';
+import 'package:telkom_career/domain/model/data/profile/profile_edit_profile_data.dart';
+import 'package:telkom_career/domain/model/data/profile/profile_update_photo_data.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/company_data_cubit.dart';
-import 'package:telkom_career/presentation/pages/company/cubit/jobs_company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
-import 'package:telkom_career/presentation/pages/profile/cubit/profile_data_cubit.dart';
+import 'package:telkom_career/presentation/pages/profile/cubit/profile_data/profile_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 import '../pages/pages.dart';
 import 'Routes.dart';
@@ -19,27 +20,39 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
 
   // REGISTER //
   GoRoute(
-      path: "/registers",
-      name: Routes.registersPage,
-      builder: (context, state) => const Registers()),
-  GoRoute(
       path: "/register",
       name: Routes.registerPage,
       builder: (context, state) => const Register()),
 
   // FORGET PASSWORD //
   GoRoute(
-      path: "/forgotpassword",
-      name: Routes.forgotpasswordsPage,
-      builder: (context, state) => const ForgotPassword()),
+    path: "/forgotpassword",
+    name: Routes.forgotpasswordsPage,
+    builder: (context, state) => const ForgetPassword(),
+  ),
   GoRoute(
-      path: "/forgotpassworemailsent",
-      name: Routes.forgotpassworemailsentdPage,
-      builder: (context, state) => const ForgotPasswordEmailSent()),
+    path: "/forgotpassworemailsent",
+    name: Routes.forgotpassworemailsentdPage,
+    builder: (context, state) {
+      String idEmail = state.extra as String;
+      return ForgotPasswordEmailSent(
+        idEmail: idEmail,
+      );
+    },
+  ),
+
   GoRoute(
-      path: "/forgotpasswordupdatepassword",
-      name: Routes.forgotpasswordupdatepasswordPage,
-      builder: (context, state) => const ForgotPasswordUpdatePassword()),
+    path: "/forgotpasswordupdatepassword",
+    name: Routes.forgotpasswordupdatepasswordPage,
+    builder: (context, state) //=> const ForgotPasswordUpdatePassword()
+        {
+      String idEmail = state.extra as dynamic;
+
+      return ForgotPasswordUpdatePassword(
+        idEmail: idEmail,
+      );
+    },
+  ),
   GoRoute(
       path: "/forgotpasswordupdatepasswordsucces",
       name: Routes.forgotpasswordupdatepasswordsuccesPage,
@@ -47,17 +60,21 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
 
   // BERANDA //
   GoRoute(
-      path: "/beranda",
-      name: Routes.homescreenPage,
-      builder: (context, state) => const HomeScreen()),
+    path: "/homescreen",
+    name: Routes.homescreenPage,
+    builder: (context, state) {
+      BlocProvider.of<ListJobCubit>(context).fetchListJob();
+      BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
+      return const HomeScreen();
+    },
+  ),
 
   // PEKERJAAN //
   GoRoute(
     path: "/jobscreen",
     name: Routes.jobscreenPage,
     builder: (context, state) {
-      BlocProvider.of<ListJobCubit>(context)
-          .fetchListJob(AuthenticationHeaderRequest(""));
+      BlocProvider.of<ListJobCubit>(context).fetchListJob();
       return const JobsScreen();
     },
   ),
@@ -75,8 +92,7 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
     path: "/profileblank",
     name: Routes.profileblankPage,
     builder: (context, state) {
-      BlocProvider.of<ProfileDataCubit>(context)
-          .fetchProfileData(AuthenticationHeaderRequest(""));
+      BlocProvider.of<ProfileDataCubit>(context).fetchProfileData();
       return const ProfileBlank();
     },
   ),
@@ -85,13 +101,26 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
       name: Routes.profilesettingsPage,
       builder: (context, state) => const ProfileSettings()),
   GoRoute(
-      path: "/profileupdatepassword",
-      name: Routes.profileupdatepasswordPage,
-      builder: (context, state) => const ProfileUpdatePassword()),
+      path: "/profileEditPhotoPage",
+      name: Routes.profileEditPhotoPage,
+      builder: (context, state) {
+        final profileUpdatePhotoData = state.extra as ProfileUpdatePhotoData;
+        return ProfileUpdatePhoto(
+          profileUpdatePhotoData: profileUpdatePhotoData,
+        );
+      }),
   GoRoute(
-      path: "/profileeditprofile",
-      name: Routes.profileeditprofilePage,
-      builder: (context, state) => const ProfileEditProfile()),
+      path: "/profileChangePassword",
+      name: Routes.profileChangePasswordPage,
+      builder: (context, state) => const ProfileChangePassword()),
+  GoRoute(
+      path: "/profileEditProfile",
+      name: Routes.profileEditProfilePage,
+      builder: (context, state) //=> const ProfileEditProfile(),
+          {
+        final userData = state.extra as ProfileEditProfileData;
+        return ProfileEditProfile(userData: userData);
+      }),
   GoRoute(
       path: "/profileinputability",
       name: Routes.profileinputabilityPage,
@@ -106,28 +135,30 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
       path: "/profileinputportofolio",
       name: Routes.profileinputportofolioPage,
       builder: (context, state) => const ProfileInputPortfolio()),
+  GoRoute(
+      path: "/experience",
+      name: Routes.workexperience,
+      builder: (context, state) => const WorkExperience()),
 
   // SEARCH //
   GoRoute(
-      path: "/searchscreen",
-      name: Routes.searchscreenPage,
-      routes: [
-        GoRoute(
-          path: "companyscreen",
-          name: Routes.companyscreenPage,
-          builder: (context, state) {
-            String id = state.extra as String;
-            BlocProvider.of<CompanyDataCubit>(context)
-                .fetchCompanyData(AuthenticationHeaderRequest(""), id);
-            return const CompanyScreen();
-          },
-        ),
-      ],
-      builder: (context, state) {
-        BlocProvider.of<ListJobCubit>(context)
-            .fetchListJob(AuthenticationHeaderRequest("accesToken"));
-        BlocProvider.of<ListsCompanyDataCubit>(context)
-            .fetchListsCompanyData(AuthenticationHeaderRequest("accesToken"));
-        return const SearchScreen();
-      }),
+    path: "/searchscreen",
+    name: Routes.searchscreenPage,
+    builder: (context, state) {
+      BlocProvider.of<ListJobCubit>(context).fetchListJob();
+      BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
+      return const SearchScreen();
+    },
+    routes: [
+      GoRoute(
+        path: "companyscreen",
+        name: Routes.companyscreenPage,
+        builder: (context, state) {
+          String id = state.extra as String;
+          BlocProvider.of<CompanyDataCubit>(context).onSubmitCompanyData(id);
+          return const CompanyScreen();
+        },
+      ),
+    ],
+  ),
 ]);

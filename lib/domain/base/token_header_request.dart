@@ -1,12 +1,12 @@
 class TokenHeaderRequest {
-  Future<String> token;
+  Future<String> accesToken;
   TokenHeaderRequest({
-    required this.token,
+    required this.accesToken,
   });
 
-  Map<String, Future<String>> toHeader() {
-    return <String, Future<String>>{
-      'Authentication': token,
+  Map<String, String> toHeader() {
+    return <String, String>{
+      'Authorization': 'Bearer $accesToken',
     };
   }
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace, avoid_print, avoid_function_literals_in_foreach_calls
+
 part of '../pages.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -8,7 +10,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late ListJobCubit _listJobDataCubit;
   late int _bottomNavCurrentIndext = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _listJobDataCubit = ListJobCubit(ListJobRepositoryImpl());
+  }
+
+  @override
+  void dispose() {
+    _listJobDataCubit.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,198 +110,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8, right: 8, left: 8),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                    color: Colors.white,
-                    border: Border.all(color: Colors.black, width: 0.2),
-                  ),
-                  height: 125,
-                  width: 360,
-                  child: Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          context.go("/searchpek");
-                        },
-                        child: Card(
-                          shape: ContinuousRectangleBorder(
-                              borderRadius: BorderRadius.circular(4)),
-                          elevation: 0,
-                          child: ListTile(
-                            leading: CircleAvatar(
-                              backgroundColor: Colors.grey[200],
-                              backgroundImage: const AssetImage(
-                                "assets/images/image4.png",
-                              ),
-                            ),
-                            title: const Text("Accounting Manager"),
-                            subtitle: const Text("Accenture southeast Asia"),
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(left: 27.0),
-                            child: Text(
-                              "Kebon Jeruk, Jakarta Barat",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(top: 8, left: 27.0),
-                            child: Text(
-                              "24 Januari 2023",
-                              style: TextStyle(
-                                fontSize: 10,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
               const SizedBox(
-                height: 8,
+                height: 20,
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8, right: 8, left: 8),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                    color: Colors.white,
-                    border: Border.all(color: Colors.black, width: 0.2),
-                  ),
-                  height: 125,
-                  width: 360,
-                  child: Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          context.go("");
-                        },
-                        child: Card(
-                          elevation: 0,
-                          child: ListTile(
-                            leading: CircleAvatar(
-                              backgroundColor: Colors.grey[200],
-                              backgroundImage: const AssetImage(
-                                "assets/images/image5.png",
-                              ),
-                            ),
-                            title: const Text("Administration Warranty Staff"),
-                            subtitle: const Text("Kompas Gramedia"),
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(left: 27.0),
-                            child: Text(
-                              "Kebon Jeruk, Jakarta Barat",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(top: 8, left: 27.0),
-                            child: Text(
-                              "24 Januari 2023",
-                              style: TextStyle(
-                                fontSize: 10,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8, right: 8, left: 8),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                    color: Colors.white,
-                    border: Border.all(color: Colors.black, width: 0.2),
-                  ),
-                  height: 125,
-                  width: 360,
-                  child: Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          context.go("");
-                        },
-                        child: Card(
-                          elevation: 0,
-                          child: ListTile(
-                            leading: CircleAvatar(
-                              backgroundColor: Colors.grey[200],
-                              backgroundImage: const AssetImage(
-                                "assets/images/image6.png",
-                              ),
-                            ),
-                            title: const Text(
-                                "Web Designer/ Web Developer/ Programer"),
-                            subtitle: const Text("PT Mencari Cinta Sejati"),
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(left: 27.0),
-                            child: Text(
-                              "Kebon Jeruk, Jakarta Barat",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(top: 8, left: 27.0),
-                            child: Text(
-                              "24 Januari 2023",
-                              style: TextStyle(
-                                fontSize: 10,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              buildListJobsWidget(),
             ],
           ),
         ),
@@ -380,6 +207,125 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget buildListJobsWidget() {
+    print("build");
+    return Column(
+      children: [
+        BlocBuilder<ListJobCubit, ListJobState>(
+          builder: (context, state) {
+            if (state is ListJobIsSucces) {
+              print("build listview data job");
+              state.data.forEach((element) {
+                print(element.position);
+              });
+              return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: state.data.length,
+                  itemBuilder: (context, index) {
+                    final listjob = state.data[index];
+                    return Column(
+                      children: [
+                        Card(
+                          margin: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                          color: const Color(0xffFFFFFF),
+                          child: Column(
+                            children: [
+                              ListTile(
+                                leading: CircleAvatar(
+                                  backgroundColor: Colors.grey[200],
+                                  backgroundImage: NetworkImage(listjob.logo),
+                                ),
+                                title: Text(
+                                  listjob.position,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: "inter_semibold",
+                                    fontSize: 14,
+                                    color: Color(0xff333333),
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  listjob.company,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: "inter_regular",
+                                    fontSize: 12,
+                                    color: Color(0xff333333),
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 16),
+                                    child: Text(
+                                      listjob.address,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: "inter_semibold",
+                                        fontSize: 12,
+                                        color: Color(0xff333333),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 16, top: 8, bottom: 16),
+                                    child: Text(
+                                      listjob.createdAt,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: "inter_regular",
+                                        fontSize: 10,
+                                        color: Color(0xff333333),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    );
+                  });
+            } else if (state is ListJobIsLoading) {
+              print("LIST : LOADING");
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: const [
+                  Center(
+                    child: CircularProgressIndicator(
+                      color: Color(0xff5A5A5A),
+                      backgroundColor: Color.fromARGB(1, 90, 90, 90),
+                    ),
+                  ),
+                ],
+              );
+            } else {
+              print("LIST : ELSE");
+              return Container(
+                margin: const EdgeInsets.fromLTRB(10, 50, 10, 50),
+                child: const Text(
+                  "",
+                  // "Gagal menerima data pekerjaan.",
+                  style: TextStyle(fontSize: 24),
+                ),
+              );
+            }
+          },
+        ),
+      ],
     );
   }
 }

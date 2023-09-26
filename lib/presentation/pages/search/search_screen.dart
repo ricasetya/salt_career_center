@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, avoid_print, avoid_function_literals_in_foreach_calls
+
 part of '../pages.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -94,7 +96,6 @@ class _SearchScreenState extends State<SearchScreen> {
       child: Column(
         children: [
           BlocBuilder<ListsCompanyDataCubit, ListsCompanyDataState>(
-            // bloc: _listCompanyDataCubit,
             builder: (context, state) {
               if (state is ListsCompanyDataIsSucces) {
                 print("build listview data company");
@@ -115,16 +116,19 @@ class _SearchScreenState extends State<SearchScreen> {
                             children: [
                               ListTile(
                                 onTap: () {
-                                  context.goNamed(Routes.companyscreenPage,
-                                      extra: listcompany.id);
+                                  print(" id Company ${listcompany.id}");
+                                  context.goNamed(
+                                    Routes.companyscreenPage,
+                                    extra: listcompany.name,
+                                  );
                                 },
                                 leading: CircleAvatar(
                                   backgroundColor: Colors.grey[200],
                                   backgroundImage:
-                                      NetworkImage(listcompany.logo ?? ""),
+                                      NetworkImage(listcompany.urlLogo),
                                 ),
                                 title: Text(
-                                  listcompany.name ?? "",
+                                  listcompany.name,
                                   style: const TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontFamily: "inter_semibold",
@@ -135,7 +139,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 subtitle: Row(
                                   children: [
                                     Text(
-                                      listcompany.typeCompany ?? "",
+                                      listcompany.typeCompany,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontFamily: "inter_regular",
@@ -147,7 +151,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                       " • ",
                                     ),
                                     Text(
-                                      listcompany.address ?? "",
+                                      listcompany.address,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontFamily: "inter_regular",
@@ -179,7 +183,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 return Container(
                   margin: const EdgeInsets.fromLTRB(10, 50, 10, 50),
                   child: const Text(
-                    "Gagal menerima data pekerjaan.",
+                    "Gagal menerima data Perusahaan.",
                     style: TextStyle(fontSize: 24),
                   ),
                 );
@@ -263,7 +267,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                       padding: const EdgeInsets.only(
                                           left: 16, top: 8, bottom: 16),
                                       child: Text(
-                                        listjob.createdDate,
+                                        listjob.createdAt,
                                         style: const TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: "inter_regular",

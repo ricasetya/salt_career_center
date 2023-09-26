@@ -1,9 +1,9 @@
 import 'dart:convert';
-import 'dart:math';
+//import 'dart:math';
 
 import 'package:telkom_career/base/login_moc/base_remote_response.dart';
 import 'package:telkom_career/base/result_entity.dart';
-import 'package:telkom_career/data/model/lists_company/lists_company_data_remote_response.dart';
+//import 'package:telkom_career/data/model/lists_company/lists_company_data_remote_response.dart';
 import 'package:telkom_career/data/model/lists_company/lists_company_data_response.dart';
 import 'package:telkom_career/data/service/remote/lists_company/lists_company_data_remote_service.dart';
 import 'package:telkom_career/domain/base/authentication_header_request.dart';

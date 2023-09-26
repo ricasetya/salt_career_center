@@ -17,7 +17,7 @@ class RegisterRemoteResponse implements RegisterRemoteResponseMapper {
 
   @override
   UserRegisterData toUserRegisterData() {
-    return UserRegisterData(id: id!);
+    return UserRegisterData(id: id);
   }
 }
 

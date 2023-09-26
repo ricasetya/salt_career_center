@@ -10,8 +10,9 @@ abstract class LoginRemoteResponseMapper {
 @JsonSerializable()
 class LoginRemoteResponse implements LoginRemoteResponseMapper {
   String? token;
+  String? role;
 
-  LoginRemoteResponse(this.token);
+  LoginRemoteResponse({this.token, this.role});
 
   factory LoginRemoteResponse.fromJson(Map<String, dynamic> json) =>
       _$LoginRemoteResponseFromJson(json);
@@ -20,6 +21,6 @@ class LoginRemoteResponse implements LoginRemoteResponseMapper {
 
   @override
   UserLoginDataMoc toUserLoginDataMoc() {
-    return UserLoginDataMoc(token ?? "");
+    return UserLoginDataMoc(token ?? "", role ?? "");
   }
 }

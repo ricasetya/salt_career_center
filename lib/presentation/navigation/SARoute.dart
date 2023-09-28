@@ -139,6 +139,10 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
       path: "/experience",
       name: Routes.workexperience,
       builder: (context, state) => const WorkExperience()),
+  GoRoute(
+      path: "/inputEducation",
+      name: Routes.inputEducation,
+      builder: (context, state) => const InputEducation()),
 
   // SEARCH //
   GoRoute(

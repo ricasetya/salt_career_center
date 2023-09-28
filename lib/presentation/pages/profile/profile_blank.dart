@@ -33,10 +33,11 @@ class _ProfileBlankState extends State<ProfileBlank> {
     });
   }
 
-  Future<void> ChoiceImageCamera() async {
+  Future<void> ChoiceImageCamera(context) async {
     final picker = ImagePicker();
     final pickedImage = await picker.pickImage(source: ImageSource.camera);
-
+    await BlocProvider.of<UpdatePhotoCubit>(context)
+        .fetchProfileUpdatePhoto(photo!);
     if (pickedImage != null) {
       setState(
         () {
@@ -114,7 +115,8 @@ class _ProfileBlankState extends State<ProfileBlank> {
                             InkWell(
                               onTap: () {
                                 setState(() {
-                                  ChoiceImageCamera();
+                                  ChoiceImageCamera(context);
+
                                   //context.goNamed(Routes.profileinputabilityPage);
                                 });
                                 //ChoiceImage(ImageSource.camera);
@@ -301,25 +303,28 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                       margin: const EdgeInsets.only(top: 16),
                                       child: InkWell(
                                         onTap: () {
-                                          context.goNamed(
-                                              Routes.profileEditPhotoPage);
-                                          // _showSelectPhotoOptions(context);
-                                          // setState(() {});
+                                          // context.goNamed(
+                                          //     Routes.profileEditPhotoPage);
+                                          _showSelectPhotoOptions(context);
+                                          setState(() {});
                                         },
 
                                         child: data.urlPhoto != ''
                                             ? CircleAvatar(
+                                                backgroundImage: Image.memory(
+                                                        photo!
+                                                            .readAsBytesSync())
+                                                    .image,
+                                                maxRadius: 50)
+                                            : CircleAvatar(
+                                                //backgroundColor: Colors.grey,
+                                                maxRadius: 50,
                                                 backgroundImage: NetworkImage(
                                                   profileDataState
                                                       .data.urlPhoto!,
                                                 ),
-                                                maxRadius: 50,
-                                              )
-                                            : const CircleAvatar(
-                                                //backgroundColor: Colors.grey,
-                                                maxRadius: 50,
-                                                backgroundImage: AssetImage(
-                                                    'assets/images/avatar.png'),
+                                                // AssetImage(
+                                                //     'assets/images/avatar.png'),
                                               ),
 
                                         // CircleAvatar(
@@ -546,14 +551,18 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                         alignment: Alignment.topRight,
                                         margin: const EdgeInsets.only(
                                             top: 8, right: 15),
-                                        child: const Text(
-                                          "Tambah",
-                                          textAlign: TextAlign.end,
-                                          style: TextStyle(
-                                            fontFamily: "inter_semibold",
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w600,
-                                            color: Color(0xffEA232A),
+                                        child: InkWell(
+                                          onTap: () =>
+                                              context.go('/inputEducation'),
+                                          child: const Text(
+                                            "Tambah",
+                                            textAlign: TextAlign.end,
+                                            style: TextStyle(
+                                              fontFamily: "inter_semibold",
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w600,
+                                              color: Color(0xffEA232A),
+                                            ),
                                           ),
                                         ),
                                       ),

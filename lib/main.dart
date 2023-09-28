@@ -7,6 +7,7 @@ import 'package:telkom_career/data/repository/forget_password/forget_password_up
 import 'package:telkom_career/data/repository/listjob/list_job_repository_impl.dart';
 import 'package:telkom_career/data/repository/lists_company_repository/lists_company_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/login_moc/login_repositorymoc_impl.dart';
+import 'package:telkom_career/data/repository/profile/profile_add_education_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_change_password_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_edit_profile_repository_impl.dart';
@@ -22,6 +23,7 @@ import 'package:telkom_career/presentation/pages/forget_password/cubit/forget_pa
 import 'package:telkom_career/presentation/pages/forget_password/cubit/forget_password_update_cubit.dart';
 import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
 import 'package:telkom_career/presentation/pages/login_moc/cubit/loginmoc_cubit.dart';
+import 'package:telkom_career/presentation/pages/profile/cubit/profile_add_education_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_change_password/profile_change_password_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_data/profile_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_edit_profile/profile_edit_profile_cubit.dart';
@@ -119,6 +121,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               UpdatePhotoCubit(ProfileUpdatePhotoRepositoryImpl()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              ProfileAddEducationCubit(ProfileAddEducationRepositoryImpl()),
         ),
       ],
       child: MaterialApp.router(

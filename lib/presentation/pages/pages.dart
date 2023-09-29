@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_import
 
 import 'dart:ui';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -28,6 +29,7 @@ import 'package:telkom_career/domain/model/request/forget_password/forget_passwo
 import 'package:telkom_career/domain/model/request/login_request_moc/login_requestmoc.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_add_education/profile_add_education_request.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_change_password/profile_change_password_request.dart';
+import 'package:telkom_career/domain/model/request/profile/profile_cvresume/profile_cv_resume_request.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_edit_profile/profile_edit_profile_request.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_update_ability/profile_update_ability_request.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_update_language/profile_update_language_request.dart';
@@ -42,12 +44,14 @@ import 'package:telkom_career/presentation/pages/profile/cubit/profile_change_pa
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_data/profile_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_edit_profile/profile_edit_profile_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_update_ability/profile_update_ability_cubit.dart';
+import 'package:telkom_career/presentation/pages/profile/cubit/profile_update_cv_resume_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_update_language/profile_update_language_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_update_photo/update_photo_cubit.dart';
 import 'package:telkom_career/presentation/pages/register/cubit/register_cubit.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:image_picker/image_picker.dart';
+
 import 'package:telkom_career/data/repository/company/company_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/listjob/list_job_repository_impl.dart';
 import 'package:telkom_career/data/repository/lists_company_repository/lists_company_data_repository_impl.dart';
@@ -95,7 +99,7 @@ part 'profile/profile_edit_profile.dart';
 part 'profile/profile_input_ability.dart';
 part 'profile/profile_input_language.dart';
 part 'profile/input_work_experience.dart';
-part 'profile/profile_update_photo.dart';
+part 'profile/input_cv_resume.dart';
 part 'profile/input_education.dart';
 
 // akbar

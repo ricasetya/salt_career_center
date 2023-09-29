@@ -14,14 +14,14 @@ class ProfileUpdatePhotoRepositoryImpl implements ProfileUpdatePhotoRepository {
   @override
   Future<ResultEntity> fetchProfileUpdatePhoto(
     AuthenticationHeadersRequestUpload header,
-    File image,
+    File? photo,
     // String id,
   ) async {
     try {
       final response = await profileUpdatePhotoRepositoryImpl
           .updateProfileUpdatePhotoRemoteService(
         header,
-        image,
+        photo,
         //   id,
       );
 

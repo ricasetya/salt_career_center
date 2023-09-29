@@ -27,4 +27,5 @@ abstract class BaseConfig {
   static const String UPDATE_ABILITY = "/profile/update-ability";
   static const String UPDATE_LANGUAGE = "/profile/update-language";
   static const String ADD_EDUCATION = "/profile/add-education";
+  static const String ADD_CVRESUME = "/profile/update-cv-resume";
 }

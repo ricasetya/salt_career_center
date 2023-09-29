@@ -100,19 +100,23 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
       path: "/profilesettings",
       name: Routes.profilesettingsPage,
       builder: (context, state) => const ProfileSettings()),
-  GoRoute(
-      path: "/profileEditPhotoPage",
-      name: Routes.profileEditPhotoPage,
-      builder: (context, state) {
-        final profileUpdatePhotoData = state.extra as ProfileUpdatePhotoData;
-        return ProfileUpdatePhoto(
-          profileUpdatePhotoData: profileUpdatePhotoData,
-        );
-      }),
+  // GoRoute(
+  //     path: "/profileEditPhotoPage",
+  //     name: Routes.profileEditPhotoPage,
+  //     builder: (context, state) {
+  //       final profileUpdatePhotoData = state.extra as ProfileUpdatePhotoData;
+  //       return ProfileUpdatePhoto(
+  //         profileUpdatePhotoData: profileUpdatePhotoData,
+  //       );
+  //     }),
   GoRoute(
       path: "/profileChangePassword",
       name: Routes.profileChangePasswordPage,
       builder: (context, state) => const ProfileChangePassword()),
+  GoRoute(
+      path: "/profileCVResumePage",
+      name: Routes.profileCVResumePage,
+      builder: (context, state) => const InputResume()),
   GoRoute(
       path: "/profileEditProfile",
       name: Routes.profileEditProfilePage,

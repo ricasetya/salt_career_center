@@ -31,7 +31,7 @@ dependencies:
   image_picker: ^0.8.7
   flash: ^2.0.5+1
   velocity_x: ^3.6.0
-  file_picker: ^5.2.7
+  file_picker: ^5.2.8
   intl: ^0.17.0
   http_parser: ^4.0.2
   path_provider: ^2.0.15

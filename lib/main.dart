@@ -12,6 +12,7 @@ import 'package:telkom_career/data/repository/profile/profile_change_password_re
 import 'package:telkom_career/data/repository/profile/profile_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_edit_profile_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_update_ability_repository_impl.dart';
+import 'package:telkom_career/data/repository/profile/profile_update_cv_resume_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_update_language_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_update_photo_repository_impl.dart';
 import 'package:telkom_career/data/repository/register/register_repository_impl.dart';
@@ -28,6 +29,7 @@ import 'package:telkom_career/presentation/pages/profile/cubit/profile_change_pa
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_data/profile_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_edit_profile/profile_edit_profile_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_update_ability/profile_update_ability_cubit.dart';
+import 'package:telkom_career/presentation/pages/profile/cubit/profile_update_cv_resume_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_update_language/profile_update_language_cubit.dart';
 import 'package:telkom_career/presentation/pages/profile/cubit/profile_update_photo/update_photo_cubit.dart';
 import 'package:telkom_career/presentation/pages/register/cubit/register_cubit.dart';
@@ -125,6 +127,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               ProfileAddEducationCubit(ProfileAddEducationRepositoryImpl()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              ProfileUpdateCvResumeCubit(ProfileUpdateCvResumeRepositoryImpl()),
         ),
       ],
       child: MaterialApp.router(

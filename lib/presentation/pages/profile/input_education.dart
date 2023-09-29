@@ -20,7 +20,7 @@ class _InputEducationState extends State<InputEducation> {
 
   // bool stillEducation.text.toLowerCase() == "ya";
 
-  bool _isEducation = false;
+  bool _isEducation = true;
   // String isEducation = 'false';
 
   late ProfileAddEducationCubit _educationCubit;
@@ -430,7 +430,7 @@ class _InputEducationState extends State<InputEducation> {
                             filled: true,
                           ))),
                   Visibility(
-                      visible: (_isEducation ? true : false),
+                      visible: (_isEducation ? false : true),
                       child: Column(children: <Widget>[
                         Container(
                             margin: const EdgeInsets.only(top: 16),

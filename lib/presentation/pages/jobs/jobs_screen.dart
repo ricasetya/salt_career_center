@@ -89,101 +89,12 @@ class _JobsScreenState extends State<JobsScreen> {
             buildJobApplyedWidget(),
           ],
         ),
-        // bottomNavigationBar: BottomNavigationBar(
-        //   type: BottomNavigationBarType.fixed,
-        //   selectedFontSize: 10,
-        //   unselectedFontSize: 10,
-        //   selectedItemColor: const Color(0xffEA232A),
-        //   unselectedItemColor: const Color(0xff999999),
-        //   showSelectedLabels: true,
-        //   showUnselectedLabels: true,
-        //   selectedLabelStyle: const TextStyle(
-        //     fontFamily: "inter_semibold",
-        //     fontSize: 10,
-        //     color: Color(0xffEA232A),
-        //   ),
-        //   unselectedLabelStyle: const TextStyle(
-        //     fontFamily: "inter_semibold",
-        //     fontSize: 10,
-        //     color: Color(0xff999999),
-        //   ),
-        //   onTap: (index) {
-        //     setState(() {
-        //       _bottomNavCurrentIndext = index;
-        //     });
-        //   },
-        //   currentIndex: _bottomNavCurrentIndext,
-        //   elevation: 0.05,
-        //   items: [
-        //     BottomNavigationBarItem(
-        //       icon: GestureDetector(
-        //         onTap: () => context.go('/homescreen'),
-        //         child: Image.asset(
-        //           'assets/icons/beranda.png',
-        //           color: const Color(0xff999999),
-        //         ),
-        //       ),
-        //       // activeIcon: Image.asset(
-        //       //   'assets/icons/beranda.png',
-        //       //   color: const Color(0xffEA232A),
-        //       // ),
-        //       label: 'Beranda',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Image.asset(
-        //         'assets/icons/pekerjaan.png',
-        //         color: const Color(0xffEA232A),
-        //       ),
-        //       activeIcon: Image.asset(
-        //         'assets/icons/pekerjaan.png',
-        //         color: const Color(0xffEA232A),
-        //       ),
-        //       label: 'Pekerjaan',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Image.asset(
-        //         'assets/icons/kegiatan.png',
-        //         color: const Color(0xff999999),
-        //       ),
-        //       // activeIcon: Image.asset(
-        //       //   'assets/icons/kegiatan.png',
-        //       //   color: const Color(0xffEA232A),
-        //       // ),
-        //       label: 'Kegiatan',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Image.asset(
-        //         'assets/icons/notif.png',
-        //         color: const Color(0xff999999),
-        //       ),
-        //       // activeIcon: Image.asset(
-        //       //   'assets/icons/notif.png',
-        //       //   color: const Color(0xffEA232A),
-        //       // ),
-        //       label: 'Notifikasi',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: GestureDetector(
-        //         onTap: () => context.go('/profileblank'),
-        //         child: Image.asset(
-        //           'assets/icons/profil.png',
-        //           color: const Color(0xff999999),
-        //         ),
-        //       ),
-        //       // activeIcon: Image.asset(
-        //       //   'assets/icons/profil.png',
-        //       //   color: const Color(0xffEA232A),
-        //       // ),
-        //       label: 'Profil',
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }
 
   Widget buildJobWidget() {
-    print("build");
+    print("build list job");
     return BlocBuilder<ListJobCubit, ListJobState>(
       builder: (context, pekerjaanState) {
         if (pekerjaanState is ListJobIsSucces) {
@@ -216,7 +127,7 @@ class _JobsScreenState extends State<JobsScreen> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  context.go("/searchscreen");
+                                  //context.go("/searchscreen");
                                 },
                                 child: Card(
                                   elevation: 0,
@@ -285,7 +196,7 @@ class _JobsScreenState extends State<JobsScreen> {
   }
 
   Widget buildJobApplyedWidget() {
-    print("build");
+    print("build jobs sudah dilamar");
     return BlocBuilder<ListJobCubit, ListJobState>(
       builder: (context, pekerjaanState) {
         if (pekerjaanState is ListJobIsSucces) {
@@ -318,7 +229,7 @@ class _JobsScreenState extends State<JobsScreen> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  context.go("/searchscreen");
+                                  //context.go("/searchscreen");
                                 },
                                 child: Card(
                                   elevation: 0,

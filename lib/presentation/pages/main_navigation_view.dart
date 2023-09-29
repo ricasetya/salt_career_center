@@ -1,8 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:telkom_career/presentation/pages/pages.dart';
 
 class MainNavigationView extends StatefulWidget {
-  const MainNavigationView({Key? key}) : super(key: key);
+  final int indexScreen;
+  const MainNavigationView({
+    Key? key,
+    required this.indexScreen,
+  }) : super(key: key);
 
   @override
   State<MainNavigationView> createState() => _MainNavigationViewState();
@@ -13,6 +19,12 @@ class _MainNavigationViewState extends State<MainNavigationView> {
   updateIndex(int newIndex) {
     selectedIndex = newIndex;
     setState(() {});
+  }
+
+  @override
+  void initState() {
+    selectedIndex = widget.indexScreen;
+    super.initState();
   }
 
   @override
@@ -33,6 +45,8 @@ class _MainNavigationViewState extends State<MainNavigationView> {
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedIndex,
+          selectedItemColor: const Color(0xffEA232A),
+          unselectedItemColor: const Color(0xff999999),
           onTap: (newIndex) => updateIndex(newIndex),
           type: BottomNavigationBarType.fixed,
           items: [

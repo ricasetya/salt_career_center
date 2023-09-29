@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:telkom_career/domain/model/data/profile/profile_edit_profile_data.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/company_data_cubit.dart';
+import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
 import 'package:telkom_career/presentation/pages/main_navigation_view.dart';
+import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
 import '../pages/pages.dart';
 import 'Routes.dart';
 
@@ -44,7 +46,6 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
     builder: (context, state) //=> const ForgotPasswordUpdatePassword()
         {
       String idEmail = state.extra as dynamic;
-
       return ForgotPasswordUpdatePassword(
         idEmail: idEmail,
       );
@@ -67,7 +68,9 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
     path: "/mainNavigationPage",
     name: Routes.mainNavigationPage,
     builder: (context, state) {
-      return const MainNavigationView();
+      return const MainNavigationView(
+        indexScreen: 0,
+      );
     },
   ),
 
@@ -95,7 +98,9 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
     name: Routes.profileblankPage,
     builder: (context, state) {
       //BlocProvider.of<ProfileDataCubit>(context).fetchProfileData();
-      return const ProfileBlank();
+      return const MainNavigationView(
+        indexScreen: 3,
+      );
     },
   ),
   GoRoute(
@@ -155,8 +160,8 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
     path: "/searchscreen",
     name: Routes.searchscreenPage,
     builder: (context, state) {
-      // BlocProvider.of<ListJobCubit>(context).fetchListJob();
-      // BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
+      BlocProvider.of<ListJobCubit>(context).fetchListJob();
+      BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
       return const SearchScreen();
     },
     routes: [

@@ -16,7 +16,6 @@ class ProfileEditProfile extends StatefulWidget {
 
 class _ProfileEditProfileState extends State<ProfileEditProfile> {
   bool isAgree = false;
-  //late ProfileEditProfileCubit _profileEditProfileCubit;
 
   final TextEditingController _name = TextEditingController();
   final TextEditingController _title = TextEditingController();
@@ -30,20 +29,14 @@ class _ProfileEditProfileState extends State<ProfileEditProfile> {
     _title.text = widget.userData.skill;
     _nomorPonsel.text = widget.userData.phoneNumber;
     super.initState();
-
-    // _profileEditProfileCubit =
-    //     ProfileEditProfileCubit(ProfileEditProfileRepositoryImpl());
   }
 
   @override
   void dispose() {
-    // _name;
-    // _title;
-    // _nomorPonsel;
     _name.text = widget.userData.name;
     _title.text = widget.userData.skill;
     _nomorPonsel.text = widget.userData.phoneNumber;
-    //_profileEditProfileCubit.close();
+
     super.dispose();
   }
 
@@ -78,21 +71,6 @@ class _ProfileEditProfileState extends State<ProfileEditProfile> {
             } else if (profileEditProfileState is ProfileEditProfileIsFailed) {
               print("Profile Edit Profile Failed");
             }
-            // if (profileEditProfileState is ProfileEditProfileIsFailed) {
-            //   Commons().showSnackbarError(
-            //     context,
-            //     profileEditProfileState.message!,
-            //   );
-            //   print("Profile Edit Profile Failed");
-            // } else if (profileEditProfileState is ProfileEditProfileIsLoading) {
-            //   const Center(
-            //     child: CircularProgressIndicator(
-            //       color: Colors.red,
-            //     ),
-            //   );
-            // } else if (profileEditProfileState is ProfileEditProfileIsSuccess) {
-            //   context.goNamed(Routes.profileblankPage);
-            // }
           },
           builder: (context, profileEditProfileState) {
             return SafeArea(

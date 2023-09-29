@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace, avoid_print, avoid_function_literals_in_foreach_calls
+// ignore_for_file: sized_box_for_whitespace, avoid_print, avoid_function_literals_in_foreach_calls, unused_local_variable
 
 part of '../pages.dart';
 
@@ -165,6 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 print(element.position);
               });
               return ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: state.data.length,
                   itemBuilder: (context, index) {

@@ -1,9 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: avoid_print, unused_field
 
 part of '../pages.dart';
 
 class ProfileInputAbility extends StatefulWidget {
-  const ProfileInputAbility({super.key});
+  //final AbilityData abilityData;
+  const ProfileInputAbility({
+    Key? key,
+    //required this.abilityData,
+  }) : super(key: key);
 
   @override
   State<ProfileInputAbility> createState() => _ProfileInputAbilityState();
@@ -25,6 +30,7 @@ class _ProfileInputAbilityState extends State<ProfileInputAbility> {
 
   @override
   void initState() {
+    //  _ability1.text = widget.abilityData.ability;
     _profileUpdateAbilityCubit =
         ProfileUpdateAbilityCubit(ProfileUpdateAbilityRepositoryImpl());
     super.initState();
@@ -32,16 +38,16 @@ class _ProfileInputAbilityState extends State<ProfileInputAbility> {
 
   @override
   void dispose() {
-    _ability1;
-    _ability2;
-    _ability3;
-    _ability4;
-    _ability5;
-    _ability6;
-    _ability7;
-    _ability8;
-    _ability9;
-    _ability10;
+    _ability1.dispose();
+    _ability2.dispose();
+    _ability3.dispose();
+    _ability4.dispose();
+    _ability5.dispose();
+    _ability6.dispose();
+    _ability7.dispose();
+    _ability8.dispose();
+    _ability9.dispose();
+    _ability10.dispose();
     _profileUpdateAbilityCubit.close();
     super.dispose();
   }

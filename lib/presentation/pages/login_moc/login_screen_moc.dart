@@ -55,7 +55,7 @@ class _LoginPageMocState extends State<LoginPageMoc> {
               Commons().showSnackbarError(context, state.message!);
               print("Login Failled");
             } else if (state is LoginmocIsSuccess) {
-              context.goNamed(Routes.homescreenPage);
+              context.goNamed(Routes.mainNavigationPage);
               context.read<ListJobCubit>().fetchListJob();
               //context.read<ProfileDataCubit>().fetchProfileData();
               //print("token: ${LoginmocState.data!.token}");

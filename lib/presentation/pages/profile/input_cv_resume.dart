@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 part of '../pages.dart';
 
 class InputResume extends StatefulWidget {
@@ -186,7 +188,8 @@ class _InputResumeState extends State<InputResume> {
                                     padding: const EdgeInsets.fromLTRB(
                                         16, 12, 15, 12),
                                     child: TextButton(
-                                        onPressed: () => context.go('/sudah'),
+                                        onPressed: () {},
+                                        //=> context.go('/sudah'),
                                         child: const Text(
                                           "Google Drive",
                                           style: TextStyle(
@@ -199,7 +202,8 @@ class _InputResumeState extends State<InputResume> {
                                     padding: const EdgeInsets.fromLTRB(
                                         16, 12, 15, 12),
                                     child: TextButton(
-                                        onPressed: () => context.go('/sudah'),
+                                        onPressed: () {},
+                                        //=> context.go('/sudah'),
                                         child: const Text(
                                           "Dropbox",
                                           style: TextStyle(

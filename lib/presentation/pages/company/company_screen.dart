@@ -24,6 +24,7 @@ class _CompanyScreenState extends State<CompanyScreen>
     _companyDataCubit = CompanyDataCubit(CompanyDataRepositoryImpl());
     _aboutCompanyDataCubit = AboutCompanyDataCubit(CompanyDataRepositoryImpl());
     _jobsCompanyDataCubit = JobsCompanyDataCubit(CompanyDataRepositoryImpl());
+
     tabController = TabController(length: 2, vsync: this);
 
     super.initState();
@@ -53,25 +54,25 @@ class _CompanyScreenState extends State<CompanyScreen>
               onTap: () => context.go('/searchscreen'),
               child: Image.asset('assets/icons/back.png',
                   height: 18.67, width: 10)),
-          flexibleSpace: Container(
-            margin: const EdgeInsets.fromLTRB(50, 30, 15, 8),
-            child: TextFormField(
-              textAlign: TextAlign.justify,
-              style: const TextStyle(
-                fontFamily: 'inter_regular',
-                fontSize: 16,
-                color: Color(0xff333333),
-                fontWeight: FontWeight.w400,
-                backgroundColor: Color(0xffE6E6E6),
-              ),
-              cursorColor: const Color(0xff333333),
-              decoration: InputDecoration(
-                  border: InputBorder.none,
-                  prefixIcon: Image.asset('assets/icons/search.png'),
-                  fillColor: const Color.fromRGBO(230, 230, 230, 1),
-                  filled: true),
-            ),
-          ),
+          // flexibleSpace: Container(
+          //   margin: const EdgeInsets.fromLTRB(50, 30, 15, 8),
+          //   child: TextFormField(
+          //     textAlign: TextAlign.justify,
+          //     style: const TextStyle(
+          //       fontFamily: 'inter_regular',
+          //       fontSize: 16,
+          //       color: Color(0xff333333),
+          //       fontWeight: FontWeight.w400,
+          //       backgroundColor: Color(0xffE6E6E6),
+          //     ),
+          //     cursorColor: const Color(0xff333333),
+          //     decoration: InputDecoration(
+          //         border: InputBorder.none,
+          //         prefixIcon: Image.asset('assets/icons/search.png'),
+          //         fillColor: const Color.fromRGBO(230, 230, 230, 1),
+          //         filled: true),
+          //   ),
+          // ),
         ),
       ),
       backgroundColor: Colors.grey[200],

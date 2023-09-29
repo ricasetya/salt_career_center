@@ -17,6 +17,7 @@ class Routes {
 
 //home
   static var homescreenPage = "homescreen";
+  static var mainNavigationPage = "mainNavigation";
 
 //pekerjaan
   static var jobscreenPage = "jobscreen";
@@ -39,7 +40,6 @@ class Routes {
   static var inputEducation = "inputEducation";
   static var profileEditPhotoPage = "profileEditPhotoPage";
   static var profileCVResumePage = "profileCVResumePage";
-
 
   // akbar
   static var profileinputportofolioPage = "profileinputportofolio";

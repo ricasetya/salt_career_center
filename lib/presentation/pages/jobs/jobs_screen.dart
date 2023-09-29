@@ -11,18 +11,19 @@ class JobsScreen extends StatefulWidget {
 
 class _JobsScreenState extends State<JobsScreen> {
   late ListJobCubit _listJobCubit;
-  late int _bottomNavCurrentIndext = 0;
+  // late int _bottomNavCurrentIndext = 0;
 
   @override
   void initState() {
     super.initState();
     _listJobCubit = ListJobCubit(ListJobRepositoryImpl());
+    BlocProvider.of<ListJobCubit>(context).fetchListJob();
   }
 
   @override
   void dispose() {
     _listJobCubit.close();
-    _bottomNavCurrentIndext;
+    // _bottomNavCurrentIndext;
     super.dispose();
   }
 
@@ -33,39 +34,39 @@ class _JobsScreenState extends State<JobsScreen> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xffFFFFFF),
-          title: SizedBox(
-            width: 375,
-            height: 44,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: TextField(
-                style: const TextStyle(
-                  fontFamily: "inter",
-                  fontSize: 14,
-                ),
-                decoration: InputDecoration(
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0xffE6E6E6),
-                    ),
-                  ),
-                  contentPadding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  prefixIcon: const Icon(
-                    Icons.search,
-                    size: 20.0,
-                  ),
-                  prefixIconColor: const Color(0xff999999),
-                  hintText: "Digital Marketing",
-                  fillColor: const Color(0xffFFFFFF),
-                ),
-                textAlign: TextAlign.left,
-                keyboardType: TextInputType.text,
-              ),
-            ),
-          ),
+          // title: SizedBox(
+          //   width: 375,
+          //   height: 44,
+          //   child: Padding(
+          //     padding: const EdgeInsets.only(top: 8),
+          //     child: TextField(
+          //       style: const TextStyle(
+          //         fontFamily: "inter",
+          //         fontSize: 14,
+          //       ),
+          //       decoration: InputDecoration(
+          //         focusedBorder: const OutlineInputBorder(
+          //           borderSide: BorderSide(
+          //             color: Color(0xffE6E6E6),
+          //           ),
+          //         ),
+          //         contentPadding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+          //         border: OutlineInputBorder(
+          //           borderRadius: BorderRadius.circular(4),
+          //         ),
+          //         prefixIcon: const Icon(
+          //           Icons.search,
+          //           size: 20.0,
+          //         ),
+          //         prefixIconColor: const Color(0xff999999),
+          //         hintText: "Digital Marketing",
+          //         fillColor: const Color(0xffFFFFFF),
+          //       ),
+          //       textAlign: TextAlign.left,
+          //       keyboardType: TextInputType.text,
+          //     ),
+          //   ),
+          // ),
           bottom: const TabBar(
             indicatorColor: Color(0xffFFFFFF),
             labelColor: Color(0xffEA232A),
@@ -88,95 +89,95 @@ class _JobsScreenState extends State<JobsScreen> {
             buildJobApplyedWidget(),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          selectedFontSize: 10,
-          unselectedFontSize: 10,
-          selectedItemColor: const Color(0xffEA232A),
-          unselectedItemColor: const Color(0xff999999),
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          selectedLabelStyle: const TextStyle(
-            fontFamily: "inter_semibold",
-            fontSize: 10,
-            color: Color(0xffEA232A),
-          ),
-          unselectedLabelStyle: const TextStyle(
-            fontFamily: "inter_semibold",
-            fontSize: 10,
-            color: Color(0xff999999),
-          ),
-          onTap: (index) {
-            setState(() {
-              _bottomNavCurrentIndext = index;
-            });
-          },
-          currentIndex: _bottomNavCurrentIndext,
-          elevation: 0.05,
-          items: [
-            BottomNavigationBarItem(
-              icon: GestureDetector(
-                onTap: () => context.go('/homescreen'),
-                child: Image.asset(
-                  'assets/icons/beranda.png',
-                  color: const Color(0xff999999),
-                ),
-              ),
-              // activeIcon: Image.asset(
-              //   'assets/icons/beranda.png',
-              //   color: const Color(0xffEA232A),
-              // ),
-              label: 'Beranda',
-            ),
-            BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/icons/pekerjaan.png',
-                color: const Color(0xffEA232A),
-              ),
-              activeIcon: Image.asset(
-                'assets/icons/pekerjaan.png',
-                color: const Color(0xffEA232A),
-              ),
-              label: 'Pekerjaan',
-            ),
-            BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/icons/kegiatan.png',
-                color: const Color(0xff999999),
-              ),
-              // activeIcon: Image.asset(
-              //   'assets/icons/kegiatan.png',
-              //   color: const Color(0xffEA232A),
-              // ),
-              label: 'Kegiatan',
-            ),
-            BottomNavigationBarItem(
-              icon: Image.asset(
-                'assets/icons/notif.png',
-                color: const Color(0xff999999),
-              ),
-              // activeIcon: Image.asset(
-              //   'assets/icons/notif.png',
-              //   color: const Color(0xffEA232A),
-              // ),
-              label: 'Notifikasi',
-            ),
-            BottomNavigationBarItem(
-              icon: GestureDetector(
-                onTap: () => context.go('/profileblank'),
-                child: Image.asset(
-                  'assets/icons/profil.png',
-                  color: const Color(0xff999999),
-                ),
-              ),
-              // activeIcon: Image.asset(
-              //   'assets/icons/profil.png',
-              //   color: const Color(0xffEA232A),
-              // ),
-              label: 'Profil',
-            ),
-          ],
-        ),
+        // bottomNavigationBar: BottomNavigationBar(
+        //   type: BottomNavigationBarType.fixed,
+        //   selectedFontSize: 10,
+        //   unselectedFontSize: 10,
+        //   selectedItemColor: const Color(0xffEA232A),
+        //   unselectedItemColor: const Color(0xff999999),
+        //   showSelectedLabels: true,
+        //   showUnselectedLabels: true,
+        //   selectedLabelStyle: const TextStyle(
+        //     fontFamily: "inter_semibold",
+        //     fontSize: 10,
+        //     color: Color(0xffEA232A),
+        //   ),
+        //   unselectedLabelStyle: const TextStyle(
+        //     fontFamily: "inter_semibold",
+        //     fontSize: 10,
+        //     color: Color(0xff999999),
+        //   ),
+        //   onTap: (index) {
+        //     setState(() {
+        //       _bottomNavCurrentIndext = index;
+        //     });
+        //   },
+        //   currentIndex: _bottomNavCurrentIndext,
+        //   elevation: 0.05,
+        //   items: [
+        //     BottomNavigationBarItem(
+        //       icon: GestureDetector(
+        //         onTap: () => context.go('/homescreen'),
+        //         child: Image.asset(
+        //           'assets/icons/beranda.png',
+        //           color: const Color(0xff999999),
+        //         ),
+        //       ),
+        //       // activeIcon: Image.asset(
+        //       //   'assets/icons/beranda.png',
+        //       //   color: const Color(0xffEA232A),
+        //       // ),
+        //       label: 'Beranda',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Image.asset(
+        //         'assets/icons/pekerjaan.png',
+        //         color: const Color(0xffEA232A),
+        //       ),
+        //       activeIcon: Image.asset(
+        //         'assets/icons/pekerjaan.png',
+        //         color: const Color(0xffEA232A),
+        //       ),
+        //       label: 'Pekerjaan',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Image.asset(
+        //         'assets/icons/kegiatan.png',
+        //         color: const Color(0xff999999),
+        //       ),
+        //       // activeIcon: Image.asset(
+        //       //   'assets/icons/kegiatan.png',
+        //       //   color: const Color(0xffEA232A),
+        //       // ),
+        //       label: 'Kegiatan',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Image.asset(
+        //         'assets/icons/notif.png',
+        //         color: const Color(0xff999999),
+        //       ),
+        //       // activeIcon: Image.asset(
+        //       //   'assets/icons/notif.png',
+        //       //   color: const Color(0xffEA232A),
+        //       // ),
+        //       label: 'Notifikasi',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: GestureDetector(
+        //         onTap: () => context.go('/profileblank'),
+        //         child: Image.asset(
+        //           'assets/icons/profil.png',
+        //           color: const Color(0xff999999),
+        //         ),
+        //       ),
+        //       // activeIcon: Image.asset(
+        //       //   'assets/icons/profil.png',
+        //       //   color: const Color(0xffEA232A),
+        //       // ),
+        //       label: 'Profil',
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }

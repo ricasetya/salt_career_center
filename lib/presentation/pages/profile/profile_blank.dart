@@ -141,7 +141,8 @@ class _ProfileBlankState extends State<ProfileBlank> {
                         const SizedBox(height: 24),
                         Row(
                           children: [
-                            Image.asset("assets/icons/trash.png"),
+                            const Icon(Icons.save_as_rounded),
+                            //Image.asset("assets/icons/trash.png"),
                             const SizedBox(width: 12),
                             InkWell(
                               onTap: () async {
@@ -738,83 +739,6 @@ class _ProfileBlankState extends State<ProfileBlank> {
           ),
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   type: BottomNavigationBarType.fixed,
-      //   selectedFontSize: 10,
-      //   unselectedFontSize: 10,
-      //   selectedItemColor: const Color(0xffEA232A),
-      //   unselectedItemColor: const Color(0xff999999),
-      //   showSelectedLabels: true,
-      //   showUnselectedLabels: true,
-      //   selectedLabelStyle: const TextStyle(
-      //     fontFamily: "inter_semibold",
-      //     fontSize: 10,
-      //     color: Color(0xffEA232A),
-      //   ),
-      //   unselectedLabelStyle: const TextStyle(
-      //     fontFamily: "inter_semibold",
-      //     fontSize: 10,
-      //     color: Color(0xff999999),
-      //   ),
-      //   onTap: (index) {
-      //     setState(() {
-      //       _bottomNavCurrentIndext = index;
-      //     });
-      //   },
-      //   currentIndex: _bottomNavCurrentIndext,
-      //   elevation: 0.05,
-      //   items: [
-      //     BottomNavigationBarItem(
-      //       icon: GestureDetector(
-      //         onTap: () => context.go('/homescreen', extra: 0),
-      //         child: Image.asset(
-      //           'assets/icons/beranda.png',
-      //           color: const Color(0xff999999),
-      //         ),
-      //       ),
-      //       activeIcon: Image.asset(
-      //         'assets/icons/beranda.png',
-      //         color: const Color(0xff999999),
-      //       ),
-      //       label: 'Beranda',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: GestureDetector(
-      //         onTap: () => context.go('/jobscreen', extra: 1),
-      //         child: Image.asset(
-      //           'assets/icons/pekerjaan.png',
-      //           color: const Color(0xff999999),
-      //         ),
-      //       ),
-      //       label: 'Pekerjaan',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Image.asset(
-      //         'assets/icons/kegiatan.png',
-      //         color: const Color(0xff999999),
-      //       ),
-      //       label: 'Kegiatan',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Image.asset(
-      //         'assets/icons/notif.png',
-      //         color: const Color(0xff999999),
-      //       ),
-      //       label: 'Notifikasi',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Image.asset(
-      //         'assets/icons/profil.png',
-      //         color: const Color(0xffEA232A),
-      //       ),
-      //       activeIcon: Image.asset(
-      //         'assets/icons/profil.png',
-      //         color: const Color(0xffEA232A),
-      //       ),
-      //       label: 'Profil',
-      //     ),
-      //   ],
-      // ),
     );
   }
 

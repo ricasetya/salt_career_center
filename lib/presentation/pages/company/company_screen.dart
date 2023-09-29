@@ -12,7 +12,6 @@ class CompanyScreen extends StatefulWidget {
 class _CompanyScreenState extends State<CompanyScreen>
     with SingleTickerProviderStateMixin {
   PickedFile? _imageFile;
-  // late ListsJobsCubit _listsJobsCubit;
   late CompanyDataCubit _companyDataCubit;
   bool isOpen = true;
   late TabController tabController;
@@ -51,7 +50,10 @@ class _CompanyScreenState extends State<CompanyScreen>
           shadowColor: const Color.fromRGBO(0, 0, 0, 0.05),
           backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
           leading: GestureDetector(
-              onTap: () => context.go('/searchscreen'),
+              onTap: () {
+                context.goNamed(Routes.mainNavigationPage);
+              },
+              //=> context.go('/searchscreen'),
               child: Image.asset('assets/icons/back.png',
                   height: 18.67, width: 10)),
           // flexibleSpace: Container(
@@ -84,12 +86,7 @@ class _CompanyScreenState extends State<CompanyScreen>
               builder: (context, state) {
                 if (state is CompanyDataIsSucces) {
                   print(state.data);
-                  // print("build Data Company");
-                  // state.data.forEach((element) {
-                  //   print(element.logo);
-                  // });
                 }
-                //             final companydata = state.data;
 
                 return BlocBuilder<CompanyDataCubit, CompanyDataState>(
                   builder: (context, state) {
@@ -192,9 +189,7 @@ class _CompanyScreenState extends State<CompanyScreen>
       builder: (context, state) {
         if (state is CompanyDataIsSucces) {
           print("build company");
-          // state.data.forEach((element) {
-          //   print(element.position);
-          // });
+
           final listCompany = state.data.jobs;
 
           return ListView.builder(
@@ -302,7 +297,7 @@ class _CompanyScreenState extends State<CompanyScreen>
   }
 
   Widget buildAboutCompanyDataWidget() {
-    print("build");
+    print("build About company");
     return BlocBuilder<CompanyDataCubit, CompanyDataState>(
       builder: (context, state) {
         if (state is CompanyDataIsSucces) {
@@ -392,7 +387,6 @@ class _CompanyScreenState extends State<CompanyScreen>
             ),
           );
         } else if (state is CompanyDataIsLoading) {
-          //print("ARTICLE : LOADING abiut");
           return const Center(
             child: CircularProgressIndicator(
               color: Color(0xff5A5A5A),

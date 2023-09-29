@@ -19,8 +19,8 @@ class _SearchScreenState extends State<SearchScreen> {
     _listCompanyDataCubit =
         ListsCompanyDataCubit(ListsCompanyDataRepositoryImpl());
     _listJobDataCubit = ListJobCubit(ListJobRepositoryImpl());
-    BlocProvider.of<ListJobCubit>(context).fetchListJob();
-    BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
+    // BlocProvider.of<ListJobCubit>(context).fetchListJob();
+    // BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
   }
 
   @override

@@ -100,7 +100,10 @@ class _ProfileSettingsState extends State<ProfileSettings> {
           centerTitle: true,
           elevation: 0.5,
           leading: GestureDetector(
-            onTap: () => context.go('/profileblank'),
+            onTap: () {
+              context.goNamed(Routes.profileblankPage);
+            },
+            //=> context.go('/profileblank'),
             child: const Icon(
               Icons.arrow_back_ios_rounded,
               color: Color(0xff333333),

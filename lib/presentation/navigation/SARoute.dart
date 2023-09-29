@@ -3,11 +3,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:telkom_career/domain/model/data/profile/profile_edit_profile_data.dart';
-import 'package:telkom_career/domain/model/data/profile/profile_update_photo_data.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/company_data_cubit.dart';
-import 'package:telkom_career/presentation/pages/jobs/cubit/list_job_cubit.dart';
-import 'package:telkom_career/presentation/pages/profile/cubit/profile_data/profile_data_cubit.dart';
-import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
+import 'package:telkom_career/presentation/pages/main_navigation_view.dart';
 import '../pages/pages.dart';
 import 'Routes.dart';
 
@@ -63,9 +60,14 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
     path: "/homescreen",
     name: Routes.homescreenPage,
     builder: (context, state) {
-      BlocProvider.of<ListJobCubit>(context).fetchListJob();
-      BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
       return const HomeScreen();
+    },
+  ),
+  GoRoute(
+    path: "/mainNavigationPage",
+    name: Routes.mainNavigationPage,
+    builder: (context, state) {
+      return const MainNavigationView();
     },
   ),
 
@@ -74,7 +76,7 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
     path: "/jobscreen",
     name: Routes.jobscreenPage,
     builder: (context, state) {
-      BlocProvider.of<ListJobCubit>(context).fetchListJob();
+      // BlocProvider.of<ListJobCubit>(context).fetchListJob();
       return const JobsScreen();
     },
   ),
@@ -92,7 +94,7 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
     path: "/profileblank",
     name: Routes.profileblankPage,
     builder: (context, state) {
-      BlocProvider.of<ProfileDataCubit>(context).fetchProfileData();
+      //BlocProvider.of<ProfileDataCubit>(context).fetchProfileData();
       return const ProfileBlank();
     },
   ),
@@ -153,8 +155,8 @@ final GoRouter saRouter = GoRouter(initialLocation: "/loginmoc", routes: [
     path: "/searchscreen",
     name: Routes.searchscreenPage,
     builder: (context, state) {
-      BlocProvider.of<ListJobCubit>(context).fetchListJob();
-      BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
+      // BlocProvider.of<ListJobCubit>(context).fetchListJob();
+      // BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
       return const SearchScreen();
     },
     routes: [

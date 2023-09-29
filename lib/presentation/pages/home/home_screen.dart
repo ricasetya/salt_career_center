@@ -11,17 +11,23 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late ListJobCubit _listJobDataCubit;
-  late int _bottomNavCurrentIndext = 0;
+  late ProfileDataCubit _profileDataCubit;
+  // late int _bottomNavCurrentIndext = 0;
 
   @override
   void initState() {
     super.initState();
     _listJobDataCubit = ListJobCubit(ListJobRepositoryImpl());
+    _profileDataCubit = ProfileDataCubit(ProfileDataRepositoryImpl());
+    BlocProvider.of<ListJobCubit>(context).fetchListJob();
+    BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
+    BlocProvider.of<ProfileDataCubit>(context).fetchProfileData();
   }
 
   @override
   void dispose() {
     _listJobDataCubit.close();
+    _profileDataCubit.close();
     super.dispose();
   }
 
@@ -66,147 +72,84 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              ListView.builder(
-                itemCount: 1,
-                shrinkWrap: true,
-                physics: const ScrollPhysics(),
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    height: 75,
-                    width: MediaQuery.of(context).size.width,
-                    child: Card(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.grey[200],
-                          backgroundImage: const AssetImage(
-                            "assets/images/image887.png",
-                          ),
+      body: BlocBuilder<ProfileDataCubit, ProfileDataState>(
+          builder: (context, profileDataState) {
+        if (profileDataState is ProfileDataIsSuccess) {
+          final data = profileDataState.data;
+          print(profileDataState.data);
+          return BlocBuilder<ProfileDataCubit, ProfileDataState>(
+            builder: (context, profileDataState) {
+              if (profileDataState is ProfileDataIsSuccess) {
+                return SafeArea(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        ListView.builder(
+                          itemCount: 1,
+                          shrinkWrap: true,
+                          physics: const ScrollPhysics(),
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              height: 75,
+                              width: MediaQuery.of(context).size.width,
+                              child: Card(
+                                child: ListTile(
+                                  leading:
+                                      profileDataState.data.urlPhoto == null
+                                          ? CircleAvatar(
+                                              backgroundColor: Colors.grey[200],
+                                              backgroundImage: const AssetImage(
+                                                "assets/images/avatar.png",
+                                              ),
+                                            )
+                                          : CircleAvatar(
+                                              backgroundColor: Colors.grey[200],
+                                              backgroundImage: NetworkImage(
+                                                profileDataState.data.urlPhoto!,
+                                              ),
+                                            ),
+                                  title: Text("${profileDataState.data.name}"),
+                                  subtitle:
+                                      Text("${profileDataState.data.skill}"),
+                                ),
+                              ),
+                            );
+                          },
                         ),
-                        title: const Text("Bima Agustian Wanaputra"),
-                        subtitle: const Text("UI Design"),
-                      ),
-                    ),
-                  );
-                },
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.only(top: 8, left: 16),
-                    child: Text(
-                      "Lowongan Kerja Terbaru",
-                      style: TextStyle(
-                        fontFamily: "inter",
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff333333),
-                      ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Padding(
+                              padding: EdgeInsets.only(top: 8, left: 16),
+                              child: Text(
+                                "Lowongan Kerja Terbaru",
+                                style: TextStyle(
+                                  fontFamily: "inter",
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xff333333),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        buildListJobsWidget(),
+                      ],
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              buildListJobsWidget(),
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        selectedFontSize: 10,
-        unselectedFontSize: 10,
-        selectedItemColor: const Color(0xffEA232A),
-        unselectedItemColor: const Color(0xff999999),
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        // selectedLabelStyle: const TextStyle(
-        //   fontFamily: "inter_semibold",
-        //   fontSize: 10,
-        //   color: Color(0xffEA232A),
-        // ),
-        unselectedLabelStyle: const TextStyle(
-          fontFamily: "inter_semibold",
-          fontSize: 10,
-          color: Color(0xff999999),
-        ),
-        onTap: (index) {
-          setState(() {
-            _bottomNavCurrentIndext = index;
-          });
-        },
-        currentIndex: _bottomNavCurrentIndext,
-        elevation: 0.05,
-        items: [
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icons/beranda.png',
-              color: const Color(0xff999999),
-            ),
-            activeIcon: Image.asset(
-              'assets/icons/beranda.png',
-              color: const Color(0xffEA232A),
-            ),
-            label: 'Beranda',
-          ),
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () => context.go('/jobscreen'),
-              child: Image.asset(
-                'assets/icons/pekerjaan.png',
-                color: const Color(0xff999999),
-              ),
-            ),
-            // activeIcon: Image.asset(
-            //   'assets/icons/pekerjaan.png',
-            //   color: const Color(0xffEA232A),
-            // ),
-            label: 'Pekerjaan',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icons/kegiatan.png',
-              color: const Color(0xff999999),
-            ),
-            // activeIcon: Image.asset(
-            //   'assets/icons/kegiatan.png',
-            //   color: const Color(0xffEA232A),
-            // ),
-            label: 'Kegiatan',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icons/notif.png',
-              color: const Color(0xff999999),
-            ),
-            // activeIcon: Image.asset(
-            //   'assets/icons/notif.png',
-            //   color: const Color(0xffEA232A),
-            // ),
-            label: 'Notifikasi',
-          ),
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () => context.go('/profileblank'),
-              child: Image.asset(
-                'assets/icons/profil.png',
-                color: const Color(0xff999999),
-              ),
-            ),
-            // activeIcon: Image.asset(
-            //   'assets/icons/profil.png',
-            //   color: const Color(0xffEA232A),
-            // ),
-            label: 'Profil',
-          ),
-        ],
-      ),
+                );
+              } else if (profileDataState is ProfileDataIsError) {
+                print(profileDataState.message);
+              }
+              return "".text.make();
+            },
+          );
+        }
+        return "".text.make();
+      }),
     );
   }
 

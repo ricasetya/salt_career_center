@@ -14,24 +14,10 @@ class ProfileBlank extends StatefulWidget {
 
 class _ProfileBlankState extends State<ProfileBlank> {
   //final _formKey = GlobalKey<FormState>();
-  late int _bottomNavCurrentIndext = 0;
   File? photo;
   String urlPhoto = '';
   late ProfileDataCubit _profileDataCubit;
   // bool _isLoading = false;
-
-  // Future<void> _uploadImage() async {
-  //   setState(() {
-  //     _isLoading = true;
-  //   });
-
-  //   await BlocProvider.of<UpdatePhotoCubit>(context)
-  //       .fetchProfileUpdatePhoto(photo!);
-
-  //   setState(() {
-  //     _isLoading = false;
-  //   });
-  // }
 
   Future<void> ChoiceImageCamera(context) async {
     final picker = ImagePicker();
@@ -64,15 +50,14 @@ class _ProfileBlankState extends State<ProfileBlank> {
   @override
   void initState() {
     urlPhoto.text;
-
     _profileDataCubit = ProfileDataCubit(ProfileDataRepositoryImpl());
+    BlocProvider.of<ProfileDataCubit>(context).fetchProfileData();
     super.initState();
   }
 
   @override
   void dispose() {
     _profileDataCubit.close();
-    _bottomNavCurrentIndext;
     photo;
     urlPhoto;
 
@@ -175,62 +160,8 @@ class _ProfileBlankState extends State<ProfileBlank> {
                             ),
                           ],
                         ),
-                        // const SizedBox(height: 24),
-                        // Row(
-                        //   children: [
-                        //     Image.asset("assets/icons/trash.png"),
-                        //     const SizedBox(width: 12),
-                        //     InkWell(
-                        //       onTap: () {
-                        //         // ChoiceImage(ImageSource.camera);
-                        //       },
-                        //       child: const Text(
-                        //         "Hapus foto",
-                        //         style: TextStyle(
-                        //             fontFamily: "inter_bold",
-                        //             fontSize: 16,
-                        //             color: Color.fromRGBO(51, 51, 51, 1),
-                        //             fontWeight: FontWeight.w600),
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
                       ],
                     ),
-                    // Container(
-                    //   padding: const EdgeInsets.only(top: 24, bottom: 50),
-                    //   alignment: Alignment.center,
-                    //   child: _urlImage != ''
-                    //       ? CircleAvatar(
-                    //           backgroundImage: NetworkImage(_urlImage),
-                    //           maxRadius: 50,
-                    //         )
-                    //       : CircleAvatar(
-                    //           backgroundColor: Colors.grey,
-                    //           maxRadius: 50,
-                    //           child: photo != null
-                    //               ? CircleAvatar(
-                    //                   backgroundColor: Colors.grey,
-                    //                   maxRadius: 50,
-                    //                   backgroundImage: Image.memory(
-                    //                     photo!.readAsBytesSync(),
-                    //                   ).image,
-                    //                 )
-                    //               : Container(
-                    //                   decoration: const BoxDecoration(
-                    //                     shape: BoxShape.circle,
-                    //                     color: Colors.grey,
-                    //                   ),
-                    //                   child: Transform.scale(
-                    //                     scale: 2.0,
-                    //                     child: Image.asset(
-                    //                       "assets/images/avatar.png",
-                    //                       fit: BoxFit.cover,
-                    //                     ),
-                    //                   ),
-                    //                 ),
-                    //         ),
-                    // ),
                   ],
                 ),
               );
@@ -306,119 +237,28 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                         setState(() {});
                                       },
                                       child: Container(
-                                          margin:
-                                              const EdgeInsets.only(top: 16),
-                                          height: 100,
-                                          width: 100,
-                                          child: CircleAvatar(
-                                              maxRadius: 50,
-                                              child: photo != null
-                                                  ? CircleAvatar(
-                                                      maxRadius: 50,
-                                                      backgroundImage:
-                                                          Image.memory(photo!
-                                                                  .readAsBytesSync())
-                                                              .image)
-                                                  : CircleAvatar(
-                                                      maxRadius: 50,
-                                                      backgroundImage:
-                                                          NetworkImage(
-                                                        profileDataState
-                                                            .data.urlPhoto!,
-                                                      ),
-                                                    )
-
-                                              // Image.asset(
-                                              //   "asset/images/user-circle.png",
-                                              //   fit: BoxFit.contain)
-                                              )),
+                                        margin: const EdgeInsets.only(top: 16),
+                                        height: 100,
+                                        width: 100,
+                                        child: CircleAvatar(
+                                          maxRadius: 50,
+                                          child: photo != null
+                                              ? CircleAvatar(
+                                                  maxRadius: 50,
+                                                  backgroundImage: Image.memory(
+                                                          photo!
+                                                              .readAsBytesSync())
+                                                      .image)
+                                              : CircleAvatar(
+                                                  maxRadius: 50,
+                                                  backgroundImage: NetworkImage(
+                                                    profileDataState
+                                                        .data.urlPhoto!,
+                                                  ),
+                                                ),
+                                        ),
+                                      ),
                                     ),
-
-                                    // Container(
-                                    //   margin: const EdgeInsets.only(top: 16),
-                                    //   child: InkWell(
-                                    //     onTap: () {
-                                    //       // context.goNamed(
-                                    //       //     Routes.profileEditPhotoPage);
-                                    //       _showSelectPhotoOptions(context);
-                                    //       setState(() {});
-                                    //     },
-
-                                    //     child: data.urlPhoto != ''
-                                    //         ? CircleAvatar(
-                                    //             //backgroundColor: Colors.grey,
-                                    //             maxRadius: 50,
-                                    //             backgroundImage: NetworkImage(
-                                    //               profileDataState
-                                    //                   .data.urlPhoto!,
-                                    //             ),
-                                    //             // AssetImage(
-                                    //             //     'assets/images/avatar.png'),
-                                    //           )
-                                    //         : CircleAvatar(
-                                    //             backgroundImage: Image.memory(
-                                    //                     photo!
-                                    //                         .readAsBytesSync())
-                                    //                 .image,
-                                    //             maxRadius: 50),
-
-                                    //     // CircleAvatar(
-                                    //     //     backgroundColor: Colors.grey,
-                                    //     //     maxRadius: 50,
-                                    //     //     child: photo == null
-                                    //     //         ? CircleAvatar(
-                                    //     //             backgroundColor:
-                                    //     //                 Colors.grey,
-                                    //     //             maxRadius: 50,
-                                    //     //             backgroundImage:
-                                    //     //                 Image.memory(
-                                    //     //               photo!
-                                    //     //                   .readAsBytesSync(),
-                                    //     //             ).image,
-                                    //     //           )
-                                    //     //         : const CircleAvatar(
-                                    //     //             backgroundColor:
-                                    //     //                 Colors.grey,
-                                    //     //             maxRadius: 50,
-                                    //     //             backgroundImage: AssetImage(
-                                    //     //                 "assets/images/avatar.png"),
-                                    //     //           ),
-
-                                    //     // Container(
-                                    //     //     decoration:
-                                    //     //         const BoxDecoration(
-                                    //     //       shape:
-                                    //     //           BoxShape.circle,
-                                    //     //       color: Colors.grey,
-                                    //     //     ),
-                                    //     //     child: Transform.scale(
-                                    //     //       //scale: 2.0,
-                                    //     //       child: Image.asset(
-                                    //     //         "assets/images/avatar.png",
-                                    //     //         fit: BoxFit.cover,
-                                    //     //       ),
-                                    //     //     ),
-                                    //     //   ),
-                                    //     //),
-
-                                    //     // photo != null
-                                    //     //     ? const CircleAvatar(
-                                    //     //         //maxRadius: 50,
-                                    //     //         //backgroundImage: Image.memory(photo!.readAsBytesSync().photo),
-                                    //     //         backgroundImage: AssetImage(
-                                    //     //             "assets/images/avatar.png"),
-                                    //     //       )
-                                    //     //     : CircleAvatar(
-                                    //     //         backgroundImage: NetworkImage(
-                                    //     //             profileDataState
-                                    //     //                 .data.urlPhoto
-                                    //     //                 .toString()),
-                                    //     //         // FileImage(
-                                    //     //         //   File(_imageFile!.path),
-                                    //     //         // ),
-                                    //     //       ),
-                                    //   ),
-                                    // ),
                                     Container(
                                       margin: const EdgeInsets.only(top: 8),
                                       child: Text(
@@ -785,9 +625,13 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                           margin:
                                               const EdgeInsets.only(left: 16),
                                           alignment: Alignment.topLeft,
-                                          child: const Text(
-                                            "Belum ada data dimasukkan",
-                                            style: TextStyle(
+                                          child: Text(
+                                            profileDataState.data.cvResume ==
+                                                    null
+                                                ? "Belum ada data dimasukkan"
+                                                : profileDataState
+                                                    .data.cvResume!,
+                                            style: const TextStyle(
                                               fontFamily: "inter_semibold",
                                               fontSize: 12,
                                               fontWeight: FontWeight.w600,
@@ -806,7 +650,7 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                               );
                                             },
                                             //context.go('/profileCVResumePage'),
-                                           child: Image.asset(
+                                            child: Image.asset(
                                               'assets/icons/icon_edit.png',
                                               color: const Color(0xff999999),
                                             ),
@@ -894,83 +738,83 @@ class _ProfileBlankState extends State<ProfileBlank> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        selectedFontSize: 10,
-        unselectedFontSize: 10,
-        selectedItemColor: const Color(0xffEA232A),
-        unselectedItemColor: const Color(0xff999999),
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        selectedLabelStyle: const TextStyle(
-          fontFamily: "inter_semibold",
-          fontSize: 10,
-          color: Color(0xffEA232A),
-        ),
-        unselectedLabelStyle: const TextStyle(
-          fontFamily: "inter_semibold",
-          fontSize: 10,
-          color: Color(0xff999999),
-        ),
-        onTap: (index) {
-          setState(() {
-            _bottomNavCurrentIndext = index;
-          });
-        },
-        currentIndex: _bottomNavCurrentIndext,
-        elevation: 0.05,
-        items: [
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () => context.go('/homescreen', extra: 0),
-              child: Image.asset(
-                'assets/icons/beranda.png',
-                color: const Color(0xff999999),
-              ),
-            ),
-            activeIcon: Image.asset(
-              'assets/icons/beranda.png',
-              color: const Color(0xff999999),
-            ),
-            label: 'Beranda',
-          ),
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () => context.go('/jobscreen', extra: 1),
-              child: Image.asset(
-                'assets/icons/pekerjaan.png',
-                color: const Color(0xff999999),
-              ),
-            ),
-            label: 'Pekerjaan',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icons/kegiatan.png',
-              color: const Color(0xff999999),
-            ),
-            label: 'Kegiatan',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icons/notif.png',
-              color: const Color(0xff999999),
-            ),
-            label: 'Notifikasi',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icons/profil.png',
-              color: const Color(0xffEA232A),
-            ),
-            activeIcon: Image.asset(
-              'assets/icons/profil.png',
-              color: const Color(0xffEA232A),
-            ),
-            label: 'Profil',
-          ),
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   type: BottomNavigationBarType.fixed,
+      //   selectedFontSize: 10,
+      //   unselectedFontSize: 10,
+      //   selectedItemColor: const Color(0xffEA232A),
+      //   unselectedItemColor: const Color(0xff999999),
+      //   showSelectedLabels: true,
+      //   showUnselectedLabels: true,
+      //   selectedLabelStyle: const TextStyle(
+      //     fontFamily: "inter_semibold",
+      //     fontSize: 10,
+      //     color: Color(0xffEA232A),
+      //   ),
+      //   unselectedLabelStyle: const TextStyle(
+      //     fontFamily: "inter_semibold",
+      //     fontSize: 10,
+      //     color: Color(0xff999999),
+      //   ),
+      //   onTap: (index) {
+      //     setState(() {
+      //       _bottomNavCurrentIndext = index;
+      //     });
+      //   },
+      //   currentIndex: _bottomNavCurrentIndext,
+      //   elevation: 0.05,
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: GestureDetector(
+      //         onTap: () => context.go('/homescreen', extra: 0),
+      //         child: Image.asset(
+      //           'assets/icons/beranda.png',
+      //           color: const Color(0xff999999),
+      //         ),
+      //       ),
+      //       activeIcon: Image.asset(
+      //         'assets/icons/beranda.png',
+      //         color: const Color(0xff999999),
+      //       ),
+      //       label: 'Beranda',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: GestureDetector(
+      //         onTap: () => context.go('/jobscreen', extra: 1),
+      //         child: Image.asset(
+      //           'assets/icons/pekerjaan.png',
+      //           color: const Color(0xff999999),
+      //         ),
+      //       ),
+      //       label: 'Pekerjaan',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Image.asset(
+      //         'assets/icons/kegiatan.png',
+      //         color: const Color(0xff999999),
+      //       ),
+      //       label: 'Kegiatan',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Image.asset(
+      //         'assets/icons/notif.png',
+      //         color: const Color(0xff999999),
+      //       ),
+      //       label: 'Notifikasi',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Image.asset(
+      //         'assets/icons/profil.png',
+      //         color: const Color(0xffEA232A),
+      //       ),
+      //       activeIcon: Image.asset(
+      //         'assets/icons/profil.png',
+      //         color: const Color(0xffEA232A),
+      //       ),
+      //       label: 'Profil',
+      //     ),
+      //   ],
+      // ),
     );
   }
 

@@ -19,6 +19,8 @@ class _SearchScreenState extends State<SearchScreen> {
     _listCompanyDataCubit =
         ListsCompanyDataCubit(ListsCompanyDataRepositoryImpl());
     _listJobDataCubit = ListJobCubit(ListJobRepositoryImpl());
+    BlocProvider.of<ListJobCubit>(context).fetchListJob();
+    BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
   }
 
   @override
@@ -39,32 +41,32 @@ class _SearchScreenState extends State<SearchScreen> {
           appBar: AppBar(
             shadowColor: const Color.fromRGBO(0, 0, 0, 0.05),
             backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
-            leading: GestureDetector(
-              onTap: () {
-                context.go("/jobscreen");
-              },
-              child: Image.asset('assets/icons/back.png',
-                  height: 18.67, width: 10),
-            ),
-            flexibleSpace: Container(
-              margin: const EdgeInsets.fromLTRB(50, 30, 15, 8),
-              child: TextFormField(
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  fontFamily: 'inter_regular',
-                  fontSize: 16,
-                  color: Color(0xff333333),
-                  fontWeight: FontWeight.w400,
-                  backgroundColor: Color(0xffE6E6E6),
-                ),
-                cursorColor: const Color(0xff333333),
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon: Image.asset('assets/icons/search.png'),
-                    fillColor: const Color.fromRGBO(230, 230, 230, 1),
-                    filled: true),
-              ),
-            ),
+            // leading: GestureDetector(
+            //   onTap: () {
+            //     context.go("/jobscreen");
+            //   },
+            //   child: Image.asset('assets/icons/back.png',
+            //       height: 18.67, width: 10),
+            // ),
+            // flexibleSpace: Container(
+            //   margin: const EdgeInsets.fromLTRB(50, 30, 15, 8),
+            //   child: TextFormField(
+            //     textAlign: TextAlign.justify,
+            //     style: const TextStyle(
+            //       fontFamily: 'inter_regular',
+            //       fontSize: 16,
+            //       color: Color(0xff333333),
+            //       fontWeight: FontWeight.w400,
+            //       backgroundColor: Color(0xffE6E6E6),
+            //     ),
+            //     cursorColor: const Color(0xff333333),
+            //     decoration: InputDecoration(
+            //         border: InputBorder.none,
+            //         prefixIcon: Image.asset('assets/icons/search.png'),
+            //         fillColor: const Color.fromRGBO(230, 230, 230, 1),
+            //         filled: true),
+            //   ),
+            // ),
             bottom: const TabBar(
               indicatorColor: Color(0xffFFFFFF),
               labelColor: Color.fromARGB(255, 223, 15, 15),

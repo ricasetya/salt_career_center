@@ -6,7 +6,7 @@ import 'package:telkom_career/domain/base/authentication_header_request.dart';
 abstract class ProfileUpdatePhotoRepository {
   Future<ResultEntity> fetchProfileUpdatePhoto(
     AuthenticationHeadersRequestUpload header,
-    File image,
+    File? photo,
     //String id,
   );
 }

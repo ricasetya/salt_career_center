@@ -38,6 +38,8 @@ class Routes {
   static var workexperience = "experince";
   static var inputEducation = "inputEducation";
   static var profileEditPhotoPage = "profileEditPhotoPage";
+  static var profileCVResumePage = "profileCVResumePage";
+
 
   // akbar
   static var profileinputportofolioPage = "profileinputportofolio";

@@ -1,21 +1,21 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'profile_update_photo_request.dart';
+// part of 'profile_update_photo_request.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
+// // **************************************************************************
+// // JsonSerializableGenerator
+// // **************************************************************************
 
-ProfileUpdatePhotoRequest _$ProfileUpdatePhotoRequestFromJson(
-        Map<String, dynamic> json) =>
-    ProfileUpdatePhotoRequest(
-      json['file'],
-      json['url'] as String,
-    );
+// ProfileUpdatePhotoRequest _$ProfileUpdatePhotoRequestFromJson(
+//         Map<String, dynamic> json) =>
+//     ProfileUpdatePhotoRequest(
+//       json['file'],
+//       json['url'] as String,
+//     );
 
-Map<String, dynamic> _$ProfileUpdatePhotoRequestToJson(
-        ProfileUpdatePhotoRequest instance) =>
-    <String, dynamic>{
-      'file': instance.file,
-      'url': instance.url,
-    };
+// Map<String, dynamic> _$ProfileUpdatePhotoRequestToJson(
+//         ProfileUpdatePhotoRequest instance) =>
+//     <String, dynamic>{
+//       'file': instance.file,
+//       'url': instance.url,
+//     };

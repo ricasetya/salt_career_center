@@ -15,6 +15,7 @@ class MainNavigationView extends StatefulWidget {
 }
 
 class _MainNavigationViewState extends State<MainNavigationView> {
+  //String id = "";
   int selectedIndex = 0;
   updateIndex(int newIndex) {
     selectedIndex = newIndex;

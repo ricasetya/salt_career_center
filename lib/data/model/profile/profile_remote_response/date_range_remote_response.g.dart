@@ -9,11 +9,13 @@ part of 'date_range_remote_response.dart';
 DateRangeRemoteResponse _$DateRangeRemoteResponseFromJson(
         Map<String, dynamic> json) =>
     DateRangeRemoteResponse(
-      DateRange: json['DateRange'] as String?,
+      Start: json['Start'] as String?,
+      End: json['End'] as String?,
     );
 
 Map<String, dynamic> _$DateRangeRemoteResponseToJson(
         DateRangeRemoteResponse instance) =>
     <String, dynamic>{
-      'DateRange': instance.DateRange,
+      'Start': instance.Start,
+      'End': instance.End,
     };

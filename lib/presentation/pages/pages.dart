@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,11 +12,13 @@ import 'package:intl/intl.dart';
 import 'package:telkom_career/data/repository/forget_password/forget_password_otp_repository_impl.dart';
 import 'package:telkom_career/data/repository/forget_password/forget_password_repository_impl.dart';
 import 'package:telkom_career/data/repository/forget_password/forget_password_update_repository_impl.dart';
+import 'package:telkom_career/data/repository/profile/add_work_experience_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_add_education_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_change_password_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_data_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_update_ability_repository_impl.dart';
 import 'package:telkom_career/data/repository/profile/profile_update_language_repository_impl.dart';
+import 'package:telkom_career/data/repository/profile/update_portfolio_repository_impl.dart';
 import 'package:telkom_career/data/repository/register/register_repository_impl.dart';
 import 'package:telkom_career/domain/model/data/profile/get_profile/ability_data.dart';
 import 'package:telkom_career/domain/model/data/profile/get_profile/education/education_data.dart';
@@ -25,12 +28,14 @@ import 'package:telkom_career/domain/model/request/forget_password/forget_passwo
 import 'package:telkom_career/domain/model/request/forget_password/forget_password_request.dart';
 import 'package:telkom_career/domain/model/request/forget_password/forget_password_update_request.dart';
 import 'package:telkom_career/domain/model/request/login_request_moc/login_requestmoc.dart';
+import 'package:telkom_career/domain/model/request/profile/portfolio/portfolio_request.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_add_education/profile_add_education_request.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_change_password/profile_change_password_request.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_cvresume/profile_cv_resume_request.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_edit_profile/profile_edit_profile_request.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_update_ability/profile_update_ability_request.dart';
 import 'package:telkom_career/domain/model/request/profile/profile_update_language/profile_update_language_request.dart';
+import 'package:telkom_career/domain/model/request/profile/profile_work_experience/add_work_experience_request.dart';
 import 'package:telkom_career/domain/model/request/register/register_request.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/about_company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/company/cubit/jobs_company_data_cubit.dart';
@@ -63,6 +68,9 @@ import 'package:telkom_career/presentation/pages/login_moc/cubit/loginmoc_cubit.
 
 import 'package:telkom_career/presentation/pages/company/cubit/company_data_cubit.dart';
 import 'package:telkom_career/presentation/pages/search/cubit/lists_company_data_cubit.dart';
+
+import 'profile/cubit/portfolio/cubit/update_portfolio_cubit.dart';
+import 'profile/cubit/work_experience/cubit/add_work_experience_cubit.dart';
 
 //PART//
 //login
@@ -99,10 +107,8 @@ part 'profile/profile_input_language.dart';
 part 'profile/input_work_experience.dart';
 part 'profile/input_cv_resume.dart';
 part 'profile/input_education.dart';
+part 'profile/input_portfolio.dart';
 //part 'main_navigation_view.dart';
-
-// akbar
-part 'profile/profile_input_portofolio.dart';
 
 //search
 part 'search/search_screen.dart';

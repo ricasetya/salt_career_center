@@ -6,9 +6,11 @@ part 'date_range_remote_response.g.dart';
 
 @JsonSerializable()
 class DateRangeRemoteResponse implements DateRangeRemoteResponseMapper {
-  String? DateRange;
+  String? Start;
+  String? End;
   DateRangeRemoteResponse({
-    this.DateRange,
+    this.Start,
+    this.End,
   });
 
   factory DateRangeRemoteResponse.fromJson(Map<String, dynamic> json) =>
@@ -19,8 +21,8 @@ class DateRangeRemoteResponse implements DateRangeRemoteResponseMapper {
   @override
   DateRangeData toDateRangeData() {
     return DateRangeData(
-      Start: "",
-      End: "",
+      Start ?? "",
+      End ?? "",
     );
   }
 }

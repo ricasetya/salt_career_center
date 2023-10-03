@@ -19,8 +19,8 @@ class _SearchScreenState extends State<SearchScreen> {
     _listCompanyDataCubit =
         ListsCompanyDataCubit(ListsCompanyDataRepositoryImpl());
     _listJobDataCubit = ListJobCubit(ListJobRepositoryImpl());
-    // BlocProvider.of<ListJobCubit>(context).fetchListJob();
-    // BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
+    BlocProvider.of<ListJobCubit>(context).fetchListJob();
+    BlocProvider.of<ListsCompanyDataCubit>(context).fetchListsCompany();
   }
 
   @override
@@ -102,7 +102,7 @@ class _SearchScreenState extends State<SearchScreen> {
               if (state is ListsCompanyDataIsSucces) {
                 print("build listview data company");
                 state.data.forEach((element) {
-                  print(element.name);
+                  print(element.id);
                 });
                 return ListView.builder(
                   shrinkWrap: true,
@@ -121,7 +121,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   print(" id Company ${listcompany.id}");
                                   context.goNamed(
                                     Routes.companyscreenPage,
-                                    extra: listcompany.name,
+                                    extra: listcompany.id,
                                   );
                                 },
                                 leading: CircleAvatar(

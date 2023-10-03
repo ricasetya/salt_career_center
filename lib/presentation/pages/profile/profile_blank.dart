@@ -17,7 +17,6 @@ class _ProfileBlankState extends State<ProfileBlank> {
   File? photo;
   String urlPhoto = '';
   late ProfileDataCubit _profileDataCubit;
-  // bool _isLoading = false;
 
   Future<void> ChoiceImageCamera(context) async {
     final picker = ImagePicker();
@@ -100,11 +99,7 @@ class _ProfileBlankState extends State<ProfileBlank> {
                               onTap: () {
                                 setState(() {
                                   ChoiceImageCamera(context);
-
-                                  //context.goNamed(Routes.profileinputabilityPage);
                                 });
-                                //ChoiceImage(ImageSource.camera);
-                                //context.goNamed(Routes.profileEditProfilePage);
                               },
                               child: const Text(
                                 "Ambil foto",
@@ -142,11 +137,9 @@ class _ProfileBlankState extends State<ProfileBlank> {
                         Row(
                           children: [
                             const Icon(Icons.save_as_rounded),
-                            //Image.asset("assets/icons/trash.png"),
                             const SizedBox(width: 12),
                             InkWell(
                               onTap: () async {
-                                // _uploadImage();
                                 await BlocProvider.of<UpdatePhotoCubit>(context)
                                     .fetchProfileUpdatePhoto(photo!);
                               },
@@ -174,11 +167,6 @@ class _ProfileBlankState extends State<ProfileBlank> {
   }
 
   bool isClose = false;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -209,7 +197,6 @@ class _ProfileBlankState extends State<ProfileBlank> {
       ),
       backgroundColor: Colors.grey[200],
       body: SingleChildScrollView(
-        //key: _formKey,
         child: Form(
           child: Stack(
             children: <Widget>[
@@ -322,13 +309,12 @@ class _ProfileBlankState extends State<ProfileBlank> {
 
                                           setState(() {
                                             context.goNamed(
-                                                Routes.profileEditProfilePage,
-                                                extra: ProfileEditProfileData(
-                                                    "${profileDataState.data.name}",
-                                                    "${profileDataState.data.skill}",
-                                                    "${profileDataState.data.phoneNumber}")
-                                                //extra: profileDataState.data.name,
-                                                );
+                                              Routes.profileEditProfilePage,
+                                              extra: ProfileEditProfileData(
+                                                  "${profileDataState.data.name}",
+                                                  "${profileDataState.data.skill}",
+                                                  "${profileDataState.data.phoneNumber}"),
+                                            );
                                           });
                                         },
                                         child: const Text(
@@ -374,8 +360,11 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                         margin: const EdgeInsets.only(
                                             top: 8, right: 15),
                                         child: InkWell(
-                                          onTap: () =>
-                                              context.go('/experience'),
+                                          onTap: () {
+                                            context.goNamed(
+                                              Routes.profileworkexperience,
+                                            );
+                                          },
                                           child: const Text(
                                             "Tambah",
                                             textAlign: TextAlign.end,
@@ -697,9 +686,13 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                           margin:
                                               const EdgeInsets.only(left: 16),
                                           alignment: Alignment.topLeft,
-                                          child: const Text(
-                                            "Belum ada data dimasukkan",
-                                            style: TextStyle(
+                                          child: Text(
+                                            profileDataState.data.portofolio ==
+                                                    null
+                                                ? "Belum ada data dimasukkan"
+                                                : profileDataState
+                                                    .data.portofolio!,
+                                            style: const TextStyle(
                                               fontFamily: "inter_semibold",
                                               fontSize: 12,
                                               fontWeight: FontWeight.w600,
@@ -712,6 +705,12 @@ class _ProfileBlankState extends State<ProfileBlank> {
                                           margin:
                                               const EdgeInsets.only(right: 15),
                                           child: InkWell(
+                                            onTap: () {
+                                              context.goNamed(
+                                                Routes
+                                                    .profileinputportofolioPage,
+                                              );
+                                            },
                                             child: Image.asset(
                                               'assets/icons/icon_edit.png',
                                               color: const Color(0xff999999),
@@ -770,14 +769,53 @@ class _ProfileBlankState extends State<ProfileBlank> {
           return Container(
             alignment: Alignment.topLeft,
             margin: const EdgeInsets.only(left: 16, bottom: 8),
-            child: Text(
-              workExperience.Name,
-              style: const TextStyle(
-                fontFamily: "inter_semibold",
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                color: Color(0xff666666),
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  workExperience.SkillExperience,
+                  style: const TextStyle(
+                    fontFamily: "inter_semibold",
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xff666666),
+                  ),
+                ),
+                Text(
+                  workExperience.Name,
+                  style: const TextStyle(
+                    fontFamily: "inter_semibold",
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xff666666),
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: workExperience.DateRange.Start,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontFamily: "inter_semibold",
+                          color: Color(0xff333333),
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      TextSpan(
+                        text: " - ${workExperience.DateRange.End}",
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontFamily: "inter_semibold",
+                          color: Color(0xff333333),
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Html(data: workExperience.Description)
+              ],
             ),
           );
         },
@@ -813,14 +851,68 @@ class _ProfileBlankState extends State<ProfileBlank> {
           return Container(
             alignment: Alignment.topLeft,
             margin: const EdgeInsets.only(left: 16, bottom: 8),
-            child: Text(
-              education.Name!,
-              style: const TextStyle(
-                fontFamily: "inter_semibold",
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                color: Color(0xff666666),
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: "${education.Level}",
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontFamily: "inter_semibold",
+                          color: Color(0xff333333),
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      TextSpan(
+                        text: " ${education.Name}",
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontFamily: "inter_semibold",
+                          color: Color(0xff333333),
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: "${education.DateRange?.Start}",
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontFamily: "inter_semibold",
+                          color: Color(0xff333333),
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      TextSpan(
+                        text: " - ${education.DateRange?.End}",
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontFamily: "inter_semibold",
+                          color: Color(0xff333333),
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Text(
+                  education.Major!,
+                  style: const TextStyle(
+                    fontFamily: "inter_semibold",
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xff333333),
+                  ),
+                ),
+                Html(data: education.Description)
+              ],
             ),
           );
         },

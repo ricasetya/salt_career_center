@@ -36,7 +36,7 @@ class Routes {
   static var profileEditProfilePage = "profileEditProfile";
   static var profileinputabilityPage = "profileinputability";
   static var profileinputlanguagePage = "profileinputlanguage";
-  static var workexperience = "experince";
+  static var profileworkexperience = "profileinputexperience";
   static var inputEducation = "inputEducation";
   static var profileEditPhotoPage = "profileEditPhotoPage";
   static var profileCVResumePage = "profileCVResumePage";

@@ -33,17 +33,17 @@ class EducationDataResponse implements EducationDataResponseMapper {
   @override
   EducationData toEducationData() {
     return EducationData(
-      Id: Id,
-      Level: Level,
-      Name: Name,
-      Major: Major,
-      SkillEducation: SkillEducation,
-      DateRange: DateRange?.toDateRangeData() ??
-          DateRangeData(
-            Start: "",
-            End: "",
-          ),
-    );
+        Id: Id,
+        Level: Level,
+        Name: Name,
+        Major: Major,
+        SkillEducation: SkillEducation,
+        DateRange: DateRange?.toDateRangeData() ??
+            DateRangeData(
+              "",
+              "",
+            ),
+        Description: Description);
   }
 }
 

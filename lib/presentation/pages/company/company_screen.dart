@@ -1,9 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: unused_field, unused_local_variable, avoid_print, avoid_unnecessary_containers, unnecessary_string_interpolations
 
 part of '../pages.dart';
 
 class CompanyScreen extends StatefulWidget {
-  const CompanyScreen({super.key});
+  // final String id;
+  const CompanyScreen({
+    Key? key,
+    // required this.id,
+  }) : super(key: key);
 
   @override
   State<CompanyScreen> createState() => _CompanyScreenState();
@@ -23,6 +28,7 @@ class _CompanyScreenState extends State<CompanyScreen>
     _companyDataCubit = CompanyDataCubit(CompanyDataRepositoryImpl());
     _aboutCompanyDataCubit = AboutCompanyDataCubit(CompanyDataRepositoryImpl());
     _jobsCompanyDataCubit = JobsCompanyDataCubit(CompanyDataRepositoryImpl());
+//BlocProvider.of<CompanyDataCubit>(context).onSubmitCompanyData(id);
 
     tabController = TabController(length: 2, vsync: this);
 
